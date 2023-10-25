@@ -61,7 +61,7 @@ class UserController extends Controller
         if ($request->has('update_button') && $request->input('update_button') === 'update') {
             // Código para actualizar el correo electrónico y la contraseña
             $user->email = $request->input('email');
-            $user->password = $request->input('password');
+            $user->password = bcrypt($request->input('password'));
             $user->save();
             return redirect()->route('admin.users.index')->with('info', 'Se actualizó el usuario correctamente');
         } else {

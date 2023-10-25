@@ -55,6 +55,10 @@
                             <input type="password" name="password" id="password" value="{{ $user->password}}"
                                 class="border rounded-lg py-2 px-2 w-2/3 focus:outline-none focus:ring-2 focus:ring-blue-400">
                         </div>
+                        {{-- <div class="mt-4">
+                            <x-label for="password" value="{{ __('Password') }}" />
+                            <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                        </div> --}}
                     </div>
                 </div>
                 <div class="flex justify-center mt-4">

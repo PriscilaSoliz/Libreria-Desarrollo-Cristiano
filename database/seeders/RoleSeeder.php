@@ -22,9 +22,6 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name'=>'admin.home'])->syncRoles($role1, $role2);
 
-
-
-
         Permission::create(['name'=>'admin.users.index'])->syncRoles($role1);
         Permission::create(['name'=>'admin.users.edit'])->syncRoles($role1);
         Permission::create(['name'=>'admin.users.update'])->syncRoles($role1);
@@ -36,7 +33,5 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'VistaProducto.Create'])->syncRoles($role1);
         Permission::create(['name'=>'VistaProducto.edit'])->syncRoles($role1);
         Permission::create(['name'=>'VistaProducto.index'])->syncRoles($role1,$role2);
-
-
     }
 }
