@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -13,9 +14,15 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $user)
     {
-        return view('admin.users.index');
+        // $roles = Role::all();
+        // return view('admin.users.index', [
+        //     'roles' => $roles,
+        //     'user' => $user,
+        //     // Otros datos necesarios
+        // ]);
+         return view('admin.users.index');
     }
 
 
@@ -42,17 +49,21 @@ class UserController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      */
+    // public function edit(User $user)
+    // {
+    //      $roles = Role::all();
+    //      return view('admin.users.edit', compact('user', 'roles'));
+    // }
     public function edit(User $user)
-
     {
         $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
-    }
+        $permissions = Permission::all();
 
+        return view('admin.users.edit', compact('user', 'roles', 'permissions'));
+    }
     /**
      * Update the specified resource in storage.
      */
@@ -65,26 +76,12 @@ class UserController extends Controller
             $user->save();
             return redirect()->route('admin.users.index')->with('info', 'Se actualizó el usuario correctamente');
         } else {
-            // Código para asignar roles
-            $user->roles()->sync($request->roles);
-            return redirect()->route('admin.users.index')->with('info', 'Se asignaron los roles correctamente');
+                $user->syncRoles($request->roles); // Sincroniza los roles seleccionados
+                return redirect()->route('admin.users.index')->with('info', 'Se asignaron los roles y permisos correctamente');
         }
     }
 
 
-    // public function actualizar(Request $request, User $user){
-
-    //      $user->email = $request->input('email');
-    //      $user->password= $request->input('password');
-
-    //      $user->save();
-    //     return redirect()->route('admin.users.index')->with('info','Se asigno los roles
-    //       correctamente');
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(user $user)
     {
         // Encuentra el producto por su ID y elimínalo

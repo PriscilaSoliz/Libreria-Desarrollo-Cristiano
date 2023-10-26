@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\EmpleadoController;
 // use App\Http\Controllers\ProductoController;
 // use App\Http\Controllers\ClienteController;
+// use App\Http\Controllers\Admin\UserController;
+// use App\Http\Controllers\Admin\RoleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

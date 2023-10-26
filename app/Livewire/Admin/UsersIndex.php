@@ -16,5 +16,6 @@ class UsersIndex extends Component
         $users = User::where('name','LIKE','%' . $this->search . '%')->paginate();
 
         return view('livewire.admin.users-index', compact('users'));
+        return view('livewire.admin.roles-index', compact('users'));
     }
 }

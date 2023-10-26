@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-     @livewire('admin.users-index')     
+     @livewire('admin.users-index')
 @endsection
 {{-- @stop
 @section('css')
