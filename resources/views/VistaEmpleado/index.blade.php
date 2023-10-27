@@ -14,7 +14,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-row items-center">
                         <h2 class="text-2xl font-semibold ml-4">Lista de Empleados</h2>
-                       
+
                     </div>
                     <div class="overflow-x-auto mt-4">
                     <table class="min-w-full divide-y divide-gray-300 mt-4">
@@ -37,7 +37,7 @@
                                     Dirección</th>
                                 <th
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                    Cargo</th>
+                                    Profesion</th>
                                 <th
                                     class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
                                 </th>

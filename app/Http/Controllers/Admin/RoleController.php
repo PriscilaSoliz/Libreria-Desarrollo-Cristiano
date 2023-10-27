@@ -40,8 +40,7 @@ class RoleController extends Controller
         $role=Role::create($request->all());
 
         $role->permissions()->sync($request->permissions);
-
-        return redirect()->route('admin.roles.edit',$role)->with('info','el rol se creo con exito');
+        return redirect()->route('admin.roles.index',$role)->with('info','el rol se creo con exito');
     }
 
     /**
@@ -72,7 +71,8 @@ class RoleController extends Controller
         ]);
         $role->update($request->all());
         $role->permissions()->sync($request->permissions);
-        return redirect()->route('admin.roles.edit',$role)->with('info','el rol se actualizo con exito');
+        // return redirect()->route('admin.roles.edit',$role)->with('info','el rol se actualizo con exito');
+        return redirect()->route('admin.roles.index',$role)->with('info','el rol se actualizo con exito');
     }
     /**
      * Remove the specified resource from storage.

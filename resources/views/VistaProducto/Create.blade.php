@@ -4,6 +4,17 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <button id="volverButton" class="bg-indigo-300 text-white rounded-md px-2 py-1 text-xs hover:bg-indigo-600 inline-flex items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    Volver
+                </button>
+                <script>
+                    document.getElementById("volverButton").addEventListener("click", function() {
+                        window.location.href = "{{ route('producto.index') }}";
+                    });
+                </script>
                 <h2 class="text-2xl font-semibold mb-4">Crear Producto</h2>
                 <form action="{{route('producto.store')}}" method="POST" >
                     @csrf
@@ -41,7 +52,7 @@
                             <input type="text" name="ubicacion" id="ubicacion" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
                         </div>
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-4 text-center">
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
                     </div>
                 </form>

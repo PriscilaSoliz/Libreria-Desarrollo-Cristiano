@@ -12,13 +12,7 @@
 
                     </a>
                 </div>
-                {{-- <div class="hidden sm:flex sm:w-1/3 mt-3 ml-3">
-                    <input type="text" class="border border-gray-300 bg-gray-100 h-10 px-3 rounded-full w-full placeholder-gray-500" placeholder="Buscar">
-                </div> --}}
-                <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-
-
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="hover:text-white text-white font-bold">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -29,10 +23,10 @@
                     </x-nav-link>
                     @endcan
                     @can('admin.users.index')
-                    <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')" class="hover:text-white flex items-center text-white font-bold">
+                    <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')" class="hover:text-white text-white font-bold">
                         {{ __('Usuarios') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('roles.index')" class="hover:text-white flex items-center text-white font-bold">
+                    <x-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('roles.index')" class="hover:text-white text-white font-bold">
                         {{ __('Roles') }}
                     </x-nav-link>
                     @endcan
