@@ -34,6 +34,20 @@
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Productos') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Ventas') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Compras') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('cliente.index') }}" :active="request()->routeIs('cliente.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Cliente') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Reportes') }}
+                    </x-nav-link>
+
                     @endcan
 
                 </div>

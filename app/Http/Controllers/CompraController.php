@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cliente;
+use App\Models\Compra;
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class CompraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cliente= cliente::get();
-        return view('VistaCliente.index', compact('cliente'));
+        //
     }
 
     /**
@@ -35,7 +34,7 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(cliente $cliente)
+    public function show(Compra $compra)
     {
         //
     }
@@ -43,7 +42,7 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(cliente $cliente)
+    public function edit(Compra $compra)
     {
         //
     }
@@ -51,7 +50,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cliente $cliente)
+    public function update(Request $request, Compra $compra)
     {
         //
     }
@@ -59,7 +58,7 @@ class ClienteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(cliente $cliente)
+    public function destroy(Compra $compra)
     {
         //
     }

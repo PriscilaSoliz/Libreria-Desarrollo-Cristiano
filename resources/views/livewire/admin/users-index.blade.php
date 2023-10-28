@@ -15,19 +15,17 @@
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                     Id</th>
                                 <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    class="px-10 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                     Nombre</th>
                                 <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    class="px-10 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                     Usuario</th>
                                 <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    class="px-8 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                     Rol</th>
-                                <th class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                    Asignar Rol
+                                <th class="px-1 py-3 bg-gray-50 text-center text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                 </th>
-                                <th class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                Eliminar
+                                <th class="px-1 py-3 bg-gray-50 text-center text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                 </th>
 
                             </tr>
@@ -36,27 +34,24 @@
 
                             @foreach ($users as $user)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $user->id }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $user->name }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $user->email }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">
+                                    <td class="px-6 py-3 whitespace-no-wrap">{{ $user->id }}</td>
+                                    <td class="px-10 py-3 whitespace-no-wrap">{{ $user->name }}</td>
+                                    <td class="px-10 py-3 whitespace-no-wrap">{{ $user->email }}</td>
+                                    <td class="px-8 py-3 whitespace-no-wrap">
                                         @foreach ($user->roles as $role)
                                             {{ $role->name }} {{-- Suponiendo que el modelo Role tiene un atributo 'name' --}}
                                         @endforeach
                                     </td>
-                                    <td class="px-1 py-4 whitespace-no-wrap text-center">
+                                    <td class="px-1 py-3 whitespace-no-wrap text-center">
 
-                                        <a href="{{ route('admin.users.edit', $user) }}"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-full transition-transform transform hover:scale-110">
-                                            <svg class="w-4 h-4 inline-block fill-current mr-1"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M14.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.32.222l-4 1a1 1 0 01-1.221-1.22l1-4a1 1 0 01.222-.321l9-9zM15 2a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V3a1 1 0 011-1h4z" />
+                                        <a href="{{ route('admin.users.edit', $user) }}" class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>
                                         </a>
                                     </td>
 
-                                    <td class="px-1 py-4 whitespace-no-wrap text-center">
+                                    <td class="px-1 py-3 whitespace-no-wrap text-center">
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
