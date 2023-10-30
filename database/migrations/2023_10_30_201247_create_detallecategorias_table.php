@@ -9,25 +9,22 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-
         Schema::create('detallecategorias', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('categoria_id');
             $table->string('descripcion');
             $table->unsignedBigInteger('producto_id');
-
             $table->timestamps();
-            $table->foreign('categoria_id')->references('id')->on('categorias'); // Hacer referencia a la clave primaria 'id' de 'categorias'
-            // Columna para la clave foránea a productos
 
-             $table->foreign('producto_id')->references('id')->on('productos'); // Hacer referencia a la clave primaria 'id' de 'productos'
-
-
+            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('producto_id')->references('id')->on('productos');
         });
-    }
 
+        // Definir las columnas como claves primarias compuestas
+        DB::statement('ALTER TABLE detallecategorias ADD PRIMARY KEY (id, categoria_id)');
+    }
     /**
      * Reverse the migrations.
      */

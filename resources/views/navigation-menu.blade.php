@@ -18,9 +18,13 @@
                     </x-nav-link>
 
                     @can('VistaEmpleado.index')
+
+
                     <x-nav-link href="{{ route('empleado.index') }}" :active="request()->routeIs('empleado.index')" class="hover:text-white flex items-center text-white font-bold">
                         {{ __('Empleados') }}
                     </x-nav-link>
+
+
                     @endcan
                     @can('admin.users.index')
                     <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')" class="hover:text-white text-white font-bold">
