@@ -45,6 +45,6 @@ class UsersSeeder extends Seeder
                     'name' => 'Jorge Calderon',
                     'email' => 'Jorge@gmail.com',
                     'password' => bcrypt('12345678'),
-                ]);
+                ])->assignRole('empleado');
         }
 }
