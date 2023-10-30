@@ -8,6 +8,7 @@
                 <div class="bg-white overflow-x-auto shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         @can('VistaProducto.Create')
+<<<<<<< Updated upstream
                         <div class="flex flex-col lg:flex-row justify-start mb-4" style="margin-top: 10px;">
                             <a href="{{ route('producto.create') }}"
                                 class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full mb-2 lg:mb-0 lg:ml-6 transition duration-300 ease-in-out transform hover:scale-105 text-center">
@@ -18,7 +19,20 @@
                                 Ver Detalles
                             </a>
                         </div>
+=======
+                            <div class="flex justify-start mb-4" style="margin-top: 10px;">
+                                <a href="{{ route('producto.create') }}"
+                                    class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-6 transition duration-300 ease-in-out transform hover:scale-105">
+                                    Agregar Producto
+                                </a>
+                                <a href="{{ route('producto.create') }}"
+                                class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-6 transition duration-300 ease-in-out transform hover:scale-105">
+                                 Ver Detalles
+                            </a>
+                            </div>
+>>>>>>> Stashed changes
                         @endcan
+                      
                         <div class="flex flex-row items-center mb-3">
                             <h2 class="text-2xl font-semibold ml-6">Lista de Producto</h2>
                         </div>
@@ -150,6 +164,7 @@
                                         <td class="px-6 py-3 whitespace-no-wrap">{{ $p->version }}</td>
                                         <td class="px-6 py-3 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
                                         <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
+
                                         <td class="px-1 py-3 whitespace-no-wrap">
                                             @can('VistaProducto.edit')
                                                 <a href="{{ route('producto.edit', $p->id) }}"
