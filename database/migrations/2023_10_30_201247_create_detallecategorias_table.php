@@ -18,8 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('producto_id');
             $table->timestamps();
 
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->foreign('producto_id')->references('id')->on('productos');
+             $table->foreign('producto_id')->references('id')->on('productos'); // Hacer referencia a la clave primaria 'id' de 'productos'
+
+
         });
 
         // Definir las columnas como claves primarias compuestas

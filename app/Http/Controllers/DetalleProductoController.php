@@ -13,12 +13,8 @@ class DetalleProductoController extends Controller
      */
     public function index(Request $request)
     {
-        $buscar = $request->input('buscar');
 
-        $producto = Producto::orderByRaw("nombre LIKE '$buscar%' DESC, ubicacion LIKE '$buscar%' DESC , codigo LIKE '$buscar%' DESC,editorial LIKE '$buscar%' DESC, version LIKE '$buscar%' DESc , autor LIKE '$buscar%' DESC")
-            ->get();
-
-        return view('VistaDetalle.index', compact('producto', 'buscar'));
+        return view('VistaDetalle.index');
     }
 
     /**
