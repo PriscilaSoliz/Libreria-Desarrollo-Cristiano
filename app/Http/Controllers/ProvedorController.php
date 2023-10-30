@@ -12,7 +12,8 @@ class ProvedorController extends Controller
      */
     public function index()
     {
-        //
+        $provedor = provedor::get();
+        return view('VistaProvedor.index', compact('provedor'));
     }
 
     /**

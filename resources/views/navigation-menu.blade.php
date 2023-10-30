@@ -30,10 +30,14 @@
                         {{ __('Roles') }}
                     </x-nav-link>
                     @endcan
+                    <x-nav-link href="{{ route('provedor.index') }}" :active="request()->routeIs('provedor.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Proveedor') }}
+                    </x-nav-link>
                     @can('VistaProducto.index')
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Productos') }}
                     </x-nav-link>
+
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Ventas') }}
                     </x-nav-link>
@@ -181,6 +185,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="block pl-3 pr-4 py-2 text-base font-medium text-white hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out">
                 {{ __('Productos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('provedor.index') }}" :active="request()->routeIs('provedor.index')" class="block pl-3 pr-4 py-2 text-base font-medium text-white hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out">
+                {{ __('Proveedor') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')" class="block pl-3 pr-4 py-2 text-base font-medium text-white hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:text-gray-800 focus:bg-gray-100 transition duration-150 ease-in-out">
                 {{ __('Usuarios') }}
