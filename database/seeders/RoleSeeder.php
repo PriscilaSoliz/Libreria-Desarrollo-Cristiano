@@ -44,5 +44,7 @@ class RoleSeeder extends Seeder
                             'description'=>'Editar Producto'])->syncRoles($role1);
         Permission::create(['name'=>'VistaProducto.index',
                             'description'=>'Ver Lista de Producto'])->syncRoles($role1,$role2,$role3);
+
+
     }
 }

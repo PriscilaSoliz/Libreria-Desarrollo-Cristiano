@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('ci');
             $table->string('nombre');
-            $table->string('celular');
-            $table->string('direccion');
+            $table->string('celular')->nullable();
+            $table->string('direccion')->nullable();
 
             $table->timestamps();
         });
