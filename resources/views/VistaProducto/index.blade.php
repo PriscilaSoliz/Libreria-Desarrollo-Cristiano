@@ -1,29 +1,28 @@
 @extends('layouts.app')
 @section('content')
     <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
-
+        <div class="max-w-8xl mx-auto sm:px-6 lg:px-1">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
                 <div class="bg-white overflow-x-auto shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         @can('VistaProducto.Create')
-                        <div class="flex flex-col lg:flex-row justify-start mb-4" style="margin-top: 10px;">
-                            <a href="{{ route('producto.create') }}"
-                                class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full mb-2 lg:mb-0 lg:ml-6 transition duration-300 ease-in-out transform hover:scale-105 text-center">
-                                Agregar Producto
-                            </a>
-                            <a href="{{ route('detalle_producto.index') }}"
+                        {{-- <div class="flex flex-col lg:flex-row justify-start mb-4" style="margin-top: 10px;"> --}}
+                            <div class="flex justify-start" style="margin-top: 18px; margin-bottom: 20px;">
+                                <a href="{{ route('producto.create') }}"
+                                    class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-4 transition duration-300 ease-in-out transform hover:scale-105">
+                                    Agregar Empleado
+                                </a>
+                            {{-- <a href="{{ route('detalle_producto.index') }}"
                                 class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-full ml-6 lg:ml-auto transition duration-300 ease-in-out transform hover:scale-105 text-center">
                                 Ver Detalles
-                            </a>
+                            </a> --}}
                         </div>
                         @endcan
 
                         <div class="flex flex-row items-center mb-3">
                             <h2 class="text-2xl font-semibold ml-6">Lista de Producto</h2>
                         </div>
-                        <div class="flex flex-row items-center">
+                        <div class="flex flex-row items-center ">
 
                             <form action="{{ route('producto.index') }}" method="GET" class="ml-4 flex">
                                 <input type="text" name="buscar"
@@ -36,7 +35,7 @@
                                 </button>
                             </form>
                         </div>
-                        <table class="min-w-full divide-y divide-gray-200 mt-4">
+                        <table class="table-min" style="margin-top: 20px;">
                             <thead>
                                 <tr>
                                     <th
@@ -68,9 +67,14 @@
                                         Editorial
                                     </th>
                                     <th
+                                    class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Proveedor
+                                </th>
+                                    <th
                                         class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Ubicacion
                                     </th>
+
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
 
@@ -109,6 +113,9 @@
                                         <td class="px-6 py-3 whitespace-no-wrap">{{ $p->autor }}</td>
                                         <td class="px-6 py-3 whitespace-no-wrap">{{ $p->version }}</td>
                                         <td class="px-6 py-3 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
+                                        <td class="px-12 py-3 whitespace-no-wrap">
+                                            {{ $p->provedor->nombre }}
+                                        </td>
                                         <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
                                         <td class="px-1 py-3 whitespace-no-wrap">
                                             @can('VistaProducto.edit')
@@ -150,6 +157,9 @@
                                         <td class="px-6 py-3 whitespace-no-wrap">{{ $p->autor }}</td>
                                         <td class="px-6 py-3 whitespace-no-wrap">{{ $p->version }}</td>
                                         <td class="px-6 py-3 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
+                                        <td class="px-12 py-3 whitespace-no-wrap">
+                                            {{ $p->provedor->nombre }}
+                                        </td>
                                         <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
 
                                         <td class="px-1 py-3 whitespace-no-wrap">

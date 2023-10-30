@@ -23,8 +23,6 @@ return new class extends Migration
             // Columna para la clave foránea a productos
 
              $table->foreign('producto_id')->references('id')->on('productos'); // Hacer referencia a la clave primaria 'id' de 'productos'
-
-
         });
     }
 
