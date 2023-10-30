@@ -5,7 +5,7 @@
         <div class="flex justify-between h-16" >
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                {{-- <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
 
                         <img src="{{ asset('img/loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
@@ -19,20 +19,93 @@
 
                     @can('VistaEmpleado.index')
 
-
-                    <x-nav-link href="{{ route('empleado.index') }}" :active="request()->routeIs('empleado.index')" class="hover:text-white flex items-center text-white font-bold">
-                        {{ __('Empleados') }}
-                    </x-nav-link>
-
-
+                        <x-nav-link
+                            href="{{ route('empleado.index') }}"
+                            :active="request()->routeIs('empleado.index')"
+                            class="flex items-center text-white font-bold"
+                            {{ __('Empleados') }}
+                        </x-nav-link>
                     @endcan
                     @can('admin.users.index')
+
                     <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')" class="hover:text-white text-white font-bold">
                         {{ __('Usuarios') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('roles.index')" class="hover:text-white text-white font-bold">
                         {{ __('Roles') }}
                     </x-nav-link>
+                    @endcan
+                    <x-nav-link href="{{ route('provedor.index') }}" :active="request()->routeIs('provedor.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Proveedor') }}
+                    </x-nav-link>
+                    @can('VistaProducto.index')
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Productos') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Ventas') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Compras') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('cliente.index') }}" :active="request()->routeIs('cliente.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Cliente') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Reportes') }}
+                    </x-nav-link>
+
+                    @endcan
+
+                </div> --}}
+
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+
+                        <img src="{{ asset('img/loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
+
+                    </a>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="hover:text-white text-white font-bold">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+
+                    @can('VistaEmpleado.index')
+                    <div class="relative inline-block group">
+                        <x-nav-link
+
+                            class="flex items-center text-white font-bold"
+                             style="margin-top: 20px;" {{--!-- Ajusta el valor según sea necesario --> --}}
+                        >
+                            {{ __('Gestionar Usuarios') }}
+                        </x-nav-link>
+
+                        <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"> <x-nav-link
+                                href="{{ route('empleado.index') }}"
+                                :active="request()->routeIs('empleado.index')"
+                                class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"
+
+                               {{--!-- Ajusta el valor según sea necesario --> --}}
+                            >
+                                {{ __('Empleados') }}
+                            </x-nav-link></a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Usuarios') }}
+                            </x-nav-link></a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">  <x-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('roles.index')" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Roles') }}
+                            </x-nav-link></a>
+                        </div>
+                    </div>
+                    @endcan
+                    @can('admin.users.index')
+
+
+
                     @endcan
                     <x-nav-link href="{{ route('provedor.index') }}" :active="request()->routeIs('provedor.index')" class="hover:text-white text-white font-bold">
                         {{ __('Proveedor') }}
