@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Producto;
+use App\Models\producto;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +13,7 @@ class ProductoSeeder extends Seeder
      */
     public function run()
     {
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '97800829766813',
             'nombre' => 'Biblia nvi-un dia a la vez',
             'autor' => 'Saturnino Mamani',
@@ -23,11 +23,9 @@ class ProductoSeeder extends Seeder
             'cantidad' => '20',
             'ubicacion' => 'A',
             'proveedor_id'=> '1',
-
-
         ]);
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '9780789925855',
             'nombre' => 'Santa Biblia de la promesa',
             'autor' => 'Joaquin Chumacero',
@@ -39,7 +37,7 @@ class ProductoSeeder extends Seeder
             'proveedor_id'=> '2',
         ]);
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '9780789921567',
             'nombre' => 'Biblia de promesa',
             'autor' => 'Fabiola Mendez',
@@ -52,7 +50,7 @@ class ProductoSeeder extends Seeder
         ]);
 
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '9780829748314',
             'nombre' => 'Mas Cerca de ti y de Dios',
             'autor' => 'Susie Shellenberguer',
@@ -65,7 +63,7 @@ class ProductoSeeder extends Seeder
         ]);
 
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '9781588024381',
             'nombre' => 'Cuando su pasado afecta su presente',
             'autor' => 'Sue Augustine',
@@ -78,7 +76,7 @@ class ProductoSeeder extends Seeder
         ]);
 
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '9780789918536',
             'nombre' => 'Con quien me casare',
             'autor' => 'Luis Palau',
@@ -91,7 +89,7 @@ class ProductoSeeder extends Seeder
         ]);
 
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '614042004713',
             'nombre' => 'Taza LG',
             'autor' => 'Pedro Chumacero',
@@ -103,7 +101,7 @@ class ProductoSeeder extends Seeder
             'proveedor_id'=> '3',
         ]);
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '7731641301173',
             'nombre' => 'Mochila',
             'autor' => 'karla yupanqui',
@@ -115,7 +113,7 @@ class ProductoSeeder extends Seeder
             'proveedor_id'=> '1',
         ]);
 
-        $user = Producto::create([
+        $user = producto::create([
             'codigo' => '764283925404',
             'nombre' => 'Estuche de Lapices-Noe',
             'autor' => 'Carlos Camacho',

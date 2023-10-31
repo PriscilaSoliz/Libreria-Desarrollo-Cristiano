@@ -8,12 +8,18 @@
     <div class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mx-auto my-5 p-6"
             style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); font-family: 'Verdana', sans-serif; margin-bottom: 1px;">
-            <div class="flex justify-start" style="margin-top: 15px;">
+            <div class="flex" style="margin-top: 30px; margin-bottom: 5px;">
+                    <a href="{{ route('admin.roles.create') }}"
+                       class="ml-8 bg-indigo-600 text-white rounded-md px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mb-4">
+                        Registrar Rol
+                    </a>
+                </div>
+            {{-- <div class="flex justify-start" style="margin-top: 15px;">
                 <a href="{{ route('admin.roles.create') }}"
                     class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-12 transition duration-300 ease-in-out transform hover:scale-105">
                     Agregar Nuevo Rol
                 </a>
-            </div>
+            </div> --}}
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="flex flex-row items-center">
                     <h2 class="text-2xl font-semibold ml-4">Lista de Roles</h2>

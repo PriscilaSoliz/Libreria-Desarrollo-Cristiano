@@ -39,8 +39,6 @@
                     {!! Form::submit('Actualizar Rol', ['class' => 'bg-indigo-500 text-white rounded-md p-2 mt-4 hover:bg-indigo-600 mx-auto']) !!}
                 </div>
                 {!! Form::close() !!}
-
-
             </div>
         </div>
 @endsection

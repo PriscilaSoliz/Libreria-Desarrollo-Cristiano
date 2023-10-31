@@ -9,9 +9,15 @@
                         {{-- <div class="flex flex-col lg:flex-row justify-start mb-4" style="margin-top: 10px;"> --}}
                             <div class="flex justify-start" style="margin-top: 18px; margin-bottom: 20px;">
                                 <a href="{{ route('producto.create') }}"
+                                class="bg-indigo-600 text-white rounded-md px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mb-4">
+                                 Agregar Producto
+                             </a>
+
+
+                                {{-- <a href="{{ route('producto.create') }}"
                                     class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-4 transition duration-300 ease-in-out transform hover:scale-105">
                                     Agregar Producto
-                                </a>
+                                </a> --}}
                             {{-- <a href="{{ route('detalle_producto.index') }}"
                                 class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-full ml-6 lg:ml-auto transition duration-300 ease-in-out transform hover:scale-105 text-center">
                                 Ver Detalles
@@ -130,7 +136,7 @@
                                             @endcan
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap">
-                                            @can('VistaProducto.edit')
+                                            @can('VistaProducto.detroy')
                                                 <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -175,7 +181,7 @@
                                             @endcan
                                         </td>
                                         <td class="px-6 py-4 whitespace-no-wrap">
-                                            @can('VistaProducto.edit')
+                                            @can('VistaProducto.detroy')
                                                 <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')

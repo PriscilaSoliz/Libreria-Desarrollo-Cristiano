@@ -4,10 +4,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
                 style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
-                <div class="flex justify-start" style="margin-top: 28px;">
+                <div class="flex" style="margin-top: 30px; margin-bottom: 5px;">
                     <a href="{{ route('provedor.create') }}"
-                        class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-12 transition duration-300 ease-in-out transform hover:scale-105">
-                        Agregar Proveedor
+                       class="ml-8 bg-indigo-600 text-white rounded-md px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mb-4">
+                        Registrar Proveedor
                     </a>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -48,7 +48,7 @@
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $p->nombre}}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $p->celular}}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $p->direccion}}</td>
-                                    {{-- @can('VistaEmpleado.index') --}}
+                                    @can('VistaProvedor.edit')
                                     <td class="px-1 py-4 whitespace-no-wrap">
 
                                         <a href="{{ route('provedor.edit', $p->id) }}"
@@ -57,11 +57,10 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                             </svg>
                                          </a>
-
-
                                     </td>
+                                    @endcan
                                     {{-- @endcan --}}
-                                    {{-- @can('VistaEmpleado.index') --}}
+                                    @can('VistaProvedor.edit')
                                     <td class="px-1 py-4 whitespace-no-wrap">
                                         <form action="{{ route('provedor.destroy', $p->id) }}" method="POST">
                                             @csrf
@@ -77,13 +76,13 @@
                                             </button>
                                         </form>
                                     </td>
-                                    {{-- @endcan --}}
+                                    @endcan
                                     {{-- <td class="px-6 py-4 whitespace-no-wrap">
                                         <!-- Agrega enlaces o botones para acciones adicionales, si es necesario -->
                                     </td> --}}
                                 </tr>
-                            @endforeach
                         </tbody>
+                        @endforeach
                     </table
                 </div>
             </div>
