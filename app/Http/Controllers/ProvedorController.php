@@ -12,7 +12,7 @@ class ProvedorController extends Controller
      */
     public function index()
     {
-        $provedor = provedor::get();
+        $provedor = Provedor::get();
         return view('VistaProvedor.index', compact('provedor'));
     }
 
@@ -30,7 +30,7 @@ class ProvedorController extends Controller
     public function store(Request $r)
     {
          // dd($r);
-         $provedor= new provedor();
+         $provedor= new Provedor();
          $provedor->ci = $r->ci;
          $provedor->nombre = $r->nombre;
          $provedor->celular = $r->celular;

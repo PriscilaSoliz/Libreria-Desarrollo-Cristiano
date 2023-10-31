@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\provedor;
+use App\Models\Provedor;
 use App\Models\producto;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class ProductoController extends Controller
      {
          $buscar = $request->input('buscar');
 
-         $producto = Producto::orderByRaw("nombre LIKE '$buscar%' DESC, ubicacion LIKE '$buscar%' DESC , codigo LIKE '$buscar%' DESC,editorial LIKE '$buscar%' DESC, version LIKE '$buscar%' DESc , autor LIKE '$buscar%' DESC")
+         $producto = producto::orderByRaw("nombre LIKE '$buscar%' DESC, ubicacion LIKE '$buscar%' DESC , codigo LIKE '$buscar%' DESC,editorial LIKE '$buscar%' DESC, version LIKE '$buscar%' DESc , autor LIKE '$buscar%' DESC")
              ->get();
 
          return view('VistaProducto.index', compact('producto', 'buscar'));
@@ -26,7 +26,7 @@ class ProductoController extends Controller
     public function create()
     {
 
-        $provedor = provedor::all(); // Obtén todos los proveedores de la base de datos
+        $provedor = Provedor::all(); // Obtén todos los proveedores de la base de datos
         return view('VistaProducto.Create', compact('provedor'));
         // return view('VistaProducto.create');
 
