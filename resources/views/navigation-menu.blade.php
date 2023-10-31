@@ -64,7 +64,7 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
 
-                        <img src="{{ asset('img/loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
+                        <img src="{{ asset('img/Loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
 
                     </a>
                 </div>

@@ -4,7 +4,7 @@
             <x-authentication-card-logo />
         </x-slot>
         <div class="w-64 h-64 bg-white flex items-center">
-            <img src="{{ asset('img/logito.png') }}" alt="Descripción de la imagen" class="max-w-full max-h-full ml-20 rounded-md">
+            <img src="{{ asset("img/Logito.png") }}" alt="Descripción de la imagen" class="max-w-full max-h-full ml-20 rounded-md">
         </div>
         <x-validation-errors class="mb-4" />
 
