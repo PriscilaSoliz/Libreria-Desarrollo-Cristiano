@@ -29,12 +29,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'admin.users.update','description'=>'Editar usuario'])->syncRoles($role1);
         Permission::create(['name'=>'admin.users.edit','description'=>'Asignar Rol'])->syncRoles($role1);
 
-        Permission::create(['name'=>'admin.users',
+        Permission::create(['name'=>'admin.users1',
                             'description'=>'Ver Listado de Usuario'])->syncRoles($role1);
-        Permission::create(['name'=>'admin.users',
+        Permission::create(['name'=>'admin.users2',
                             'description'=>'Asignar Rol'])->syncRoles($role1);
 
-        Permission::create(['name'=>'admin.users',
+        Permission::create(['name'=>'admin.users3',
                            'description'=>'Editar usuario'])->syncRoles($role1);
 
 
