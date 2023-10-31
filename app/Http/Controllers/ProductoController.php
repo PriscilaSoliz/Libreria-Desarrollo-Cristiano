@@ -25,9 +25,13 @@ class ProductoController extends Controller
      */
     public function create()
     {
+<<<<<<< Updated upstream
         $provedor = provedor::all(); // Obtén todos los proveedores de la base de datos
         return view('VistaProducto.create', compact('provedor'));
         // return view('VistaProducto.create');
+=======
+        return view('VistaProducto.Create');
+>>>>>>> Stashed changes
     }
 
     /**
