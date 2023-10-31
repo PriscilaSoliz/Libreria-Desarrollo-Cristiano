@@ -10,7 +10,7 @@
                             <div class="flex justify-start" style="margin-top: 18px; margin-bottom: 20px;">
                                 <a href="{{ route('producto.create') }}"
                                     class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-4 transition duration-300 ease-in-out transform hover:scale-105">
-                                    Agregar Empleado
+                                    Agregar Producto
                                 </a>
                             {{-- <a href="{{ route('detalle_producto.index') }}"
                                 class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-full ml-6 lg:ml-auto transition duration-300 ease-in-out transform hover:scale-105 text-center">

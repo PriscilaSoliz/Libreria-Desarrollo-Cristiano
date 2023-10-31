@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\provedor;
 use App\Models\producto;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,9 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('VistaProducto.create');
+        $provedor = provedor::all(); // Obtén todos los proveedores de la base de datos
+        return view('VistaProducto.create', compact('provedor'));
+        // return view('VistaProducto.create');
     }
 
     /**
@@ -43,9 +45,10 @@ class ProductoController extends Controller
         $producto->precio = $r->precio;
         $producto->cantidad = $r->cantidad;
         $producto->ubicacion = $r->ubicacion;
+        $producto->proveedor_id = $r->proveedor_id;
         $producto->save();
-
         return redirect()->route('producto.index');
+
     }
 
 

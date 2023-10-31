@@ -64,6 +64,14 @@
                                 <input type="text" name="ubicacion" id="ubicacion"
                                     class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
                             </div>
+                            <div>
+                                <label for="proveedor" class="block text-gray-700 text-sm font-bold mb-2">Proveedor</label>
+                                <select name="proveedor_id" id="proveedor_id" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    @foreach($provedor as $p)
+                                        <option value="{{ $p->id }}">{{ $p->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="mt-4 text-center">
                             <button type="submit"
