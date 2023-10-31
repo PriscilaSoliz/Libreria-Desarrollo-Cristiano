@@ -115,6 +115,11 @@
                         {{ __('Productos') }}
                     </x-nav-link>
                     @endcan
+                    
+                    <x-nav-link href="{{ route('bitacora.index') }}" :active="request()->routeIs('bitacora.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Bitacora') }}
+                    </x-nav-link>
+                    
                     {{-- <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Ventas') }}
                     </x-nav-link> --}}

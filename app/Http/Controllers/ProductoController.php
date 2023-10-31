@@ -50,6 +50,11 @@ class ProductoController extends Controller
         $producto->ubicacion = $r->ubicacion;
         $producto->proveedor_id = $r->proveedor_id;
         $producto->save();
+
+        activity()
+            ->causedBy(auth()->user()) //Usuario responsable
+            ->log('Registro el producto: '.$producto->nombre);
+
         return redirect()->route('producto.index');
 
     }
@@ -91,6 +96,10 @@ class ProductoController extends Controller
 
         $producto->save();
 
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Modifico el producto: '.$producto->nombre);
+
         return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente');
     }
 
@@ -99,6 +108,10 @@ class ProductoController extends Controller
      */
     public function destroy(producto $producto)
     {
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Elimino el producto: '.$producto->nombre);
+            
         // Encuentra el producto por su ID y elimínalo
         $producto->delete();
 
