@@ -39,6 +39,9 @@ class EmpleadoController extends Controller
         $empleado->cargo = $r->cargo;
         $empleado->save();
 
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Registro un nuevo empleado: '.$empleado->nombre);
         return redirect()->route('empleado.index');
     }
 
@@ -75,6 +78,9 @@ class EmpleadoController extends Controller
         // Actualiza otros campos según sea necesario
 
         $empleado->save();
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Modifico los datos del empleado: '.$empleado->nombre);
 
         return redirect()->route('empleado.index')->with('success', 'Empleado actualizado exitosamente');
     }
@@ -84,6 +90,9 @@ class EmpleadoController extends Controller
      */
     public function destroy(empleado $empleado)
     {
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Elimino al empleado: '.$empleado->nombre);
         // Encuentra el producto por su ID y elimínalo
         $empleado->delete();
 

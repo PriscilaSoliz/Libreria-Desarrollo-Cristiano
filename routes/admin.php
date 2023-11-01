@@ -8,6 +8,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProvedorController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\DetalleProductoController;
 
 
@@ -24,5 +25,5 @@ Route::resource('producto', ProductoController::class)->names('producto');
 Route::resource('detalle_producto',DetalleProductoController::class)->names('detalle_producto');
 Route::resource('provedor', ProvedorController::class)->names('provedor');
 Route::resource('cliente', ClienteController::class)->names('cliente');
-
+Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
 

@@ -23,13 +23,27 @@ class RoleSeeder extends Seeder
 
         Permission::create(['name'=>'admin.home', 'description'=>'Ver el dasshboard'])->syncRoles($role1, $role2,$role3);
 
+<<<<<<< HEAD
         Permission::create(['name'=>'admin.users.index',
+=======
+
+        //USUARIO
+        Permission::create(['name'=>'admin.users.index','description'=>'Ver Listado de Usuario'])->syncRoles($role1);
+        Permission::create(['name'=>'admin.users.update','description'=>'Editar usuario'])->syncRoles($role1);
+        Permission::create(['name'=>'admin.users.edit','description'=>'Asignar Rol'])->syncRoles($role1);
+
+        Permission::create(['name'=>'admin.users1',
+>>>>>>> d4918632f08e90c616c5535db6e97e5ca57f7634
                             'description'=>'Ver Listado de Usuario'])->syncRoles($role1);
-        Permission::create(['name'=>'admin.users.edit',
+        Permission::create(['name'=>'admin.users2',
                             'description'=>'Asignar Rol'])->syncRoles($role1);
 
-        Permission::create(['name'=>'admin.users.update',
+        Permission::create(['name'=>'admin.users3',
                            'description'=>'Editar usuario'])->syncRoles($role1);
+<<<<<<< HEAD
+=======
+
+>>>>>>> d4918632f08e90c616c5535db6e97e5ca57f7634
 
         //ROLES
         Permission::create(['name'=>'admin.roles.index','description'=>'Ver Lista de Roles'])->syncRoles($role1);

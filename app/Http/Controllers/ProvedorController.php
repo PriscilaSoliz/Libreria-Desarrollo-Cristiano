@@ -36,6 +36,10 @@ class ProvedorController extends Controller
          $provedor->celular = $r->celular;
          $provedor->direccion = $r->direccion;
          $provedor->save();
+
+         activity()
+            ->causedBy(auth()->user())
+            ->log('Registro un proveedor: '.$provedor->nombre);
          return redirect()->route('provedor.index');
     }
 
@@ -68,6 +72,9 @@ class ProvedorController extends Controller
         // Actualiza otros campos según sea necesario
 
         $provedor->save();
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Modifico datos del proveedor: '.$provedor->nombre);
 
         return redirect()->route('provedor.index');
     }
@@ -77,6 +84,10 @@ class ProvedorController extends Controller
      */
     public function destroy(Provedor $provedor)
     {
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Elimino al proveedor: '.$provedor->nombre);
+            
           // Encuentra el producto por su ID y elimínalo
           $provedor->delete();
 
