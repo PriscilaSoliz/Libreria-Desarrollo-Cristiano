@@ -25,14 +25,13 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label for="codigo" class="block text-gray-700 text-sm font-bold mb-2">Codigo</label>
-                                <input type="text" name="codigo" id="codigo"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                <input type="text" name="codigo" id="codigo" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre
                                     Producto</label>
                                 <input type="text" name= "nombre" id="nombre"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="autor" class="block text-gray-700 text-sm font-bold mb-2">Autor</label>
@@ -47,22 +46,22 @@
                             <div>
                                 <label for="editorial" class="block text-gray-700 text-sm font-bold mb-2">Editorial</label>
                                 <input type="text" name="editorial" id="editorial"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="precio" class="block text-gray-700 text-sm font-bold mb-2">Precio</label>
                                 <input type="number" name="precio" id="precio"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="cantidad" class="block text-gray-700 text-sm font-bold mb-2">Cantidad</label>
                                 <input type="number" name="cantidad" id="cantidad"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="ubicacion" class="block text-gray-700 text-sm font-bold mb-2">Ubicacion</label>
                                 <input type="text" name="ubicacion" id="ubicacion"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="proveedor" class="block text-gray-700 text-sm font-bold mb-2">Proveedor</label>

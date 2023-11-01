@@ -12,11 +12,11 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label for="ci" class="block text-gray-700 text-sm font-bold mb-2">C.I.</label>
-                            <input type="number" name="ci" id="ci" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <input type="number" name="ci" id="ci" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                         </div>
                         <div>
                             <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" oninput="ConvertirPrimeraLetra(this)">
+                            <input type="text" name="nombre" id="nombre" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required oninput="ConvertirPrimeraLetra(this)">
 
                             <script>
                                 function ConvertirPrimeraLetra(input) {
@@ -28,19 +28,19 @@
                         </div>
                         <div>
                             <label for="celular" class="block text-gray-700 text-sm font-bold mb-2">Celular</label>
-                            <input type="number" name= "celular" id="celular" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <input type="number" name= "celular" id="celular" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"required>
                         </div>
                         <div>
                             <label for="correo" class="block text-gray-700 text-sm font-bold mb-2">Correo</label>
-                            <input type="email" name="correo" id="correo" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            <input type="email" name="correo" id="correo" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"required>
                         </div>
                         <div>
                             <label for="direccion" class="block text-gray-700 text-sm font-bold mb-2">Dirección</label>
-                            <input type="text" name="direccion" id="direccion" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" oninput="ConvertirPrimeraLetra(this)">
+                            <input type="text" name="direccion" id="direccion" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required oninput="ConvertirPrimeraLetra(this)">
                         </div>
                         <div>
                             <label for="cargo" class="block text-gray-700 text-sm font-bold mb-2">Profesion</label>
-                            <input type="text" name="Cargo" id="Cargo" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" oninput="ConvertirPrimeraLetra(this)">
+                            <input type="text" name="cargo" id="cargo" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required oninput="ConvertirPrimeraLetra(this)">
                         </div>
                     </div>
                     <div class="mt-4">

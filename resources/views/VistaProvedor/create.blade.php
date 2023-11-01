@@ -26,12 +26,12 @@
                             <div>
                                 <label for="ci" class="block text-gray-700 text-sm font-bold mb-2">CI/NIT</label>
                                 <input type="number" name="ci" id="ci"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                             </div>
                             <div>
                                 <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
                                 <input type="text" name= "nombre" id="nombre"
-                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" oninput="ConvertirPrimeraLetra(this)">
+                                    class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required oninput="ConvertirPrimeraLetra(this)">
                             </div>
                             <script>
                                 function ConvertirPrimeraLetra(input) {
