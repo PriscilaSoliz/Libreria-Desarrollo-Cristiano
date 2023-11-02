@@ -12,7 +12,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categoria = categoria::get();
+        return view('VistaCategoria.index', compact('categoria'));
     }
 
     /**
@@ -20,15 +21,22 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $categoria = new categoria();
+        $categoria->descripcion = $r->descripcion;
+        $categoria->save();
+
+        activity()
+             ->causedBy(auth()->user())
+            ->log('Registro una nueva categoria: '.$categoria->descripcion);
+        return redirect()->route('categoria.index');
     }
 
     /**
@@ -44,7 +52,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
+
     }
 
     /**

@@ -14,13 +14,16 @@ class CategoriaSeeder extends Seeder
     public function run(): void
     {
         $user = Categoria::create([
-            'descripcion'=> 'PUBLICOS',
+            'descripcion'=> 'Libros',
         ]);
         $user = Categoria::create([
-            'descripcion'=> 'ESTUDIOS',
+            'descripcion'=> 'Biblias',
         ]);
         $user = Categoria::create([
-            'descripcion'=> 'GUIA ESPIRITUAL',
+            'descripcion'=> 'Acesorios',
+        ]);
+        $user = Categoria::create([
+            'descripcion'=> 'Materiales Escolares',
         ]);
     }
 

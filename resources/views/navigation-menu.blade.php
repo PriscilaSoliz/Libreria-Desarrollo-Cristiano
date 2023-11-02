@@ -83,6 +83,36 @@
                             class="flex items-center text-white font-bold"
                              style="margin-top: 20px;" {{--!-- Ajusta el valor según sea necesario --> --}}
                         >
+                            {{ __('Gestionar Producto') }}
+                        </x-nav-link>
+                        <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Productos') }}
+                            </x-nav-link></a>
+
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('productodetalle.index') }}" :active="request()->routeIs('productodetalle.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Categoria de Productos') }}
+                            </x-nav-link></a>
+
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('categoria.index') }}" :active="request()->routeIs('categoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Categoria') }}
+                            </x-nav-link></a>
+
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('detallecategoria.index') }}" :active="request()->routeIs('detallecategoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Detalle Categoria') }}
+                            </x-nav-link></a>
+
+                        </div>
+                    </div>
+                    @endcan
+
+                    <div class="relative inline-block group">
+                        <x-nav-link
+
+                            class="flex items-center text-white font-bold"
+                             style="margin-top: 20px;" {{--!-- Ajusta el valor según sea necesario --> --}}
+                        >
                             {{ __('Gestionar Usuarios') }}
                         </x-nav-link>
                         <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -99,7 +129,7 @@
                             @endcan
                         </div>
                     </div>
-                    @endcan
+
                     @can('VistaEmpleado.index')
                     <x-nav-link href="{{ route('empleado.index') }}" :active="request()->routeIs('empleado.index')" class="hover:text-white text-white font-bold">
                         {{ __('Empleados') }}
@@ -110,16 +140,18 @@
                         {{ __('Proveedor') }}
                     </x-nav-link>
                     @endcan
-                    @can('VistaProducto.index')
+                    {{-- @can('VistaProducto.index')
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Productos') }}
                     </x-nav-link>
-                    @endcan
-                    
+                    @endcan --}}
+
+
+
                     <x-nav-link href="{{ route('bitacora.index') }}" :active="request()->routeIs('bitacora.index')" class="hover:text-white text-white font-bold">
                         {{ __('Bitacora') }}
                     </x-nav-link>
-                    
+
                     {{-- <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Ventas') }}
                     </x-nav-link> --}}
