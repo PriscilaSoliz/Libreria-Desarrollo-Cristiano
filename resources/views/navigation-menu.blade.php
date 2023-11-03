@@ -91,17 +91,17 @@
                                 {{ __('Productos') }}
                             </x-nav-link></a>
 
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('productodetalle.index') }}" :active="request()->routeIs('productodetalle.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                            {{-- <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('productodetalle.index') }}" :active="request()->routeIs('productodetalle.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
                                 {{ __('Categoria de Productos') }}
-                            </x-nav-link></a>
+                            </x-nav-link></a> --}}
 
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('categoria.index') }}" :active="request()->routeIs('categoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                            {{-- <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('categoria.index') }}" :active="request()->routeIs('categoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
                                 {{ __('Categoria') }}
-                            </x-nav-link></a>
+                            </x-nav-link></a> --}}
 
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('detallecategoria.index') }}" :active="request()->routeIs('detallecategoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                            {{-- <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('detallecategoria.index') }}" :active="request()->routeIs('detallecategoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
                                 {{ __('Detalle Categoria') }}
-                            </x-nav-link></a>
+                            </x-nav-link></a> --}}
 
                         </div>
                     </div>
@@ -144,17 +144,10 @@
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Productos') }}
                     </x-nav-link>
-<<<<<<< HEAD
                     @endcan
                     <x-nav-link href="{{ route('notasalida.index') }}" :active="request()->routeIs('notasalida.index')" class="hover:text-white text-white font-bold">
                         {{ __('Nota Salida') }}
                     </x-nav-link>
-=======
-                    @endcan --}}
-
-
-
->>>>>>> 85ce47d1b68566c43023633ca027952685703763
                     <x-nav-link href="{{ route('bitacora.index') }}" :active="request()->routeIs('bitacora.index')" class="hover:text-white text-white font-bold">
                         {{ __('Bitacora') }}
                     </x-nav-link>
