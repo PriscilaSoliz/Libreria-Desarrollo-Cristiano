@@ -115,7 +115,9 @@
                         {{ __('Productos') }}
                     </x-nav-link>
                     @endcan
-                    
+                    <x-nav-link href="{{ route('notasalida.index') }}" :active="request()->routeIs('notasalida.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Nota Salida') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('bitacora.index') }}" :active="request()->routeIs('bitacora.index')" class="hover:text-white text-white font-bold">
                         {{ __('Bitacora') }}
                     </x-nav-link>
