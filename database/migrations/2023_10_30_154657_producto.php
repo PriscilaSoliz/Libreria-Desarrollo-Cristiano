@@ -24,6 +24,8 @@ return new class extends Migration
              $table->string('ubicacion');
              $table->unsignedBigInteger('proveedor_id'); // Columna para la clave foránea
              $table->foreign('proveedor_id')->references('id')->on('provedors');
+             $table->unsignedBigInteger('categoria_id');
+             $table->foreign('categoria_id')->references('id')->on('categorias');
              $table->timestamps();
          });
      }

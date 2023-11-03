@@ -9,21 +9,12 @@
                         {{-- <div class="flex flex-col lg:flex-row justify-start mb-4" style="margin-top: 10px;"> --}}
                             <div class="flex justify-start" style="margin-top: 18px; margin-bottom: 20px;">
                                 <a href="{{ route('producto.create') }}"
-                                class="bg-indigo-600 text-white rounded-md px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mb-4">
+                                class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mb-4">
                                  Agregar Producto
                              </a>
-
-
-                                {{-- <a href="{{ route('producto.create') }}"
-                                    class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-4 transition duration-300 ease-in-out transform hover:scale-105">
-                                    Agregar Producto
-                                </a> --}}
-                            {{-- <a href="{{ route('detalle_producto.index') }}"
-                                class="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-full ml-6 lg:ml-auto transition duration-300 ease-in-out transform hover:scale-105 text-center">
-                                Ver Detalles
-                            </a> --}}
-                        </div>
                         @endcan
+                        </div>
+
 
                         <div class="flex flex-row items-center mb-3">
                             <h2 class="text-2xl font-semibold ml-6">Lista de Producto</h2>
@@ -36,7 +27,7 @@
                                     placeholder="Escribe" value="{{ $buscar }}">
 
                                 <button type="submit"
-                                    class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-2 rounded-full ml-4 transition duration-300 ease-in-out transform hover:scale-105">
+                                    class="bg-blue-800 hover:bg-blue-700 text-white py-2 px-2 rounded-full ml-4 >
                                     <span class="material-symbols-outlined">Buscar</span>
                                 </button>
                             </form>
@@ -53,11 +44,11 @@
                                         Nombre
                                     </th>
                                     <th
-                                        class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Precio
                                     </th>
                                     <th
-                                        class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Cantidad
                                     </th>
                                     <th
@@ -72,6 +63,10 @@
                                         class="px-6 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Editorial
                                     </th>
+                                     <th
+                                    class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    Categoria
+                                </th>
                                     <th
                                     class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                     Proveedor
@@ -112,18 +107,21 @@
 
                                 @foreach ($productosCoincidentes as $p)
                                     <tr>
-                                        <td class="px-2 py-3 whitespace-no-wrap">{{ $p->codigo }}</td>
-                                        <td class="px-12 py-3 whitespace-no-wrap">{{ $p->nombre }}</td>
-                                        <td class="px-2 py-3 whitespace-no-wrap">{{ $p->precio }}</td>
-                                        <td class="px-2 py-3 whitespace-no-wrap">{{ $p->cantidad }}</td>
-                                        <td class="px-6 py-3 whitespace-no-wrap">{{ $p->autor }}</td>
-                                        <td class="px-6 py-3 whitespace-no-wrap">{{ $p->version }}</td>
-                                        <td class="px-6 py-3 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
-                                        <td class="px-12 py-3 whitespace-no-wrap">
+                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
+                                        <td class="px-12 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
+                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->precio }}</td>
+                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->cantidad }}</td>
+                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->autor }}</td>
+                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->version }}</td>
+                                        <td class="px-6 py-1 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
+                                        <td class="px-4 py-1 whitespace-no-wrap">
+                                            {{ $p->categoria->descripcion }}
+                                        </td>
+                                        <td class="px-4 py-1 whitespace-no-wrap">
                                             {{ $p->provedor->nombre }}
                                         </td>
                                         <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
-                                        <td class="px-1 py-3 whitespace-no-wrap">
+                                        <td class="px-1 py-1| whitespace-no-wrap">
                                             @can('VistaProducto.edit')
                                                 <a href="{{ route('producto.edit', $p->id) }}"
                                                     class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
@@ -156,19 +154,22 @@
                                 @endforeach
                                 @foreach ($productosNoCoincidentes as $p)
                                     <tr>
-                                        <td class="px-2 py-3 whitespace-no-wrap">{{ $p->codigo }}</td>
-                                        <td class="px-12 py-3 whitespace-no-wrap">{{ $p->nombre }}</td>
-                                        <td class="px-2 py-3 whitespace-no-wrap">{{ $p->precio }}</td>
-                                        <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->cantidad }}</td>
-                                        <td class="px-6 py-3 whitespace-no-wrap">{{ $p->autor }}</td>
-                                        <td class="px-6 py-3 whitespace-no-wrap">{{ $p->version }}</td>
-                                        <td class="px-6 py-3 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
-                                        <td class="px-12 py-3 whitespace-no-wrap">
+                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
+                                        <td class="px-12 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
+                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->precio }}</td>
+                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->cantidad }}</td>
+                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->autor }}</td>
+                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->version }}</td>
+                                        <td class="px-6 py-1 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
+                                        <td class="px-4 py-1 whitespace-no-wrap">
+                                            {{ $p->categoria->descripcion }}
+                                        </td>
+                                        <td class="px-12 py-1 whitespace-no-wrap">
                                             {{ $p->provedor->nombre }}
                                         </td>
-                                        <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
+                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
 
-                                        <td class="px-1 py-3 whitespace-no-wrap">
+                                        <td class="px-1 py-1 whitespace-no-wrap">
                                             @can('VistaProducto.edit')
                                                 <a href="{{ route('producto.edit', $p->id) }}"
                                                     class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
@@ -180,7 +181,7 @@
                                                 </a>
                                             @endcan
                                         </td>
-                                        <td class="px-6 py-4 whitespace-no-wrap">
+                                        <td class="px-6 py-1 whitespace-no-wrap">
                                             @can('VistaProducto.detroy')
                                                 <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
                                                     @csrf

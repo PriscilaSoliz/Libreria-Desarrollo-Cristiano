@@ -16,37 +16,40 @@ class ProductoSeeder extends Seeder
         $user = producto::create([
             'codigo' => '97800829766813',
             'nombre' => 'Biblia nvi-un dia a la vez',
-            'autor' => 'Saturnino Mamani',
+            // 'autor' => 'Saturnino Mamani',
             'version' => 'Nueva Version Internacional',
             'editorial' => 'Unilit',
             'precio' => '270',
             'cantidad' => '20',
             'ubicacion' => 'A',
             'proveedor_id'=> '1',
+            'categoria_id'=> '2',
         ]);
 
         $user = producto::create([
             'codigo' => '9780789925855',
             'nombre' => 'Santa Biblia de la promesa',
-            'autor' => 'Joaquin Chumacero',
+            // 'autor' => 'Joaquin Chumacero',
             'version' => 'Reyna Valera 1960',
             'editorial' => 'Unilit',
             'precio' => '280',
             'cantidad' => '15',
             'ubicacion' => 'A',
             'proveedor_id'=> '2',
+            'categoria_id'=> '2',
         ]);
 
         $user = producto::create([
             'codigo' => '9780789921567',
             'nombre' => 'Biblia de promesa',
-            'autor' => 'Fabiola Mendez',
+            // 'autor' => 'Fabiola Mendez',
             'version' => 'Reyna Valera 1960',
             'editorial' => 'Unilit',
             'precio' => '200',
             'cantidad' => '5',
             'ubicacion' => 'A',
             'proveedor_id'=> '1',
+            'categoria_id'=> '2',
         ]);
 
 
@@ -60,6 +63,7 @@ class ProductoSeeder extends Seeder
             'cantidad' => '25',
             'ubicacion' => 'A2',
             'proveedor_id'=> '1',
+            'categoria_id'=> '1',
         ]);
 
 
@@ -73,6 +77,7 @@ class ProductoSeeder extends Seeder
             'cantidad' => '30',
             'ubicacion' => 'A2',
             'proveedor_id'=> '1',
+            'categoria_id'=> '1',
         ]);
 
 
@@ -86,43 +91,47 @@ class ProductoSeeder extends Seeder
             'cantidad' => '35',
             'ubicacion' => 'A2',
             'proveedor_id'=> '2',
+            'categoria_id'=> '1',
         ]);
 
 
         $user = producto::create([
             'codigo' => '614042004713',
             'nombre' => 'Taza LG',
-            'autor' => 'Pedro Chumacero',
-            'version' => '4rta Edicion',
+            // 'autor' => 'Pedro Chumacero',
+            // 'version' => '4rta Edicion',
             'editorial' => 'Unilit',
             'precio' => '10',
             'cantidad' => '40',
             'ubicacion' => 'B2',
             'proveedor_id'=> '3',
+            'categoria_id'=> '3',
         ]);
 
         $user = producto::create([
             'codigo' => '7731641301173',
             'nombre' => 'Mochila',
-            'autor' => 'karla yupanqui',
-            'version' => '5ta Edicion',
+            // 'autor' => 'karla yupanqui',
+            // 'version' => '5ta Edicion',
             'editorial' => 'Unilit',
             'precio' => '90',
             'cantidad' => '45',
             'ubicacion' => 'B',
             'proveedor_id'=> '1',
+            'categoria_id'=> '4',
         ]);
 
         $user = producto::create([
             'codigo' => '764283925404',
             'nombre' => 'Estuche de Lapices-Noe',
-            'autor' => 'Carlos Camacho',
-            'version' => '2da Edicion',
+            // 'autor' => 'Carlos Camacho',
+            // 'version' => '2da Edicion',
             'editorial' => 'Unilit',
             'precio' => '40',
             'cantidad' => '50',
             'ubicacion' => 'A2',
-            'proveedor_id'=> '2',
+            'proveedor_id'=> '1',
+            'categoria_id'=> '4',
         ]);
     }
 }

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\datalle_categoria;
-use App\Http\Controllers\Controller;
+use App\Models\productodetalle;
 use Illuminate\Http\Request;
 
-class DatalleCategoriaController extends Controller
+class ProductodetalleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('VistaProductoDetalle.index');
     }
 
     /**
@@ -35,7 +34,7 @@ class DatalleCategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(datalle_categoria $datalle_categoria)
+    public function show(productodetalle $productodetalle)
     {
         //
     }
@@ -43,7 +42,7 @@ class DatalleCategoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(datalle_categoria $datalle_categoria)
+    public function edit(productodetalle $productodetalle)
     {
         //
     }
@@ -51,7 +50,7 @@ class DatalleCategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, datalle_categoria $datalle_categoria)
+    public function update(Request $request, productodetalle $productodetalle)
     {
         //
     }
@@ -59,7 +58,7 @@ class DatalleCategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(datalle_categoria $datalle_categoria)
+    public function destroy(productodetalle $productodetalle)
     {
         //
     }

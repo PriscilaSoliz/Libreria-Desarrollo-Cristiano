@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Detallecategoria;
-use App\Http\Controllers\Controller;
+use App\Models\detallecategoria;
 use Illuminate\Http\Request;
 
 class DetallecategoriaController extends Controller
@@ -13,7 +12,8 @@ class DetallecategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $detallecategoria = detallecategoria::get();
+        return view('VistaDetalleCategoria.index', compact('detallecategoria'));
     }
 
     /**
@@ -27,15 +27,22 @@ class DetallecategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $detallecategoria = new detallecategoria();
+        $detallecategoria->descripcion = $r->descripcion;
+        $detallecategoria->save();
+
+        activity()
+             ->causedBy(auth()->user())
+            ->log('Registro una nuevo Detalle categoria: '.$detallecategoria->descripcion);
+        return redirect()->route('detallecategoria.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Detallecategoria $detallecategoria)
+    public function show(detallecategoria $detallecategoria)
     {
         //
     }
@@ -43,7 +50,7 @@ class DetallecategoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Detallecategoria $detallecategoria)
+    public function edit(detallecategoria $detallecategoria)
     {
         //
     }
@@ -51,7 +58,7 @@ class DetallecategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Detallecategoria $detallecategoria)
+    public function update(Request $request, detallecategoria $detallecategoria)
     {
         //
     }
@@ -59,7 +66,7 @@ class DetallecategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Detallecategoria $detallecategoria)
+    public function destroy(detallecategoria $detallecategoria)
     {
         //
     }

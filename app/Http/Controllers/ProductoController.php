@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Provedor;
+use App\Models\Categoria;
 use App\Models\producto;
 use Illuminate\Http\Request;
 
@@ -25,12 +26,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-
         $provedor = Provedor::all(); // Obtén todos los proveedores de la base de datos
-        return view('VistaProducto.Create', compact('provedor'));
+        $categoria= Categoria::all();
+        return view('VistaProducto.Create', compact('provedor','categoria'));
         // return view('VistaProducto.create');
-
-
     }
 
     /**
@@ -49,6 +48,7 @@ class ProductoController extends Controller
         $producto->cantidad = $r->cantidad;
         $producto->ubicacion = $r->ubicacion;
         $producto->proveedor_id = $r->proveedor_id;
+        $producto->categoria_id = $r->categoria_id;
         $producto->save();
 
         activity()
@@ -75,7 +75,9 @@ class ProductoController extends Controller
      */
     public function edit(producto $producto)
     {
-        return view('VistaProducto.edit', compact('producto'));
+        $provedor = Provedor::all(); // Obtener todos los proveedores
+        $categoria=Categoria::all();
+        return view('VistaProducto.edit', compact('producto', 'provedor','categoria'));
     }
 
     /**
@@ -92,6 +94,8 @@ class ProductoController extends Controller
         $producto->version = $r->input('version');
         $producto->editorial = $r->input('editorial');
         $producto->ubicacion = $r->input('ubicacion');
+        $producto->proveedor_id = $r->input('proveedor_id');
+        $producto->categoria_id = $r->input('categoria_id');
         // Actualiza otros campos según sea necesario
 
         $producto->save();
@@ -111,7 +115,7 @@ class ProductoController extends Controller
         activity()
             ->causedBy(auth()->user())
             ->log('Elimino el producto: '.$producto->nombre);
-            
+
         // Encuentra el producto por su ID y elimínalo
         $producto->delete();
 

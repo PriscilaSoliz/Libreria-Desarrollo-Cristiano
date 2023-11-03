@@ -71,6 +71,14 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div>
+                                <label for="categoria" class="block text-gray-700 text-sm font-bold mb-2">Categoria</label>
+                                <select name="categoria_id" id="categoria_id" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                    @foreach($categoria as $c)
+                                        <option value="{{ $c->id }}">{{ $c->descripcion }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                         <div class="mt-4 text-center">
                             <button type="submit"
