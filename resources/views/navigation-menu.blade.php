@@ -90,6 +90,12 @@
                             <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
                                 {{ __('Productos') }}
                             </x-nav-link></a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('categoria.index') }}" :active="request()->routeIs('categoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Categorias') }}
+                            </x-nav-link></a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('detallecategoria.index') }}" :active="request()->routeIs('detallecategoria.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
+                                {{ __('Detalles Categoria') }}
+                            </x-nav-link></a>
 
                             {{-- <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('productodetalle.index') }}" :active="request()->routeIs('productodetalle.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
                                 {{ __('Categoria de Productos') }}

@@ -11,9 +11,8 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\DetalleProductoController;
 use App\Http\Controllers\notasalidaController;
-
-
-
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DetallecategoriaController;
 
 Route::get("", [HomeController::class,"index"])->name("admin.home");
 
@@ -25,6 +24,8 @@ Route::resource('roles', RoleController::class)->names('admin.roles');
 Route::resource('empleado', EmpleadoController::class)->names('empleado');
 Route::resource('producto', ProductoController::class)->names('producto');
 Route::resource('notasalida', notasalidaController::class)->names('notasalida');
+Route::resource('categoria', CategoriaController::class)->names('categoria');
+Route::resource('detallecategoria', DetallecategoriaController::class)->names('detallecategoria');
 
 Route::resource('detalle_producto',DetalleProductoController::class)->names('detalle_producto');
 Route::resource('provedor', ProvedorController::class)->names('provedor');
