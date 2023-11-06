@@ -77,16 +77,15 @@
 
 
                     @can('VistaEmpleado.index')
-                    <div class="relative inline-block group">
+                    <div class="relative inline-block group" >
                         <x-nav-link
-
-                            class="flex items-center text-white font-bold"
-                             style="margin-top: 20px;" {{--!-- Ajusta el valor según sea necesario --> --}}
+                            class="flex items-center text-white font-bold cursor-pointer" id="dropdownContainer"{{-- Añade la clase "cursor-pointer" para indicar que es un elemento interactivo --}}
+                            style="margin-top: 20px;"
                         >
                             {{ __('Gestionar Producto') }}
                         </x-nav-link>
-                        <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-
+                        <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0" id="dropdownMenu">
+                            <!-- Contenido de la barra desplegable -->
                             <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
                                 {{ __('Productos') }}
                             </x-nav-link></a>
@@ -116,12 +115,12 @@
                     <div class="relative inline-block group">
                         <x-nav-link
 
-                            class="flex items-center text-white font-bold"
+                        class="flex items-center text-white font-bold cursor-pointer" id="dropdownContainer2"
                              style="margin-top: 20px;" {{--!-- Ajusta el valor según sea necesario --> --}}
                         >
                             {{ __('Gestionar Usuarios') }}
                         </x-nav-link>
-                        <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0" id="dropdownMenu2">
 
                             @can('admin.users.index')
                             <a href="#" class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900"><x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('users.index')"  class="block px-4 py-2 text-gray-700 hover-bg-indigo-100 hover-text-indigo-900">
@@ -151,7 +150,7 @@
                         {{ __('Bitacora') }}
                     </x-nav-link>
 
-                 
+
                     {{-- @can('VistaProducto.index')
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Productos') }}
@@ -389,4 +388,63 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const dropdownContainer = document.getElementById("dropdownContainer");
+            const dropdownMenu = document.getElementById("dropdownMenu");
+            let isMenuVisible = false;
+
+            dropdownContainer.addEventListener("click", function(event) {
+                event.stopPropagation();
+                isMenuVisible = !isMenuVisible; // Invertir el estado de visibilidad
+
+                if (isMenuVisible) {
+                    dropdownMenu.classList.remove("opacity-0"); // Mostrar el menú
+                } else {
+                    dropdownMenu.classList.add("opacity-0"); // Ocultar el menú
+                }
+            });
+
+            // Cierra el menú al hacer clic en cualquier otra parte de la página
+            document.addEventListener("click", function() {
+                dropdownMenu.classList.add("opacity-0");
+                isMenuVisible = false; // Asegurarse de que el estado sea "oculto"
+            });
+
+            // Evita que el clic en el menú cierre el menú
+            dropdownMenu.addEventListener("click", function(event) {
+                event.stopPropagation();
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const dropdownContainer = document.getElementById("dropdownContainer2");
+            const dropdownMenu = document.getElementById("dropdownMenu2");
+            let isMenuVisible = false;
+
+            dropdownContainer.addEventListener("click", function(event) {
+                event.stopPropagation();
+                isMenuVisible = !isMenuVisible; // Invertir el estado de visibilidad
+
+                if (isMenuVisible) {
+                    dropdownMenu.classList.remove("opacity-0"); // Mostrar el menú
+                } else {
+                    dropdownMenu.classList.add("opacity-0"); // Ocultar el menú
+                }
+            });
+
+            // Cierra el menú al hacer clic en cualquier otra parte de la página
+            document.addEventListener("click", function() {
+                dropdownMenu.classList.add("opacity-0");
+                isMenuVisible = false; // Asegurarse de que el estado sea "oculto"
+            });
+
+            // Evita que el clic en el menú cierre el menú
+            dropdownMenu.addEventListener("click", function(event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
+
+
 </nav>
