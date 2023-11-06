@@ -10,7 +10,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\DetalleProductoController;
-use App\Http\Controllers\notasalidaController;
+use App\Http\Controllers\NotasalidaController;
+// use App\Http\Controllers\NotaentradaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetallecategoriaController;
 
@@ -27,6 +28,7 @@ Route::resource('notasalida', notasalidaController::class)->names('notasalida');
 Route::resource('categoria', CategoriaController::class)->names('categoria');
 Route::resource('detallecategoria', DetallecategoriaController::class)->names('detallecategoria');
 
+// Route::resource('notaentrada', notaentradaController::class)->names('notaentrada');
 Route::resource('detalle_producto',DetalleProductoController::class)->names('detalle_producto');
 Route::resource('provedor', ProvedorController::class)->names('provedor');
 Route::resource('cliente', ClienteController::class)->names('cliente');
