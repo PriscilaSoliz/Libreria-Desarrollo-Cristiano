@@ -119,6 +119,7 @@
                             class="flex items-center text-white font-bold"
                              style="margin-top: 20px;" {{--!-- Ajusta el valor según sea necesario --> --}}
                         >
+
                             {{ __('Gestionar Usuarios') }}
                         </x-nav-link>
                         <div class="absolute mt-6 w-40 bg-white border border-gray-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -150,8 +151,11 @@
                     <x-nav-link href="{{ route('bitacora.index') }}" :active="request()->routeIs('bitacora.index')" class="hover:text-white text-white font-bold">
                         {{ __('Bitacora') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('notadeentrada.index') }}" :active="request()->routeIs('notadeentrada.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Nota de Entrada') }}
+                    </x-nav-link>
 
-                 
+
                     {{-- @can('VistaProducto.index')
                     <x-nav-link href="{{ route('producto.index') }}" :active="request()->routeIs('producto.index')" class="hover:text-white text-white font-bold">
                         {{ __('Productos') }}

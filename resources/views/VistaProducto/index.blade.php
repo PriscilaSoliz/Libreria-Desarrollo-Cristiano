@@ -36,12 +36,15 @@
                             <thead>
                                 <tr>
                                     <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                         Codigo
                                     </th>
-                                    <th
-                                        class="px-10 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-10 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider w-1/3">
                                         Nombre
+                                    </th>
+                                    <th
+                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+
                                     </th>
                                     <th
                                         class="px-2 py-3 bg-gray-50 text-center text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -111,10 +114,19 @@
 
                                 @foreach ($productosCoincidentes as $p)
                                     <tr>
-                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
-                                        <td class="px-12 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
-                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->precio }}</td>
-                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->cantidad }}</td>
+                                        <td class="px-1 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
+                                        <td class="px-8 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
+                                        <td class="px-1 py-1 whitespace-no-wrap">
+                                            <form action="{{ route('producto.edit', $p->id) }}" method="POST">
+                                                @csrf
+                                                @method('GET')
+                                                <button type="submit" name="entrada" class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
+                                                    <i class="fa-solid fa-square-poll-horizontal" style="color: #010a18; font-size: 1.5em;"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->precio }}</td>
+                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->cantidad }}</td>
                                         <td class="px-6 py-1 whitespace-no-wrap">{{ $p->autor }}</td>
                                         <td class="px-6 py-1 whitespace-no-wrap">{{ $p->version }}</td>
                                         <td class="px-6 py-1 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
@@ -126,17 +138,6 @@
                                         </td>
                                         <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
 
-                                        <td class="px-1 py-1| whitespace-no-wrap">
-                                            <form action="{{ route('producto.edit', $p->id) }}" method="POST" >
-                                                @csrf
-                                                @method('GET')
-                                                <button type="submit" name="entrada" class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="black" class="w-6 h-6 text-black">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                        </td>
                                         <td class="px-1 py-1| whitespace-no-wrap">
                                             @can('VistaProducto.edit')
                                                 <a href="{{ route('producto.edit', $p->id) }}"
@@ -170,8 +171,17 @@
                                 @endforeach
                                 @foreach ($productosNoCoincidentes as $p)
                                     <tr>
-                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
-                                        <td class="px-12 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
+                                        <td class="px-1 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
+                                        <td class="px-8 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
+                                        <td class="px-1 py-1 whitespace-no-wrap">
+                                            <form action="{{ route('producto.edit', $p->id) }}" method="POST">
+                                                @csrf
+                                                @method('GET')
+                                                <button type="submit" name="entrada" class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
+                                                    <i class="fa-solid fa-square-poll-horizontal" style="color: #010a18; font-size: 1.5em;"></i>
+                                                </button>
+                                            </form>
+                                        </td>
                                         <td class="px-2 py-1 whitespace-no-wrap">{{ $p->precio }}</td>
                                         <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->cantidad }}</td>
                                         <td class="px-6 py-1 whitespace-no-wrap">{{ $p->autor }}</td>
@@ -180,22 +190,10 @@
                                         <td class="px-4 py-1 whitespace-no-wrap">
                                             {{ $p->categoria->descripcion }}
                                         </td>
-                                        <td class="px-12 py-1 whitespace-no-wrap">
+                                        <td class="px-4 py-1 whitespace-no-wrap">
                                             {{ $p->provedor->nombre }}
                                         </td>
                                         <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
-
-                                        <td class="px-1 py-1| whitespace-no-wrap">
-
-                                            <a href="{{ route('Producto.entrada')}}"
-                                                type="submit" name="submit_button"
-                                                class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="black" class="w-6 h-6 text-black">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                </svg>
-                                            </a>
-
-                                    </td>
                                         <td class="px-1 py-1 whitespace-no-wrap">
                                             @can('VistaProducto.edit')
                                                 <a href="{{ route('producto.edit', $p->id) }}"
