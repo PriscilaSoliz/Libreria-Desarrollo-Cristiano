@@ -23,7 +23,6 @@
                 <form action="{{ route('producto.update', $producto->id) }}" method="POST">
                     @csrf
                     @method('PUT') <!-- Indica que esta es una solicitud PUT para actualizar -->
-
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label for="codigo" class="block text-gray-700 text-sm font-bold mb-2">Código</label>

@@ -101,6 +101,7 @@ class ProductoController extends Controller
                 $notadeentrada->save();
 
                 // Actualiza la cantidad en la tabla 'producto'
+                
                 $producto->cantidad += $r->input('cantidad');
                 $producto->save();
             }
