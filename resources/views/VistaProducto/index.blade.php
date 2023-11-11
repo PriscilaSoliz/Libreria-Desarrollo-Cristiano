@@ -37,15 +37,15 @@
                                         class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">
                                         <span class="material-symbols-outlined">Buscar</span>
                                     </button>
+
                                     <input type="text" name="buscar"
                                         class="border border-gray-300 bg-gray-100 py-2 px-3 rounded-full w-full sm:w-80 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl placeholder-gray-500"
                                         placeholder="Escribe" value="{{ $buscar }}">
                                 </form>
                             </div>
-
                             @can('VistaProducto.Create')
                                 <a href="{{ route('producto.create') }}"
-                                    class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">
+                                class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center">
                                     Añadir
                                 </a>
                             @endcan

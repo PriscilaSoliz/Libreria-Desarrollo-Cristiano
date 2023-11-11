@@ -21,7 +21,7 @@ class NotadeentradaController extends Controller
      */
     public function create()
     {
-        //
+        return view('VistaNotadeEntrada.Create');
     }
 
     /**
