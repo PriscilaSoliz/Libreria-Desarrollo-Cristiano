@@ -69,11 +69,11 @@
                     </a>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @can('admin.home')
+                    {{-- @can('admin.home')
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="hover:text-white text-white font-bold">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @endcan
+                    @endcan --}}
 
 
                     @can('VistaEmpleado.index')
@@ -145,7 +145,9 @@
                         {{ __('Proveedor') }}
                     </x-nav-link>
                     @endcan
-
+                    <x-nav-link href="{{ route('notadeentrada.index') }}" :active="request()->routeIs('notadeentrada.index')" class="hover:text-white text-white font-bold">
+                        {{ __('Nota Entrada') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('bitacora.index') }}" :active="request()->routeIs('bitacora.index')" class="hover:text-white text-white font-bold">
                         {{ __('Bitacora') }}
                     </x-nav-link>

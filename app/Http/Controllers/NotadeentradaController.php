@@ -12,7 +12,8 @@ class NotadeentradaController extends Controller
      */
     public function index()
     {
-        //
+        $notadeentrada = notadeentrada::get();
+        return view('VistaNotadeEntrada.index',compact('notadeentrada'));
     }
 
     /**
@@ -20,7 +21,7 @@ class NotadeentradaController extends Controller
      */
     public function create()
     {
-        //
+        return view('VistaNotadeEntrada.Create');
     }
 
     /**

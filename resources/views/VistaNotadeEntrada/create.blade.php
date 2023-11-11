@@ -15,24 +15,24 @@
                 </button>
                 <script>
                     document.getElementById("volverButton").addEventListener("click", function() {
-                        window.location.href = "{{ route('producto.index') }}";
+                        window.location.href = "{{ route('notadeentrada.index') }}";
                     });
                 </script>
                 <h2 class="text-2xl font-semibold mb-4">Nota de Entrada</h2>
 
-                <form action="{{ route('producto.update', $producto->id) }}" method="POST">
+                <form action="#" method="POST">
                     @csrf
                     @method('PUT') <!-- Indica que esta es una solicitud PUT para actualizar -->
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label for="codigo" class="block text-gray-700 text-sm font-bold mb-2">Código</label>
-                            <input type="text" name="codigo" id="codigo" value="{{ $producto->codigo }}"
+                            <input type="text" name="codigo" id="codigo" value=""
                                 class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
                                 disabled>
                         </div>
                         <div>
                             <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre Producto</label>
-                            <input type="text" name="nombre" id="nombre" value="{{ $producto->nombre }}"
+                            <input type="text" name="nombre" id="nombre" value=""
                                 class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" disabled>
                         </div>
                         <div>
