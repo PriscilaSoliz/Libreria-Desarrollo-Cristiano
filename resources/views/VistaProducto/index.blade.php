@@ -1,11 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <div class="py-0">
+    {{-- <div class="py-0">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(88, 89, 90, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
-                <div class="bg-white overflow-x-auto shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-blue overflow-hidden sm:rounded-lg"
+
                         <div class="flex flex-row items-center ">
                             <form action="{{ route('producto.index') }}" method="GET" class="ml-4 flex">
                                 <button type="submit"
@@ -17,22 +15,34 @@
                                     placeholder="Escribe" value="{{ $buscar }}">
                             </form>
                         </div>
-                    </div>
-                </div>
+
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 
     <div class="py-0">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-blue overflow-hidden sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(247, 248, 248, 0.7); margin-top: 1px; font-family: 'Verdana', sans-serif;">
+            <div class="bg-white overflow-hidden sm:rounded-lg"
+                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
                 <div class="bg-blue overflow-x-auto shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-blue border-b border-gray-200">
+
                         <div class="flex flex-row items-center justify-between mb-3">
-                            <h2 class="text-2xl font-semibold ml-6">Lista de Producto</h2>
+                            {{-- <h2 class="text-2xl font-semibold ml-6">Lista de Producto</h2> --}}
+                            <div class="flex flex-row items-center ">
+                                <form action="{{ route('producto.index') }}" method="GET" class="ml-4 flex">
+                                    <button type="submit"
+                                        class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">
+                                        <span class="material-symbols-outlined">Buscar</span>
+                                    </button>
+                                    <input type="text" name="buscar"
+                                        class="border border-gray-300 bg-gray-100 py-2 px-3 rounded-full w-full sm:w-80 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl placeholder-gray-500"
+                                        placeholder="Escribe" value="{{ $buscar }}">
+                                </form>
+                            </div>
+
                             @can('VistaProducto.Create')
                                 <a href="{{ route('producto.create') }}"
                                     class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">

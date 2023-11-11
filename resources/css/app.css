@@ -4,4 +4,13 @@
 
 [x-cloak] {
     display: none;
+
+}
+.w-nav-grande {
+    @apply w-64;
+}
+
+
+.w-nav-chico {
+    @apply w-14;
 }
