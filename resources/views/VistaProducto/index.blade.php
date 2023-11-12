@@ -43,12 +43,12 @@
                                         placeholder="Escribe" value="{{ $buscar }}">
                                 </form>
                             </div>
-                            @can('VistaProducto.Create')
+                            {{-- @can('VistaProducto.Create') --}}
                                 <a href="{{ route('producto.create') }}"
                                 class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center">
                                     Añadir
                                 </a>
-                            @endcan
+                            {{-- @endcan --}}
                         </div>
 
                         <table class="table-min" style="margin-top: 20px;">
