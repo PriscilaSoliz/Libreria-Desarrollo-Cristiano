@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 {{-- <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-
+php 
                         <img src="{{ asset('img/loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
 
                     </a>
