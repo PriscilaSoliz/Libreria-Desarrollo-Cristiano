@@ -40,6 +40,14 @@
                 <div class="fixed w-full h-14 border-b border-l  shadow-lg bg-white flex items-center justify-between  p-1.5">
                     <div class="flex flex-1 items-center justify-center    ">
                         {{-- buscardor o algo de informacion  --}}
+                        {{-- <div class="shrink-0 flex items-center">
+                            <a href="{{ route('dashboard') }}">
+
+                                <img src="{{ asset('img/loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
+
+                            </a>
+                        </div> --}}
+                        <h1>Libreria Desarrollo</h1>
 
                     </div>
 
