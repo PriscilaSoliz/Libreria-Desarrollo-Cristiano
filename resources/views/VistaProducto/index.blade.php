@@ -43,12 +43,19 @@
                                         placeholder="Escribe" value="{{ $buscar }}">
                                 </form>
                             </div>
-                            @can('VistaProducto.Create')
+                            <div class="flex justify-start" style="margin-top: 28px;">
                                 <a href="{{ route('producto.create') }}"
-                                class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center">
+                                    class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-12 transition duration-300 ease-in-out transform hover:scale-105">
                                     Añadir
                                 </a>
-                            @endcan
+                            </div>
+                            {{-- @can('VistaProducto.Create')
+                                <a href="{{ route('producto.create') }}"
+                                class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">
+                                    <span class="material-symbols-outlined">
+                                    Añadir
+                                </a>
+                            @endcan --}}
                         </div>
 
                         <table class="table-min" style="margin-top: 20px;">
