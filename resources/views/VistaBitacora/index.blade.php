@@ -1,9 +1,53 @@
 @extends('layouts.app')
+
 @section('content')
+<style>
+    /* Estilos generales */
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Estilos para el contenedor principal */
+    .container {
+        margin: 20px auto;
+    }
+
+    /* Estilos para el contenedor de la bitácora */
+    #report-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Estilos para la tabla en la versión impresa */
+    @media print {
+        .activities-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .activities-table th, .activities-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .activities-table th {
+            background-color: #f2f2f2;
+        }
+    }
+</style>
+
 <div class="my-8 mx-8">
     <div class="container mx-auto">
         <div class="overflow-x-auto mx-auto bg-white shadow-md rounded px-8 py-6 mt-8">
             <h2 class="text-3xl text-black font-semibold mb-6">Bitácora</h2>
+            
+            <!-- Contenedor centrado para el Reporte de Bitácora -->
+            <div id="report-container">
+                <h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1>
+            </div>
+
             <div class="flex items-center space-x-4 mb-6">
                 <div class="w-1/2">
                     <label for="start_date" class="text-gray-600 font-semibold text-sm">Fecha de inicio:</label>
@@ -13,46 +57,37 @@
                     <label for="end_date" class="text-gray-600 font-semibold text-sm">Fecha de fin:</label>
                     <input type="date" id="end_date" name="end_date" class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
                 </div>
-                <button onclick="imprimirContenido()" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">
+                <button onclick="imprimirBitacora()" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">
                     Imprimir
                 </button>
             </div>
-            <div id="activities_table">
+            
+            <!-- Tabla con estilos mejorados -->
+            <div id="activities_table" class="activities-table">
                 @include('VistaBitacora.activities_table')
             </div>
         </div>
     </div>
 </div>
-@endsection
+
 <script>
-    $(document).ready(function() {
-        // Obtén los inputs de fecha
-        var startDateInput = $('#start_date');
-        var endDateInput = $('#end_date');
-
-        // Detecta los cambios en los inputs de fecha
-        startDateInput.on('change', fetchFilteredActivities);
-        endDateInput.on('change', fetchFilteredActivities);
-
-        // Función para obtener los resultados filtrados mediante una solicitud AJAX
-        function fetchFilteredActivities() {
-            // Obtén los valores de fecha
-            var startDate = startDateInput.val();
-            var endDate = endDateInput.val();
-
-            // Realiza la solicitud AJAX
-            $.ajax({
-                url: '{{ route('bitacora.index') }}',
-                method: 'GET',
-                data: {
-                    start_date: startDate,
-                    end_date: endDate
-                },
-                success: function(response) {
-                    // Actualiza la tabla con los resultados filtrados
-                    $('#activities_table').html(response.view);
-                }
-            });
-        }
-    });
+    function imprimirBitacora() {
+        var ventanaImpresion = window.open('', '_blank');
+        var contenido = '<html><head><title>Reporte de Bitácora</title></head><body>';
+        contenido += '<div id="report-container"><h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1></div>';
+        contenido += document.getElementById('activities_table').innerHTML;
+        contenido += '</body></html>';
+        ventanaImpresion.document.write(contenido);
+        ventanaImpresion.document.close();
+        ventanaImpresion.print();
+    }
 </script>
+
+@endsection
+
+
+
+
+
+
+
