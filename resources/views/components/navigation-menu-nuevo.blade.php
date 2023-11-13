@@ -7,18 +7,14 @@
 
     <div id="div_navegador" class=" flex flex-col space-y-2  ">
 
-
         <a href="{{ route('producto.index') }}"
-            class="flex text-sm font-medium py-2 px-2 hover:bg-indigo-200  hover:text-base rounded-md transition duration-150 ease-in-out
-            {{ request()->routeIs('producto.*') ? 'bg-indigo-600 text-white' : 'text-gray-900' }}">
-            <svg class="w-6 h-6 fill-current inline-block" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
-                </path>
-            </svg>
-            <span class="navbar_nombre  pl-1   ">Productos</span>
-        </a>
+        class="flex items-center text-sm font-medium py-2 px-2 hover:bg-indigo-500 hover:text-base rounded-md transition duration-150 ease-in-out
+        {{ request()->routeIs('producto.*') ? 'bg-indigo-600 text-white' : 'text-gray-900' }}">
+        <i class="fa-solid fa-book"
+            style="font-size: 1.5em; color: {{ request()->routeIs('producto.*') ? '#FFFFFF' : '#08010e' }};"></i>
+        <span class="navbar_nombre pl-1 text-lg">Productos</span>
+    </a>
+
 
         <a href="{{ route('categoria.index') }}"
             class="flex text-sm font-medium py-2 px-2 hover:bg-indigo-200  hover:text-base rounded-md transition duration-150 ease-in-out

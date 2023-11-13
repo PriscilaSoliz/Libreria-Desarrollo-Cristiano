@@ -50,18 +50,20 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="flex flex-1 items-center justify-center    ">
-                        {{-- buscardor o algo de informacion  --}}
+                    <div class="flex items-center justify-between">
+                        {{-- Logo --}}
                         {{-- <div class="shrink-0 flex items-center">
                             <a href="{{ route('dashboard') }}">
-
                                 <img src="{{ asset('img/loguito.png') }}" alt="Descripción de la imagen" class="h-12 w-12 rounded-md ml-1">
-
                             </a>
                         </div> --}}
-                        <h1>Libreria Desarrollo</h1>
 
+                        {{-- Title --}}
+                        <h1 class="ml-4 text-1x1 sm:text-1xl md:text-1xl lg:text-xl font-bold text-gray-800">
+                            Libreria
+                        </h1>
                     </div>
+
 
                     {{-- // model de usuaaroi  --}}
                     <div class=" sm:flex sm:items-center sm:ml-6 ">
