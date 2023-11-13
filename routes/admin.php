@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompraController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\EmpleadoController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\NotadeentradaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetallecategoriaController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\DetallecompraController;
+
 
 Route::get("", [HomeController::class,"index"])->name("admin.home");
 
@@ -30,6 +33,8 @@ Route::resource('categoria', CategoriaController::class)->names('categoria');
 Route::resource('notadeentrada', NotadeentradaController::class)->names('notadeentrada');
 Route::resource('detallecategoria', DetallecategoriaController::class)->names('detallecategoria');
 Route::resource('venta', VentaController::class)->names('venta');
+Route::resource('compra', CompraController::class)->names('compra');
+Route::resource('detallecompra', DetallecompraController::class)->names('detallecompra');
 
 // Route::resource('notaentrada', notaentradaController::class)->names('notaentrada');
 Route::resource('detalle_producto',DetalleProductoController::class)->names('detalle_producto');

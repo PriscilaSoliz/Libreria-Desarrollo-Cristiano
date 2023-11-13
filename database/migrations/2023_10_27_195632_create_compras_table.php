@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->string('formapago');
+            $table->string('fecha'); //$fecha = '2023-11-13'; // Formato: YYYY-MM-DD
+            $table->string('hora');// $hora = '12:30:00'; // Formato: HH:MM:SS
+            $table->decimal('total');
+            $table->unsignedBigInteger('proveedor_id');
+            $table->foreign('proveedor_id')->references('id')->on('provedors');
             $table->timestamps();
         });
     }

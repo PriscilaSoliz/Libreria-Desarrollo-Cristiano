@@ -12,7 +12,8 @@ class CompraController extends Controller
      */
     public function index()
     {
-        //
+        $compra = Compra::get();
+        return view('VistaCompra.index', compact('compra'));
     }
 
     /**
@@ -20,15 +21,23 @@ class CompraController extends Controller
      */
     public function create()
     {
-        //
+        $compra = Compra::all();
+        return view('VistaCompra.Create', compact('compra'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+
+        $compra = new Compra();
+            $compra->formapago = $r->formapago;
+            $compra->fecha = $r->fecha;
+            $compra->hora = $r->hora;
+            $compra->total = $r->total;
+            $compra->proveedor_id = $r->proveedor_id;
+        $compra->save();
     }
 
     /**
