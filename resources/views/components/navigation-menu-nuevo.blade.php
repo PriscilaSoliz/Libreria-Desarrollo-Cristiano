@@ -1,27 +1,9 @@
 {{-- barra lateral de la izquierda  w-14 lg:w-64 --}}
 <div id="div_despliegue"
     class="z-50 fixed shadow-2xl  w-nav-grande space-y-2 px-2 h-full
-                        bg-gray-50 transition-transform duration-300 ease-in-out">
+                  mt-14 py-2 bg-gray-50 hidden sm:block  transition-transform duration-300 ease-in-out">
 
-    {{-- logo y botno para abriir las ventanas  --}}
-    <div class="flex items-center mt-2 ">
-        <button id="bt_abrir_menu" class=" p-2 border-2 bg-white rounded-md border-gray-200 shadow-lg text-gray-500">
-            {{-- focus:bg-teal-500 focus:outline-none focus:text-white  --}}
-            <svg class="w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clip-rule="evenodd"></path>
-            </svg>
-        </button>
 
-        {{-- <div class="text-center flex flex-row-reverse justify-between  w-full ">
-            {{-- <img src="" alt=""> object-cover w-full h-full rounded-full --}}
-
-        {{-- <img class="text-center bg-red-900 " src="{{ asset('img/Logo.png') }}" alt="" loading="lazy"
-                width="40" />
-
-        </div>  --}}
-    </div>
 
     <div id="div_navegador" class=" flex flex-col space-y-2  ">
 

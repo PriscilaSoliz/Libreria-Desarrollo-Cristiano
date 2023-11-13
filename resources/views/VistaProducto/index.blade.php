@@ -63,6 +63,10 @@
                                 <tr>
                                     <th
                                         class="px-1 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                                        ㅤ
+                                    </th>
+                                    <th
+                                        class="px-1 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
                                         Codigo
                                     </th>
                                     <th
@@ -138,6 +142,7 @@
 
                                 @foreach ($productosCoincidentes as $p)
                                     <tr>
+                                        <td class="px-1 py-1 whitespace-no-wrap">ㅤ</td>
                                         <td class="px-1 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
                                         <td class="px-10 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
                                         <td class="px-1 py-1 whitespace-no-wrap">
@@ -197,6 +202,7 @@
                                 @endforeach
                                 @foreach ($productosNoCoincidentes as $p)
                                     <tr>
+                                        <td class="px-1 py-1 whitespace-no-wrap">54</td>
                                         <td class="px-1 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
                                         <td class="px-10 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
                                         <td class="px-1 py-1 whitespace-no-wrap">

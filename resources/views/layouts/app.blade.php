@@ -38,6 +38,18 @@
             {{-- cambair que cuadno sea lg que quede en ml-14 lg:ml-64 --}}
             <main  class=" h-full  ">
                 <div class="fixed w-full h-14 border-b border-l  shadow-lg bg-white flex items-center justify-between  p-1.5">
+
+                     {{-- logo y botno para abriir las ventanas  --}}
+                    <div class="flex items-center mt-2 ">
+                        <button id="bt_abrir_menu"
+                        class=" p-2 border-2 bg-white rounded-md border-gray-200 shadow-lg text-gray-500">
+                        <svg class="w-5 h-5 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="flex flex-1 items-center justify-center    ">
                         {{-- buscardor o algo de informacion  --}}
                         {{-- <div class="shrink-0 flex items-center">
@@ -113,7 +125,7 @@
                 </div>
 
                 {{-- {{ $slot }} --}}
-                <div id="div_contenido" class="pt-14 ml-64">
+                <div id="div_contenido" class="pt-14 sm:ml-64 px-2 ">
                     @yield('content')
                 </div>
             </main>

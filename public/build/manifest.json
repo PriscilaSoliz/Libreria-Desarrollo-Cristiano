@@ -24,12 +24,12 @@
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-6cf737dc.css",
+    "file": "assets/app-fb9ee7f7.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/abrir_menu_navbar.js": {
-    "file": "assets/abrir_menu_navbar-389e82e3.js",
+    "file": "assets/abrir_menu_navbar-05da67c3.js",
     "isEntry": true,
     "src": "resources/js/abrir_menu_navbar.js"
   },
