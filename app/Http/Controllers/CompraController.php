@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Compra;
 use App\Models\Provedor;
+use App\Models\Compra;
+
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -13,7 +13,9 @@ class CompraController extends Controller
      */
     public function index()
     {
+
         $provedor=Provedor::all();
+
         $compra = Compra::get();
         return view('VistaCompra.index', compact('compra','provedor'));
     }
@@ -23,6 +25,7 @@ class CompraController extends Controller
      */
     public function create()
     {
+
         $compra = Compra::all();
         return view('VistaCompra.Create', compact('compra'));
     }

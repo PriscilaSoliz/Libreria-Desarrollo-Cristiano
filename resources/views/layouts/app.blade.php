@@ -76,14 +76,13 @@
                                     @endphp
 
                                     <div class="mr-2   ">
-                                        {{-- @if ($user->foto)
-                                            <img class="w-12 h-10 rounded-full object-cover"
-                                                src="{{ route('cargar_imagen', $user->foto) }}" />
-                                        @else --}}
+                                        @if ($user->profile_photo_path)
+                                            <img src="{{ asset($user->profile_photo_path)}}"/>
+                                        @else
                                         <img class="w-10 h-10 rounded-lg object-cover"
                                             src="https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg"
                                             alt="">
-                                        {{-- @endif --}}
+                                        @endif
                                     </div>
                                     <div class="">
                                         <p class="whitespace-nowrap"> {{ $user->name }}</p>
