@@ -6,8 +6,7 @@
 
 
 
-
-                  <div id="div_navegador" class="flex flex-col space-y-2 overflow-y-auto max-h-96 ">
+    <div id="div_navegador" class="flex flex-col space-y-2 overflow-y-auto max-h-96 ">
         <a href="{{ route('producto.index') }}"
         class="flex items-center text-sm font-medium py-2 px-2 hover:bg-indigo-500 hover:text-base rounded-md transition duration-150 ease-in-out
         {{ request()->routeIs('producto.*') ? 'bg-indigo-600 text-white' : 'text-gray-900' }}">
