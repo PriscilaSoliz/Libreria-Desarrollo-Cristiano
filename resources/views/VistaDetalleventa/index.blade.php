@@ -5,14 +5,14 @@
             <div class="bg-white overflow-hidden sm:rounded-lg"
                 style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
 
-                <form action="{{ route('detallecompra.store') }}" method="POST" class="p-4 space-y-4">
+                <form action="{{ route('detalleventa.store') }}" method="POST" class="p-4 space-y-4">
                     @csrf
                     <div class="grid grid-cols-3 gap-4">
                         <div>
-                            <label for="compra" class="block text-gray-700 text-sm font-bold mb-2">Compra ID</label>
-                            <select name="compra_id" id="compra_id"
+                            <label for="venta_id" class="block text-gray-700 text-sm font-bold mb-2">Venta ID</label>
+                            <select name="venta_id" id="venta_id"
                                 class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                                @foreach ($compra as $p)
+                                @foreach ($venta as $p)
                                     <option value="{{ $p->id }}">{{ $p->id }}</option>
                                 @endforeach
                             </select>
@@ -41,6 +41,12 @@
                                 class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
                                 required oninput="actualizarSubtotal()">
                         </div>
+                        <div>
+                            <label for="descuento" class="block text-gray-700 text-sm font-bold mb-2">Descuento</label>
+                            <input type="number" name="descuento" id="cantdescuentoidad"
+                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                required oninput="actualizarSubtotal()">
+                        </div>
 
                         <div>
                             <label for="subtotal" class="block text-gray-700 text-sm font-bold mb-2">Subtotal</label>
@@ -54,7 +60,6 @@
                         <button type="submit"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>
                     </div>
-
 
                     <script>
                         function actualizarSubtotal() {
@@ -106,7 +111,7 @@
 
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-row items-center">
-                        <h2 class="text-2xl font-semibold ml-4">Detalle Compra</h2>
+                        <h2 class="text-2xl font-semibold ml-4">Detalle Venta</h2>
 
                     </div>
                     <div class="overflow-x-auto mt-4">
@@ -115,34 +120,40 @@
                                 <tr>
                                     <th
                                         class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Id</th>
+                                        venta Id</th>
+                                        <th
+                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
+                                        ID</th>
                                     <th
                                         class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Forma de pago</th>
+                                        Producto</th>
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Fecha</th>
+                                        Precio</th>
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Hora</th>
+                                        Cantidad</th>
+                                        <th
+                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
+                                        Descuento</th>
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
                                         Total</th>
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Proveedor</th>
+
 
                                 </tr>
                             </thead>
-                            @foreach ($detallecompra as $e)
+                            @foreach ($detalleventa as $e)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->compra->id }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->venta->id }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->id }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->producto->nombre }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->precio }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->cantidad }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->descuento }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->subtotal }}</td>
 
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->producto->nombre }}</td>
+
                             @endforeach
                         </table </div>
                     </div>

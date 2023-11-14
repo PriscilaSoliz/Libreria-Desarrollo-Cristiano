@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detallecompras', function (Blueprint $table) {
+        Schema::create('detalleventas', function (Blueprint $table) {
             $table->id();
 
             $table->decimal('precio');
             $table->integer('cantidad');
+            $table->integer('descuento');
             $table->integer('subtotal');
-            $table->unsignedBigInteger('compra_id');
+            $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('producto_id');
 
-            $table->foreign('compra_id')->references('id')->on('compras');
+            $table->foreign('venta_id')->references('id')->on('ventas');
 
             $table->foreign('producto_id')->references('id')->on('productos');
 
             $table->timestamps();
         });
-     
     }
 
     /**
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detallecompras');
+        Schema::dropIfExists('detalleventas');
     }
 };

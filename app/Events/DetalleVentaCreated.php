@@ -9,23 +9,20 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\detallecompra;
 
-class DetalleCompraCreated
+class DetalleVentaCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
+    public $detalleVenta;
 
-    private $detalleCompra;
-    public function __construct($detalleCompra)
+    public function __construct($detalleVenta)
     {
-
-        $this->detalleCompra = $detalleCompra;
+        $this->detalleVenta = $detalleVenta;
     }
-
 
     /**
      * Get the channels the event should broadcast on.

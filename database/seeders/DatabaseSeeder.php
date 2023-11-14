@@ -27,7 +27,10 @@ class DatabaseSeeder extends Seeder
             ProductoSeeder::class, // Llama al seeder de productos
             EmpleadoSeeder::class, // Llama al seeder de empleados
             DetalleSeeder::class,
-
+            DetalleSeeder::class,
+            ClienteSeeder::class,
+            CompraSeeder::class,
+            VentaSeeder::class,
         ]);
     }
 }

@@ -45,13 +45,13 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        {{-- @foreach ($empleado as $e) --}}
+                        @foreach ($cliente as $c)
                             <tr>
-                                <td class="px-6 py-4 whitespace-no-wrap">1</td>
-                                <td class="px-6 py-4 whitespace-no-wrap">juanito</td>
-                                <td class="px-6 py-4 whitespace-no-wrap">79818754</td>
-                                <td class="px-6 py-4 whitespace-no-wrap">juanito@gmail.com</td>
-                                <td class="px-6 py-4 whitespace-no-wrap">av. cotoca</td>
+                                <td class="px-6 py-1 whitespace-no-wrap">{{ $c->ci}}</td>
+                                    <td class="px-6 py-1 whitespace-no-wrap">{{ $c->nombre}}</td>
+                                    <td class="px-6 py-1 whitespace-no-wrap">{{ $c->celular}}</td>
+                                    <td class="px-6 py-1 whitespace-no-wrap">{{ $c->correo}}</td>
+
                                 {{-- @can('VistaEmpleado.index') --}}
                                 <td class="px-1 py-4 whitespace-no-wrap">
 
@@ -83,7 +83,7 @@
                                 </td>
                                 {{-- @endcan --}}
                             </tr>
-                        {{-- @endforeach --}}
+                       @endforeach
                     </tbody>
                 </table>
             </div>
