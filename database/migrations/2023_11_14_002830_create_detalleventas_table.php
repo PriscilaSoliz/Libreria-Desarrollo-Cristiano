@@ -11,15 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notadeentradas', function (Blueprint $table) {
+        Schema::create('detalleventas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('producto_id');
-            $table->unsignedBigInteger('users_id');
+
+            $table->decimal('precio');
             $table->integer('cantidad');
+            $table->integer('descuento');
+            $table->integer('subtotal');
+            $table->unsignedBigInteger('venta_id');
+            $table->unsignedBigInteger('producto_id');
+
+            $table->foreign('venta_id')->references('id')->on('ventas');
 
             $table->foreign('producto_id')->references('id')->on('productos');
-            $table->foreign('users_id')->references('id')->on('users');
-            //sf
+
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notadeentradas');
+        Schema::dropIfExists('detalleventas');
     }
 };

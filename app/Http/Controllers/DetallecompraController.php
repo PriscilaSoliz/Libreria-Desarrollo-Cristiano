@@ -6,6 +6,8 @@ use App\Models\detallecompra;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Events\DetalleCompraCreated;
+use App\Models\producto;
+use App\Models\Compra;
 
 
 
@@ -16,8 +18,10 @@ class DetallecompraController extends Controller
      */
     public function index()
     {
+        $producto=producto::all();
+        $compra=Compra::all();
         $detallecompra = detallecompra::get();
-        return view('VistaDetallecompra.index', compact('detallecompra'));
+        return view('VistaDetallecompra.index', compact('detallecompra','producto','compra'));
     }
 
     /**
@@ -35,20 +39,22 @@ class DetallecompraController extends Controller
     public function store(Request $r)
     {
         $detalleCompra = new detallecompra();
+        $detalleCompra->compra_id = $r->compra_id; // Ajusta esto según tu lógica
         $detalleCompra->precio = $r->precio;
         $detalleCompra->cantidad = $r->cantidad;
         $detalleCompra->subtotal = $r->subtotal; // Ajusta esto según tu lógica
-        $detalleCompra->compra_id = $r->compra_id; // Ajusta esto según tu lógica
+
         $detalleCompra->producto_id = $r->producto_id; // Asociamos el producto recién creado
         $detalleCompra->save();
 
         // Disparar el evento para activar el observador
-        event(new DetalleCompraCreated($detalleCompra));
+
+
 
     //     activity()
     //     ->causedBy(auth()->user())
     //     ->log('Registro un proveedor: '.$detalleCompra->nombre);
-    //  return redirect()->route('compra.index');
+     return redirect()->route('detallecompra.index');
     }
 
     /**

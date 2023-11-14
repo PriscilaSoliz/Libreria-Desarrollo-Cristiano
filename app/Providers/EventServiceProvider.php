@@ -7,7 +7,11 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use App\Events\DetalleCompraCreated;
-use App\Observers\DetalleCompraObserver;
+use App\Observers\DetallecompraObserve;
+use App\Observers\DetalleVentaObserver;
+use App\Models\detallecompra;
+use App\Models\detalleventa;
+
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -16,21 +20,25 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array<class-string, array<int, class-string>>
      */
-    protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-        ],
-        DetalleCompraCreated::class => [
-            DetalleCompraObserver::class,
-        ],
-    ];
+    // protected $listen = [
+    //     Registered::class => [
+    //         SendEmailVerificationNotification::class,
+    //     ],
+    //     DetalleCompraCreated::class => [
+    //         DetalleCompraObserver::class,
+    //     ],
+    // ];
+
+
+
 
     /**
      * Register any events for your application.
      */
     public function boot(): void
     {
-        //
+        detallecompra::observe(DetallecompraObserve::class);
+        detalleventa::observe(DetalleVentaObserver::class);
     }
 
     /**
@@ -40,4 +48,5 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
 }

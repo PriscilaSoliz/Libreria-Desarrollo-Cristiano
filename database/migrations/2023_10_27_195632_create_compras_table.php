@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->string('formapago');
-            $table->decimal('total');
+
+            $table->decimal('total')->nullable();
+
+
             $table->unsignedBigInteger('proveedor_id');
             $table->foreign('proveedor_id')->references('id')->on('provedors');
             $table->timestamps();

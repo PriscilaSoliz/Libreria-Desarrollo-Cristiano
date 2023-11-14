@@ -17,6 +17,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetallecategoriaController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetallecompraController;
+use App\Http\Controllers\DetalleventaController;
 
 
 Route::get("", [HomeController::class,"index"])->name("admin.home");
@@ -35,9 +36,10 @@ Route::resource('detallecategoria', DetallecategoriaController::class)->names('d
 Route::resource('venta', VentaController::class)->names('venta');
 Route::resource('compra', CompraController::class)->names('compra');
 Route::resource('detallecompra', DetallecompraController::class)->names('detallecompra');
+Route::resource('detalleventa', DetalleventaController::class)->names('detalleventa');
 
 // Route::resource('notaentrada', notaentradaController::class)->names('notaentrada');
-Route::resource('detalle_producto',DetalleProductoController::class)->names('detalle_producto');
+// Route::resource('detalle_producto',DetalleproductoController::class)->names('detalle_producto');
 Route::resource('provedor', ProvedorController::class)->names('provedor');
 Route::resource('cliente', ClienteController::class)->names('cliente');
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');

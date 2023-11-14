@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Provedor;
 use App\Models\Compra;
+
 use Illuminate\Http\Request;
 
 class CompraController extends Controller
@@ -12,7 +13,9 @@ class CompraController extends Controller
      */
     public function index()
     {
-        $provedor = Provedor::all();
+
+        $provedor=Provedor::all();
+
         $compra = Compra::get();
         return view('VistaCompra.index', compact('compra','provedor'));
     }
@@ -38,6 +41,7 @@ class CompraController extends Controller
             $compra->total = $r->total;
             $compra->proveedor_id = $r->proveedor_id;
         $compra->save();
+        return redirect()->route('detallecompra.index');
     }
 
     /**

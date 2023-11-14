@@ -12,6 +12,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        
         $cliente= cliente::get();
         return view('VistaCliente.index', compact('cliente'));
     }
