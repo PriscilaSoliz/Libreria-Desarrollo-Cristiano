@@ -19,6 +19,7 @@ return new class extends Migration
 
             $table->foreign('producto_id')->references('id')->on('productos');
             $table->foreign('users_id')->references('id')->on('users');
+            //sf
             $table->timestamps();
         });
     }
