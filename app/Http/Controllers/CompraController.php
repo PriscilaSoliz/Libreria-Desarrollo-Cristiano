@@ -35,8 +35,6 @@ class CompraController extends Controller
 
         $compra = new Compra();
             $compra->formapago = $r->formapago;
-            $compra->fecha = $r->fecha;
-            $compra->hora = $r->hora;
             $compra->total = $r->total;
             $compra->proveedor_id = $r->proveedor_id;
         $compra->save();

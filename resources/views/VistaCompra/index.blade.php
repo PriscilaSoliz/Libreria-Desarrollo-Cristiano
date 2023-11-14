@@ -15,25 +15,7 @@
                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required
                                oninput="ConvertirPrimeraLetra(this)">
                     </div>
-                    <div>
-                        <label for="fecha" class="block text-gray-700 text-sm font-bold mb-2">Fecha</label>
-                        <input type="text" name="fecha" id="fecha"
-                               class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required
-                               oninput="ConvertirPrimeraLetra(this)">
-                    </div>
-                    <div>
-                        <label for="hora" class="block text-gray-700 text-sm font-bold mb-2">Hora</label>
-                        <input type="text" name="hora" id="hora"
-                               class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required
-                               oninput="ConvertirPrimeraLetra(this)">
-                    </div>
 
-                    <div>
-                        <label for="total" class="block text-gray-700 text-sm font-bold mb-2">Total</label>
-                        <input type="text" name="total" id="total"
-                               class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required
-                               oninput="ConvertirPrimeraLetra(this)">
-                    </div>
                     <div>
                         <label for="proveedor" class="block text-gray-700 text-sm font-bold mb-2">Proveedor</label>
                         <select name="proveedor_id" id="proveedor_id" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
@@ -87,14 +69,10 @@
                                     class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                     Forma de pago</th>
                                 <th
-                                    class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                Fecha</th>
-                                <th
-                                    class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                Hora</th>
-                                <th
-                                    class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                Total</th>
+                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    Fecha</th>
+
+
                                 <th
                                     class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
                                 Proveedor</th>
@@ -105,9 +83,8 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap">{{ $e->id }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap">{{ $e->formapago }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap">{{ $e->fecha }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap">{{ $e->hora }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap">{{ $e->total }}</td>
+
+                            <td class="px-6 py-4 whitespace-no-wrap">{{ $e->create_at }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap">{{ $e->proveedor }}</td>
                         @endforeach
                     </table
