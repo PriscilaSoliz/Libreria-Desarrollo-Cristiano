@@ -38,7 +38,7 @@ class CompraController extends Controller
             $compra->total = $r->total;
             $compra->proveedor_id = $r->proveedor_id;
         $compra->save();
-        return redirect()->route('compra.index');
+        return redirect()->route('detallecompra.index');
     }
 
     /**
