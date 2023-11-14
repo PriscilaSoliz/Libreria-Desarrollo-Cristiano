@@ -71,49 +71,38 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-row items-center">
                         <h2 class="text-2xl font-semibold ml-4">Venta</h2>
-
                     </div>
                     <div class="overflow-x-auto mt-4">
                         <table class="min-w-full divide-y divide-gray-300 mt-4">
                             <thead>
                                 <tr>
-                                    <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                         Id</th>
-
-                                    <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                         Forma de pago</th>
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
+                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                         Fecha - Hora</th>
-
-
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
+                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                         Cliente</th>
-
+                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                        Total</th>
                                 </tr>
                             </thead>
-                            <!-- @foreach ($venta as $e)
+                            <tbody>
+                                @foreach ($venta as $e)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->id }}</td>
-                                    <td class="px-1 py-1 whitespace-no-wrap">
-
-                                    <a href="{{ route('detalleventa.index') }}" name="entrada"
-                                                    class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
-                                                    <i class="fa-solid fa-square-poll-horizontal"
-                                                        style="color: #010a18; font-size: 1.5em;"></i>
-                                    </a>
-
-                                    </td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->formapago }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->created_at }}<td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->total }}</td>
-                                    {{-- <td class="px-6 py-4 whitespace-no-wrap">{{ $e->provedor->nombre }}</td> --}}
-                            @endforeach -->
-                        </table </div>
+                                    <td class="px-4 py-4 whitespace-no-wrap">{{ $e->created_at }}</td>
+                                    <td class="px-4 py-4 whitespace-no-wrap">{{ $e->cliente->nombre }}</td>
+                                    <td class="px-4 py-4 whitespace-no-wrap">0</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+     @endsection

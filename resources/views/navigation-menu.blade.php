@@ -5,7 +5,7 @@
         <div class="flex justify-between h-16" >
             <div class="flex">
                 <!-- Logo -->
-                
+
                 {{--
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="hover:text-white text-white font-bold">
@@ -75,7 +75,7 @@
                     <div class="relative inline-block group" >
                         <x-nav-link
                             class="flex items-center text-white font-bold cursor-pointer" id="dropdownContainer"{{-- Añade la clase "cursor-pointer" para indicar que es un elemento interactivo --}}
-                            style="margin-top: 20px;"
+                            style="margin-top: 80px;"
                         >
                             {{ __('Gestionar Producto') }}
                         </x-nav-link>

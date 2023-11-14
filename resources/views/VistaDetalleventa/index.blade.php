@@ -45,7 +45,7 @@
                             <label for="descuento" class="block text-gray-700 text-sm font-bold mb-2">Descuento</label>
                             <input type="number" name="descuento" id="cantdescuentoidad"
                                 class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                required oninput="actualizarSubtotal()">
+                                oninput="actualizarSubtotal()">
                         </div>
 
                         <div>
