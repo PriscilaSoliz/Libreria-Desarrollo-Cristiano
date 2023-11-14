@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('detallecompras', function (Blueprint $table) {
             $table->id();
-           
+
             $table->decimal('precio');
             $table->integer('cantidad');
             $table->integer('subtotal');
@@ -26,16 +26,8 @@ return new class extends Migration
 
             $table->timestamps();
         });
-         // Agrega el trigger después de crear la tabla 'detallecompras'
-         \DB::unprepared('
-         CREATE TRIGGER aumentar_stock AFTER INSERT ON detallecompras
-         FOR EACH ROW
-         BEGIN
-             UPDATE productos
-             SET cantidad = cantidad + NEW.cantidad
-             WHERE id = NEW.producto_id;
-         END
-     ');
+
+
     }
 
     /**
