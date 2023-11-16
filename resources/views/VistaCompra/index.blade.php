@@ -1,5 +1,7 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('adminlte::page')
 @section('content')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 <div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
         <div class="bg-white overflow-hidden sm:rounded-lg"
@@ -40,6 +42,12 @@
                     <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>
                 </div>
+                <div class="mt-4">
+                <a href="{{ route('detallecompra.index') }}"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Detalle
+            </a>
+             </div>
             </form>
         </div>
     </div>

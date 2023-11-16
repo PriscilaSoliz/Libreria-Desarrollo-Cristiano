@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+use Iluminate\Support\Facades\Storage;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -23,8 +24,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
 
+
         if (isset($input['photo'])) {
             $user->updateProfilePhoto($input['photo']);
+            Storage::put('public/profile-photos',$input['photo']);
         }
 
         if ($input['email'] !== $user->email &&

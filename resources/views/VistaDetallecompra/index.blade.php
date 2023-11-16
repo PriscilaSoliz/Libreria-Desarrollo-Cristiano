@@ -115,22 +115,26 @@
                                 <tr>
                                     <th
                                         class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                        Compra Id</th>
+                                    <th
+                                    <th
+                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                         Id</th>
                                     <th
                                         class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Forma de pago</th>
+                                        Precio</th>
+                                    <th
+                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                        Cantidad</th>
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
                                         Fecha</th>
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Hora</th>
+                                        Subtotal</th>
                                     <th
                                         class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Total</th>
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Proveedor</th>
+                                        Producto</th>
 
                                 </tr>
                             </thead>
@@ -140,6 +144,7 @@
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->id }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->precio }}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->cantidad }}</td>
+                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->created_at}}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->subtotal }}</td>
 
                                     <td class="px-6 py-4 whitespace-no-wrap">{{ $e->producto->nombre }}</td>

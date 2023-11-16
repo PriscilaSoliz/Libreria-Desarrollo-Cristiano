@@ -153,7 +153,7 @@
             </svg>
             <span class="navbar_nombre  pl-1  text-black ">Compras</span>
         </a>
-        <a href="{{ route('detallecompra.index') }}"
+        {{-- <a href="{{ route('detallecompra.index') }}"
             class="flex text-sm font-medium py-2 px-2 hover:bg-indigo-200  hover:text-base rounded-md transition duration-150 ease-in-out
 {{ request()->routeIs('detallecompra.*') ? 'bg-indigo-600 text-white' : 'text-gray-900' }}">
             <svg class="w-6 h-6 fill-current inline-block" fill="currentColor" viewBox="0 0 20 20"
@@ -163,7 +163,7 @@
                 </path>
             </svg>
             <span class="navbar_nombre  pl-1  text-black ">Detalle compras</span>
-        </a>
+        </a> --}}
 
 
     </div> <!-- termina la barra lateral inzquierda-->
