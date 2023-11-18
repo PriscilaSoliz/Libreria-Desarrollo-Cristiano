@@ -57,7 +57,7 @@ class ProductoController extends Controller
         activity()
             ->causedBy(auth()->user()) //Usuario responsable
             ->log('Registro el producto: ' . $producto->nombre);
-
+            session()->flash('success', 'El producto se ha registrado exitosamente');
         return redirect()->route('producto.index');
     }
 
@@ -78,6 +78,7 @@ class ProductoController extends Controller
     {
         if ($request->has('entrada')) {
             return view('VistaProducto.entrada', compact('producto'));
+
         } else {
             $provedor = Provedor::all(); // Obtener todos los proveedores
             $categoria = Categoria::all();
@@ -101,7 +102,7 @@ class ProductoController extends Controller
                 $notadeentrada->save();
 
                 // Actualiza la cantidad en la tabla 'producto'
-                
+
                 $producto->cantidad += $r->input('cantidad');
                 $producto->save();
             }
@@ -122,6 +123,7 @@ class ProductoController extends Controller
             activity()
                 ->causedBy(auth()->user())
                 ->log('Modifico el producto: ' . $producto->nombre);
+            session()->flash('success', 'El producto se ha Editado exitosamente');
         }
 
         return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente');

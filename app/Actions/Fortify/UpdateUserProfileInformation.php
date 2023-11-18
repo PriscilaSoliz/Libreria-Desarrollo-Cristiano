@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Actions\Fortify;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
-use Iluminate\Support\Facades\Storage;
+
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -26,9 +26,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
 
         if (isset($input['photo'])) {
+            // $user->updateProfilePhoto($input['photo']);
+            Storage::put('public/profile-photos', $input['photo']);
             $user->updateProfilePhoto($input['photo']);
-            Storage::put('public/profile-photos',$input['photo']);
         }
+
 
         if ($input['email'] !== $user->email &&
             $user instanceof MustVerifyEmail) {
@@ -39,6 +41,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
+
+
     }
 
     /**

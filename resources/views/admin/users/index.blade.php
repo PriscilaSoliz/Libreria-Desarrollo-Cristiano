@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('adminlte::page')
 @section('content')
      @livewire('admin.users-index')
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
 @endsection
 {{-- @stop
 @section('css')

@@ -1,5 +1,7 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('adminlte::page')
 @section('content')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
     @if (session('info'))
         <div class="alert alert-seccess" style="font-family: 'Verdana', sans-serif">
             {{ session('info') }}

@@ -1,4 +1,6 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 @section('content')
     {{-- <div class="py-0">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-1">
@@ -20,287 +22,225 @@
         </div>
     </div> --}}
 
+    <div class="py-2 px-18 h-full ">
+        <div class=" flex justify-between items-center ">
+            <h1 class="text-2xl font-mono font-bold"></h1>
+            @if (session('success'))
+                <div class="text-center">
+                    <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-lime-500 text-xs sm:text-sm rounded-xl">
+                        {{ session('success') }}
+                    </p>
+                </div>
+            @endif
+        </div>
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-[90%] ">
+            <div class=" py-2 px-3 text-gray-900 h-full overflow-auto  ">
+                <div class="space-x-4  font-semibold mt-2">
+                    {{-- <a href="#">Exportar</a>
+                    <a href="#">Importar</a> --}}
+                    <a href="{{ route('producto.create') }}"
+                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                        Agregar producto
+                    </a>
+                </div>
+                <form action="{{ route('producto.index') }}" method="GET">
+                    <div class="mt-2 mb-3">
+                        <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                            <input type="text" name="buscar"
+                                class="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                                placeholder="Escribe" value="{{ $buscar }}" aria-label="Search" aria-describedby="button-addon1" />
 
+                            <!--Search button-->
+                            <button
+                                class="type=submit relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                                type="submit" id="button-addon1" data-te-ripple-init
+                                data-te-ripple-color="light">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="h-5 w-5">
+                                    <path fill-rule="evenodd"
+                                        d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </button>
 
-    <div class="py-0">
-        <div class="max-w-8xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
-                <div class="bg-blue overflow-x-auto shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-blue border-b border-gray-200">
-
-                        <div class="flex flex-row items-center justify-between mb-3">
-                            {{-- <h2 class="text-2xl font-semibold ml-6">Lista de Producto</h2> --}}
-                            <div class="flex flex-row items-center ">
-                                <form action="{{ route('producto.index') }}" method="GET" class="ml-4 flex">
-                                    <button type="submit"
-                                        class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">
-                                        <span class="material-symbols-outlined">Buscar</span>
-                                    </button>
-
-                                    <input type="text" name="buscar"
-                                        class="border border-gray-300 bg-gray-100 py-2 px-3 rounded-full w-full sm:w-80 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl placeholder-gray-500"
-                                        placeholder="Escribe" value="{{ $buscar }}">
-                                </form>
-                            </div>
-                            <div class="flex justify-start" style="margin-top: 28px;">
-                                <a href="{{ route('producto.create') }}"
-                                    class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-12 transition duration-300 ease-in-out transform hover:scale-105">
-                                    Añadir
-                                </a>
-                            </div>
-                            {{-- @can('VistaProducto.Create')
-                                <a href="{{ route('producto.create') }}"
-                                class="bg-indigo-600 text-white rounded-full px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mr-6">
-                                    <span class="material-symbols-outlined">
-                                    Añadir
-                                </a>
-                            @endcan --}}
                         </div>
+                    </div>
+                </form>
+                <table class="table-auto w-full ">
+                    <thead>
+                        <tr class="text-xs text-left font-semibold text-gray-500  ">
+                            <th class="py-3    "> Nro</th>
+                            <th class="px-8 py-3 ">foto</th>
+                            <th class="px-4 py-3 ">Producto</th>
+                            <th class=" py-3 "> Codigo </th>
+                            <th class="pl-4 py-3 text-left ">autor</th>
+                            <th class="pl-4 py-3 text-left ">Editorial</th>
+                            <th class="pl-8 py-3 text-right ">Stock</th>
+                            <th class="px-1 py-3 "></th>
+                            <th class="pl-4 py-3 text-center ">Precio</th>
+                            <th class="pl-4 py-3 text-center ">Ubicacion</th>
 
-                        <table class="table-min" style="margin-top: 20px;">
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="px-1 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        ㅤ
-                                    </th>
-                                    <th
-                                        class="px-1 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Codigo
-                                    </th>
-                                    <th
-                                        class="px-10 py-3  bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider w-1/3">
-                                        Nombre
-                                    </th>
-                                    <th
-                                        class="px-1 py-3 bg-orange-500 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider">
+                            <th class="pl-8 py-3 text-right ">Acciones </th>
+                        </tr>
+                    </thead>
 
-                                    </th>
-                                    <th
-                                        class="px-2 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Precio
-                                    </th>
-                                    <th
-                                        class="px-2 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Cantidad
-                                    </th>
-                                    <th
-                                        class="px-6 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Autor
-                                    </th>
-                                    <th
-                                        class="px-6 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Version
-                                    </th>
-                                    <th
-                                        class="px-6 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Editorial
-                                    </th>
-                                    <th
-                                        class="px-2 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Categoria
-                                    </th>
-                                    <th
-                                        class="px-2 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Proveedor
-                                    </th>
-                                    <th
-                                        class="px-2 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-                                        Ubicacion
-                                    </th>
+                    <tbody class=" ">
+                        @php
+                            $productosCoincidentes = [];
+                            $productosNoCoincidentes = [];
+                        @endphp
 
-                                    <th
-                                        class="px-1 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-
-                                    </th>
-                                    <th
-                                        class="px-1 py-3 bg-orange-500 text-center text-xs leading-4 font-medium text-white uppercase tracking-wider">
-
-                                    </th>
-
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($producto as $p)
+                            @if (strpos(strtolower($p->nombre), strtolower($buscar)) !== false ||
+                                    strpos(strtolower($p->codigo), strtolower($buscar)) !== false)
                                 @php
-                                    $productosCoincidentes = [];
-                                    $productosNoCoincidentes = [];
+                                    $productosCoincidentes[] = $p;
                                 @endphp
+                            @else
+                                @php
+                                    $productosNoCoincidentes[] = $p;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @php
+                            $i = 1;
+                        @endphp
+                        @foreach ($productosCoincidentes as $p)
+                            <tr
+                                class=" bg-white text-gray-700  hover:border-white
+                             hover:bg-gray-100 transition">
+                                <td>
+                                    <p class=" text-normal text-center">{{ $i }} </p>
+                                </td>
+                                <td class="px-8 py-3 text-sm capitalize ">
+                                    <img src="images/logo_libreria.png" class="w-12 h-12 rounded mx-auto" alt="">
+                                </td>
+                                <td class="px-4 py-3 text-sm capitalize "> {{ $p->nombre }} </td>
+                                <td class=" py-3 text-sm capitalize ">{{ $p->codigo }}</td>
+                                <td class="pl-4 py-3 text-sm text-left">{{ $p->autor }}</td>
+                                <td class="pl-4 py-3 text-sm text-left">{{ $p->editorial }}</td>
+                                <td class="pl-4 py-3 text-sm text-right">{{ $p->cantidad }} Pzs
+                                <td>
+                                <td class="pl-4 py-3 text-sm text-right ">{{ $p->precio }} Bs</td>
+                                <td class="px-4 py-3 text-sm text-right ">{{ $p->ubicacion }}</td>
 
-                                @foreach ($producto as $p)
-                                    @if (strpos(strtolower($p->nombre), strtolower($buscar)) !== false ||
-                                            strpos(strtolower($p->codigo), strtolower($buscar)) !== false)
-                                        @php
-                                            $productosCoincidentes[] = $p;
-                                        @endphp
-                                    @else
-                                        @php
-                                            $productosNoCoincidentes[] = $p;
-                                        @endphp
-                                    @endif
-                                @endforeach
+                                <td class=" ">
+                                    <div class="flex ml-4  justify-end text-right  ">
+                                        {{-- @can('cotizacion.edit') --}}
+                                        <div class="flex justify-center">
+                                            <a title="EDITAR" type="button"
+                                                href="{{ route('producto.edit', $p->id) }}"
+                                                class="   rounded-lg w-fit p-2 mx-2 text-white
+                                            hover:scale-125 transition-transform delay-75">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                </svg>
+                                            </a>
 
-                                @foreach ($productosCoincidentes as $p)
-                                    <tr>
-                                        <td class="px-1 py-1 whitespace-no-wrap">ㅤ</td>
-                                        <td class="px-1 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
-                                        <td class="px-10 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
-                                        <td class="px-1 py-1 whitespace-no-wrap">
-                                            <form action="{{ route('producto.edit', $p->id) }}" method="POST">
+                                        </div>
+                                        {{-- @endcan --}}
+                                        {{-- @can('cotizacion.destroy') --}}
+                                        <div>
+                                            <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
                                                 @csrf
-                                                @method('GET')
-                                                <button type="submit" name="entrada"
-                                                    class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
-                                                    <i class="fa-solid fa-square-poll-horizontal"
-                                                        style="color: #010a18; font-size: 1.5em;"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->precio }}</td>
-                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->cantidad }}</td>
-                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->autor }}</td>
-                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->version }}</td>
-                                        <td class="px-6 py-1 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
-                                        <td class="px-4 py-1 whitespace-no-wrap">
-                                            {{ $p->categoria->descripcion }}
-                                        </td>
-                                        <td class="px-4 py-1 whitespace-no-wrap">
-                                            {{ $p->provedor->nombre }}
-                                        </td>
-                                        <td class="px-2 py-3 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
-
-                                        <td class="px-1 py-1| whitespace-no-wrap">
-                                            {{-- @can('VistaProducto.edit') --}}
-                                                <a href="{{ route('producto.edit', $p->id) }}"
-                                                    class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
-                                                    </svg>
-                                                </a>
-                                            {{-- @endcan --}}
-                                        </td>
-                                        <td class="px-1 py-4 whitespace-no-wrap">
-                                            {{-- @can('VistaProducto.detroy') --}}
-                                                <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="w-7 h-7 rounded-lg bg-red-600 text-gray-200 shadow p-1 transform hover:bg-red-700 hover:scale-110">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2"
-                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
-                                            {{-- @endcan --}}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                @foreach ($productosNoCoincidentes as $p)
-                                    <tr>
-                                        <td class="px-1 py-1 whitespace-no-wrap">54</td>
-                                        <td class="px-1 py-1 whitespace-no-wrap">{{ $p->codigo }}</td>
-                                        <td class="px-10 py-1 whitespace-no-wrap">{{ $p->nombre }}</td>
-                                        <td class="px-1 py-1 whitespace-no-wrap">
-                                            <form action="{{ route('producto.edit', $p->id) }}" method="POST">
-                                                @csrf
-                                                @method('GET')
-                                                <button type="submit" name="entrada"
-                                                    class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
-                                                    <i class="fa-solid fa-square-poll-horizontal"
-                                                        style="color: #010a18; font-size: 1.5em;"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                        <td class="px-2 py-1 whitespace-no-wrap">{{ $p->precio }}</td>
-                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->cantidad }}</td>
-                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->autor }}</td>
-                                        <td class="px-6 py-1 whitespace-no-wrap">{{ $p->version }}</td>
-                                        <td class="px-6 py-1 whitespace-no-wrap text-center">{{ $p->editorial }}</td>
-                                        <td class="px-4 py-1 whitespace-no-wrap">
-                                            {{ $p->categoria->descripcion }}
-                                        </td>
-                                        <td class="px-4 py-1 whitespace-no-wrap">
-                                            {{ $p->provedor->nombre }}
-                                        </td>
-                                        <td class="px-2 py-1 whitespace-no-wrap text-center">{{ $p->ubicacion }}</td>
-                                        <td class="px-1 py-1 whitespace-no-wrap">
-                                            {{-- @can('VistaProducto.edit') --}}
-                                                <a href="{{ route('producto.edit', $p->id) }}"
-                                                    class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
+                                                @method('DELETE')
+                                                <input type="text" name="id" class="hidden" value="">
+                                                {{-- <input type="submit" value="ELIMINAR" class=""
+                                                    onclick="return confirm('Desea Eliminar?')"> --}}
+                                                <button type="submit" title="ELIMINAR"
+                                                    class="w-fit py-2   rounded-lg text-white
+                                                      hover:scale-125 transition-transform delay-75"
+                                                    onclick="return confirm('Desea Eliminar?')">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                        class="w-6 h-6 text-blue-800">
+                                                        class="w-6 h-6 text-red-600">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                                                     </svg>
-                                                </a>
-                                            {{-- @endcan --}}
-                                        </td>
-                                        <td class="px-1 py-1 whitespace-no-wrap">
-                                            {{-- @can('VistaProducto.detroy') --}}
-                                                <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit"
-                                                        class="w-7 h-7 rounded-lg bg-red-600 text-gray-200 shadow p-1 transform hover:bg-red-700 hover:scale-110">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2"
-                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
-                                            {{-- @endcan --}}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        {{-- @endcan --}}
+
+                                    </div>
+                                </td>
+                            </tr>
+                            @php
+                                $i++;
+                            @endphp
+                        @endforeach
+
+                        @foreach ($productosNoCoincidentes as $p)
+                        <tr
+                            class=" bg-white text-gray-700  hover:border-white
+                         hover:bg-gray-100 transition">
+                            <td>
+                                <p class=" text-normal text-center">{{ $i }} </p>
+                            </td>
+                            <td class="px-8 py-3 text-sm capitalize ">
+                                <img src="images/logo_libreria.png" class="w-12 h-12 rounded mx-auto" alt="">
+                            </td>
+                            <td class="px-4 py-3 text-sm capitalize "> {{ $p->nombre }} </td>
+                            <td class=" py-3 text-sm capitalize ">{{ $p->codigo }}</td>
+                            <td class="pl-4 py-3 text-sm text-left">{{ $p->autor }}</td>
+                            <td class="pl-4 py-3 text-sm text-left">{{ $p->editorial }}</td>
+                            <td class="pl-4 py-3 text-sm text-right">{{ $p->cantidad }} Pzs
+                            <td>
+                            <td class="pl-4 py-3 text-sm text-right ">{{ $p->precio }} Bs</td>
+                            <td class="px-4 py-3 text-sm text-right ">{{ $p->ubicacion }}</td>
+
+                            <td class=" ">
+                                <div class="flex ml-4  justify-end text-right  ">
+                                    {{-- @can('cotizacion.edit') --}}
+                                    <div class="flex justify-center">
+                                        <a title="EDITAR" type="button"
+                                            href="{{ route('producto.edit', $p->id) }}"
+                                            class="   rounded-lg w-fit p-2 mx-2 text-white
+                                        hover:scale-125 transition-transform delay-75">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                            </svg>
+                                        </a>
+
+                                    </div>
+                                    {{-- @endcan --}}
+                                    {{-- @can('cotizacion.destroy') --}}
+                                    <div>
+                                        <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="text" name="id" class="hidden" value="">
+                                            {{-- <input type="submit" value="ELIMINAR" class=""
+                                                onclick="return confirm('Desea Eliminar?')"> --}}
+                                            <button type="submit" title="ELIMINAR"
+                                                class="w-fit py-2   rounded-lg text-white
+                                                  hover:scale-125 transition-transform delay-75"
+                                                onclick="return confirm('Desea Eliminar?')">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    class="w-6 h-6 text-red-600">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    {{-- @endcan --}}
+
+                                </div>
+                            </td>
+                        </tr>
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-
-    <style>
-        @media (max-width: 768px) {
-
-            .table-min td,
-            .table-min th {
-                font-size: 12px;
-                /* Tamaño de fuente para dispositivos móviles */
-            }
-
-            .px-2 {
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-            }
-
-            .py-1 {
-                padding-top: 0.25rem;
-                padding-bottom: 0.25rem;
-            }
-
-            .text-sm {
-                font-size: 0.875rem;
-                /* 14px */
-            }
-
-            .w-full {
-                width: 100%;
-            }
-
-            .sm\:w-40 {
-                width: 10rem;
-            }
-        }
-
-        <style>@media (max-width: 768px) {}
-    </style>
 @endsection
