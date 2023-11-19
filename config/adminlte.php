@@ -331,7 +331,7 @@ return [
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
         [
-            'text'    => 'Gestion Usuario',
+            'text'    => 'Gestionar Usuario',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -367,7 +367,7 @@ return [
 
         ///////
         [
-            'text'    => 'Gestion Producto',
+            'text'    => 'Gestionar Producto',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
@@ -380,7 +380,24 @@ return [
                 ],
             ],
         ],
-
+        [
+            'text'    => 'Gestionar Venta',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Realizar Venta',
+                    'url'  => 'admin/detalleventa',
+                ],
+                [
+                    'text' => 'Ventas',
+                    'url'  => 'admin/venta',
+                ],
+                [
+                    'text'    => 'Clientes',
+                    'url'     => 'admin/cliente',
+                ],
+            ],
+        ],
         ['header' => 'labels'],
         [
             'text'       => 'important',

@@ -4,21 +4,16 @@
 @section('content')
     <div class="py-2 px-18 h-full ">
         <div class=" flex justify-between items-center ">
-            <h1 class="text-2xl font-mono font-bold"></h1>
+            <H1></H1>
             @if (session('success'))
                 <div class="text-center">
                     <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-lime-500 text-xs sm:text-sm rounded-xl">
                         {{ session('success') }}
                     </p>
                 </div>
-            @else
-            <div class="text-center">
-                <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-gray-700 text-xs sm:text-sm rounded-xl">
-                    Lista de Producto
-                </p>
-            </div>
             @endif
         </div>
+
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-[90%] ">
             <div class=" py-2 px-3 text-gray-900 h-full overflow-auto  ">
                 <div class="space-x-4  font-semibold mt-2">
@@ -31,7 +26,7 @@
                 </div>
                 <form action="{{ route('producto.index') }}" method="GET">
                     <div class="mt-2 mb-3">
-                        <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                        <div class="relative mb-1 flex w-full flex-wrap items-stretch">
                             <input type="text" name="buscar"
                                 class="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
                                 placeholder="Escribe" value="{{ $buscar }}" aria-label="Search"
@@ -53,6 +48,9 @@
                     </div>
                 </form>
                 <table class="table-auto w-full ">
+                    <div class="text-center mt-0">
+                        <a class="text-1xl font-mono font-semibold text-gray-500">LISTA DE PRODUCTOS</a>
+                    </div>
                     <thead>
                         <tr class="text-xs text-left font-semibold text-gray-500  ">
                             <th class="py-3    "> Nro</th>
