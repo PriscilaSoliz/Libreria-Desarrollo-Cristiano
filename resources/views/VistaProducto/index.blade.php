@@ -11,6 +11,12 @@
                         {{ session('success') }}
                     </p>
                 </div>
+            @else
+            <div class="text-center">
+                <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-gray-700 text-xs sm:text-sm rounded-xl">
+                    Lista de Producto
+                </p>
+            </div>
             @endif
         </div>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-[90%] ">
