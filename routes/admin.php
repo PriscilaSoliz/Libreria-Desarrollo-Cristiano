@@ -20,6 +20,17 @@ use App\Http\Controllers\DetallecompraController;
 use App\Http\Controllers\DetalleventaController;
 
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::resource('/productos',ProductoController::class);
+    Route::get('/admin',function(){
+        return view('admin.index');
+    })->name('admin');
+});
+
 Route::get("", [HomeController::class,"index"])->name("admin.home");
 
 // Route::put('admin/users/{user}', 'UserController@update')->name('admin.users.update');

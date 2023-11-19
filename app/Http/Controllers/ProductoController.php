@@ -18,7 +18,7 @@ class ProductoController extends Controller
     public function index(Request $request)
     {
         $buscar = $request->input('buscar');
-
+     
         $producto = producto::orderByRaw("nombre LIKE '$buscar%' DESC, ubicacion LIKE '$buscar%' DESC , codigo LIKE '$buscar%' DESC,editorial LIKE '$buscar%' DESC, version LIKE '$buscar%' DESc , autor LIKE '$buscar%' DESC")
             ->get();
 
@@ -38,27 +38,40 @@ class ProductoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
         // dd($r);
-        $producto = new producto();
-        $producto->codigo = $r->codigo;
-        $producto->nombre = $r->nombre;
-        $producto->autor = $r->autor;
-        $producto->version = $r->version;
-        $producto->editorial = $r->editorial;
-        $producto->precio = $r->precio;
-        $producto->cantidad = $r->cantidad;
-        $producto->ubicacion = $r->ubicacion;
-        $producto->proveedor_id = $r->proveedor_id;
-        $producto->categoria_id = $r->categoria_id;
+
+
+        $producto = new Producto(); // Cambia 'producto' por 'Producto' si es el nombre correcto de tu modelo
+
+        $producto->codigo = $request->codigo;
+        $producto->nombre = $request->nombre;
+        $producto->autor = $request->autor;
+        $producto->version = $request->version;
+        $producto->editorial = $request->editorial;
+        $producto->precio = $request->precio;
+        $producto->cantidad = $request->cantidad;
+        $producto->ubicacion = $request->ubicacion;
+        $producto->proveedor_id = $request->proveedor_id;
+        $producto->categoria_id = $request->categoria_id;
+
+        if ($imagen = $request->file('imagen')) {
+            $rutaGuardarImg = 'imagen/';
+            $imagenProducto = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $producto->imagen = $imagenProducto;
+        }
+
         $producto->save();
 
-        activity()
-            ->causedBy(auth()->user()) //Usuario responsable
-            ->log('Registro el producto: ' . $producto->nombre);
-            session()->flash('success', 'El producto se ha registrado exitosamente');
-        return redirect()->route('producto.index');
+        return redirect()->route('productos.index');
+
+        //   activity()
+        //     ->causedBy(auth()->user()) //Usuario responsable
+        //     ->log('Registro el producto: ' . $producto->nombre);
+        //     session()->flash('success', 'El producto se ha registrado exitosamente');
+        // return redirect()->route('producto.index');
     }
 
 
@@ -78,7 +91,6 @@ class ProductoController extends Controller
     {
         if ($request->has('entrada')) {
             return view('VistaProducto.entrada', compact('producto'));
-
         } else {
             $provedor = Provedor::all(); // Obtener todos los proveedores
             $categoria = Categoria::all();
@@ -118,15 +130,24 @@ class ProductoController extends Controller
             $producto->ubicacion = $r->input('ubicacion');
             $producto->proveedor_id = $r->input('proveedor_id');
             $producto->categoria_id = $r->input('categoria_id');
-            // Actualiza otros campos según sea necesario
-            $producto->save();
-            activity()
-                ->causedBy(auth()->user())
-                ->log('Modifico el producto: ' . $producto->nombre);
-            session()->flash('success', 'El producto se ha Editado exitosamente');
-        }
+            $producto->fill($r->except(['_token', 'imagen'])); /* Llena los campos del modelo con los datos del formulario excepto '_token' y 'imagen'*/
+            if ($r->hasFile('imagen')) {
+                $rutaGuardarImg = 'imagen/';
+                $imagen = $r->file('imagen');
+                $imagenProducto = date('YmdHis') . "." . $imagen->getClientOriginalExtension();
+                // Mueve la imagen a la ruta especificada
+                $imagen->move($rutaGuardarImg, $imagenProducto);
+                $producto->imagen = $imagenProducto; // Establece el nombre de la imagen en el modelo
 
-        return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente');
+                $producto->save();
+                activity()
+                    ->causedBy(auth()->user())
+                    ->log('Modifico el producto: ' . $producto->nombre);
+                session()->flash('success', 'El producto se ha Editado exitosamente');
+            }
+
+            return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente');
+        }
     }
 
     /**

@@ -1,46 +1,28 @@
-@extends('layouts.app')
-
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 @section('content')
-
-<div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="shadow-lg sm:rounded-lg">
-            <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
-            <h2 class="text-2xl font-semibold mb-4">Editar Proveedor</h2>
-            <form action="{{ route('provedor.update', $provedor->id) }}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label for="ci" class="block text-gray-700 text-sm font-bold mb-2">C.I.</label>
-                        <input type="number" name="ci" id="ci" value="{{ $provedor->ci }}" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    </div>
-                    <div>
-                        <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" value="{{ $provedor->nombre }}" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" oninput="ConvertirPrimeraLetra(this)">
-                        <script>
-                            function ConvertirPrimeraLetra(input) {
-                              input.value = input.value.toLowerCase().replace(/(?:^|\s)\S/g, function(a) {
-                                return a.toUpperCase();
-                              });
-                            }
-                            </script>
-                    </div>
-                    <div>
-                        <label for="celular" class="block text-gray-700 text-sm font-bold mb-2">Celular</label>
-                        <input type="number" name="celular" id="celular" value="{{ $provedor->celular }}" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    </div>
-                    <div>
-                        <label for="direccion" class="block text-gray-700 text-sm font-bold mb-2">Dirección</label>
-                        <input type="text" name="direccion" id="direccion" value="{{ $provedor->direccion }}" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" oninput="ConvertirPrimeraLetra(this)">
-                    </div>
-                </div>
-                <div class="mt-4">
-                    <button type="submit" class="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-full ml-1 transition duration-300 ease-in-out transform hover:scale-105">Guardar Cambios</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-blanco desbordamiento-sombra oculta-sm sm:redondeado-lg p-6"> <button id="volverButton"
+                    class="bg-indigo-300 texto-blanco redondeado-md px-2 py -1 texto-xs hover:bg-indigo-600 inline-flex items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w- 3 mr-1" fill="none" viewBox="0 0 24 24"
+                        trazo="currentColor">
+                        <ruta trazo-linecap="redondo" trazo-linejoin="redondo" trazo-width="2"
+                            d=" M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg> Volver </button>
+                <script>
+                    document.getElementById("volverButton").addEventListener("click", function() {
+                        window.location.href = "{{ ruta('producto.index') }}";
+                    });
+                </script>
+                <h2 class="text-2xl font-semibold mb-4">Editar Producto</h2>
+                <form action="{{ route('producto.update', $producto->id) }}" método="POST"> @csrf @method('PUT')
+                    <!-- Indica que esta es una solicitud PUT para actualizar -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div> <label for="codigo" class="block text-gray-700 text-sm font-bold mb-2">Código</label> <input
+                                type="text" name="codigo" id="codigo" valor ="{{ $producto->codigo }}"
+                                class="borde redondeado-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        </div>
+                        <div> <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre
+                                Producto</label> <input type="text" name="nombre" id="nombre"
+                                value="{{ $producto->nombre }}" class="borde redondeado-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:
 @endsection

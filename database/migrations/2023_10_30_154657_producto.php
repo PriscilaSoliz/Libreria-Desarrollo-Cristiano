@@ -22,6 +22,7 @@ return new class extends Migration
              $table->decimal('precio');
              $table->integer('cantidad');
              $table->string('ubicacion');
+             $table->string('imagen')->nullable();
              $table->unsignedBigInteger('proveedor_id'); // Columna para la clave foránea
              $table->foreign('proveedor_id')->references('id')->on('provedors');
              $table->unsignedBigInteger('categoria_id');
