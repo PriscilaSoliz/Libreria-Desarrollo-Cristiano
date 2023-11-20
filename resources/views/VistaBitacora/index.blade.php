@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
 
 @section('content')
 <style>
@@ -10,6 +12,7 @@
     /* Estilos para el contenedor principal */
     .container {
         margin: 20px auto;
+
     }
 
     /* Estilos para el contenedor de la bitácora */
@@ -42,7 +45,7 @@
     <div class="container mx-auto">
         <div class="overflow-x-auto mx-auto bg-white shadow-md rounded px-8 py-6 mt-8">
             <h2 class="text-3xl text-black font-semibold mb-6">Bitácora</h2>
-            
+
             <!-- Contenedor centrado para el Reporte de Bitácora -->
             <div id="report-container">
                 <h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1>
@@ -61,7 +64,7 @@
                     Imprimir
                 </button>
             </div>
-            
+
             <!-- Tabla con estilos mejorados -->
             <div id="activities_table" class="activities-table">
                 @include('VistaBitacora.activities_table')

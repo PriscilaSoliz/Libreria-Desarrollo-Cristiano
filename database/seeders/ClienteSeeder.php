@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\cliente;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -12,21 +13,21 @@ class ClienteSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = cliente::create([
-            'ci'=>'1597323',
-            'nombre' => 'priscilo',
-            'celular' => '78056030',
-
-            'correo' => 'barrio calama',
-
+        // Insertar datos de prueba en la tabla 'clientes'
+        Cliente::create([
+            'ci' => 123456789, // Puedes cambiar estos valores según tus necesidades
+            'nombre' => 'Nombre Cliente',
+            'celular' => '1234567890',
+            'direccion' => 'Dirección Cliente',
+            'correo' => 'cliente@example.com',
         ]);
-        $user = cliente::create([
-            'ci'=>'1398565',
-            'nombre' => 'daniela',
-            'celular' => '12758899',
-
-            'correo' => 'la villa',
-
+        // Insertar datos de prueba en la tabla 'clientes'
+        Cliente::create([
+            'ci' => 11380657, // Puedes cambiar estos valores según tus necesidades
+            'nombre' => 'Nombre Cliente',
+            'celular' => '1234567890',
+            'direccion' => 'Dirección Cliente',
+            'correo' => 'cliente@example.com',
         ]);
     }
 }

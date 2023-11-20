@@ -7,18 +7,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\Venta;
+use App\Models\cliente;
 
 class DetalleventaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $producto=producto::all();
         $venta=Venta::all();
+        $cliente=cliente::all();
         $detalleventa = detalleventa::get();
-        return view('VistaDetalleventa.index', compact('detalleventa','producto','venta'));
+
+        $venta_id = $request->input('venta_id');
+        $venta = Venta::find($venta_id);
+
+        // Luego, pasas los detalles de la venta a la vista
+        return view('VistaDetalleventa.index',['venta' => $venta], compact('detalleventa','producto','venta','cliente'));
 
     }
 
@@ -47,7 +54,7 @@ class DetalleventaController extends Controller
         $detalleVenta->save();
 
         // Disparar el evento para activar el observador
-   
+
 
 
     //     activity()

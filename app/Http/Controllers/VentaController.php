@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Venta;
 use App\Models\cliente;
 use Illuminate\Http\Request;
@@ -13,8 +13,8 @@ class VentaController extends Controller
      */
     public function index()
     {
-         $cliente=cliente::all();
         $venta = Venta::get();
+        $cliente=cliente::all();
         return view('VistaVenta.index', compact('venta','cliente'));
     }
 
@@ -33,12 +33,19 @@ class VentaController extends Controller
      */
     public function store(Request $r)
     {
+
         $venta = new Venta();
-        $venta ->formapago = $r->formapago;
-        $venta ->total = $r->total;
-        $venta ->cliente_id = $r->cliente_id;
-    $venta ->save();
-    return redirect()->route('detalleventa.index');
+        $venta->formapago = $r->input('formapago');
+        $venta->cliente_id = $r->input('ci');
+        // Obtener el ID del usuario autenticado y asignarlo al campo usuario_id de la venta
+        $usuario_id = Auth::id();
+        $venta->usuario_id = $usuario_id;
+        $venta->save();
+        // Obtener el ID de la venta recién creada
+        $venta_id = $venta->id;
+
+    // Redirigir a la ruta 'detalleventa.index' con el ID de la venta como parámetro
+    return redirect()->route('detalleventa.index', ['venta_id' => $venta_id]);
     }
 
     /**

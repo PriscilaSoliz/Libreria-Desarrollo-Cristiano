@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
-            $table->integer('ci');
+            $table->unsignedBigInteger('ci')->primary();
             $table->string('nombre');
             $table->string('celular')->nullable();
+            $table->string('direccion')->nullable();
             $table->string('correo')->nullable();
-
             $table->timestamps();
         });
     }

@@ -384,12 +384,12 @@ return [
             'text'    => 'Gestionar Venta',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
+                // [
+                //     'text' => 'Realizar Venta',
+                //     'url'  => 'admin/detalleventa',
+                // ],
                 [
                     'text' => 'Realizar Venta',
-                    'url'  => 'admin/detalleventa',
-                ],
-                [
-                    'text' => 'Ventas',
                     'url'  => 'admin/venta',
                 ],
                 [
@@ -400,9 +400,9 @@ return [
         ],
         ['header' => 'labels'],
         [
-            'text'       => 'important',
+            'text'       => 'Bitacora',
             'icon_color' => 'red',
-            'url'        => '#',
+            'url'        => 'admin/bitacora',
         ],
         [
             'text'       => 'warning',

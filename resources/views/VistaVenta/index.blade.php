@@ -1,109 +1,103 @@
 @extends('adminlte::page')
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 @section('content')
-    <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
+<div class="py-4">
+    <div class="max-w-8x1 mx-auto bg-white rounded-lg shadow-md">
+        <div class="p-6">
+            <p class="text-1xl font-semibold mb-2">REGISTRAR CLIENTE</p>
+            <form id="clienteForm" action="{{ route('cliente.store') }}" method="POST">
+                @csrf
 
-                <form action="{{ route('venta.store') }}" method="POST" class="p-4 space-y-4">
-                    <!-- Agregamos padding y espacio vertical entre elementos -->
-                    @csrf
-                    <div class="grid grid-cols-3 gap-4">
-
-                        <div>
-                            <label for="formapago" class="block text-gray-700 text-sm font-bold mb-2">Forma de pago</label>
-                            <select name="formapago" id="formapago"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                                <option>Efectivo</option>
-                                <option>Qr</option>
-                                <option>Tarjeta</option>
-                            </select>
-                        </div>
-                        <!-- <div>
-                            <label for="total" class="block text-gray-700 text-sm font-bold mb-2">Total</label>
-                            <input type="text" name="total" id="total"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                required oninput="ConvertirPrimeraLetra(this)">
-                        </div> -->
-                        <div>
-                            <label for="cliente_id" class="block text-gray-700 text-sm font-bold mb-2">Cliente</label>
-                            <select name="cliente_id" id="cliente_id"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                                  @foreach ($cliente as $p)
-                                    <option value="{{ $p->id }}">{{ $p->nombre }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <script>
-                            function ConvertirPrimeraLetra(input) {
-                                input.value = input.value.toLowerCase().replace(/(?:^|\s)\S/g, function(a) {
-                                    return a.toUpperCase();
-                                });
-                            }
-                        </script>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label for="ci" class="text-sm font-bold mb-0">CI/NIT</label>
+                        <input type="number" name="ci" id="ci"
+                            class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            required value="{{ old('ci') }}"> <!-- Aquí se agrega el método old() -->
                     </div>
-                    <div class="mt-4">
-                        <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>
-                            <a href="{{ route('cliente.create') }}"
-                                class="ml-8 bg-indigo-600 text-white rounded-md px-4 py-2 text-base hover:bg-indigo-900 inline-flex items-center mb-4">
-                                Registrar Cliente
-                            </a>
+                    <div>
+                        <label for="nombre" class="text-sm font-bold mb-0">Nombre</label>
+                        <input type="text" name="nombre" id="nombre"
+                            class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            required oninput="convertirPrimeraLetra(this)"
+                            value="{{ old('nombre') }}"> <!-- Método old() para mantener el valor anterior -->
                     </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-    <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 1px; font-family: 'Verdana', sans-serif;">
-
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex flex-row items-center">
-                        <h2 class="text-2xl font-semibold ml-4">Venta</h2>
+                    <div>
+                        <label for="celular" class="text-sm font-bold mb-0">Celular</label>
+                        <input type="number" name="celular" id="celular"
+                            class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            value="{{ old('celular') }}"> <!-- Método old() para mantener el valor anterior -->
                     </div>
-                    <div class="overflow-x-auto mt-4">
-                        <table class="min-w-full divide-y divide-gray-300 mt-4">
-                            <thead>
-                                <tr>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Id</th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Forma de pago</th>
-                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Fecha - Hora</th>
-                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Cliente</th>
-                                    <th class="px-4 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($venta as $e)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->id }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->formapago }}</td>
-                                    <td class="px-4 py-4 whitespace-no-wrap">{{ $e->created_at }}</td>
-                                    <td class="px-4 py-4 whitespace-no-wrap">{{ $e->cliente->nombre }}</td>
-                                    <td class="px-4 py-4 whitespace-no-wrap">0</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div>
+                        <label for="direccion" class="text-sm font-bold mb-0">Dirección</label>
+                        <input type="text" name="direccion" id="direccion"
+                            class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            oninput="convertirPrimeraLetra(this)"
+                            value="{{ old('direccion') }}"> <!-- Método old() para mantener el valor anterior -->
                     </div>
                 </div>
-            </div>
+                <div class="mt-2 text-left">
+                    <button type="submit" name="update_button" value="entradacliente"
+                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded ml-1 mt-1 sm:py-1 sm:px-2 sm:text-sm">Registrar</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="p-6 -mt-12">
+
+            <form id="ventaForm" action="{{ route('venta.store')}}" method="POST">
+                @csrf
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label for="formapago" class="text-sm font-bold mb-0">Metodo de Pago</label>
+                        <select name="formapago" id="formapago" class="border rounded-lg py-1 px-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+                            <option value="" disabled selected>Seleccionar</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Qr">Qr</option>
+                            <option value="Tarjeta">Tarjeta</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="hidden" name="ci" id="ci"
+                            class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            required value="{{ old('ci') }}"> <!-- Aquí se agrega el método old() -->
+                    </div>
+
+
+                    <div class=" text-left">
+                        <button type="submin" name="update_button" value="entradacliente"
+                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded ml-1  sm:py-1 sm:px-2 sm:text-sm">Aceptar</button>
+                    </div>
+
+                </div>
+
+            </form>
+            {{-- <div class="mt-2 text-left">
+                <!-- Botón para enviar ambos formularios -->
+                <button id="enviarAmbosFormularios" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded ml-1 mt-1 sm:py-1 sm:px-2 sm:text-sm">Guardar</button>
+            </div> --}}
         </div>
     </div>
-     @endsection
+</div>
+
+
+<script>
+
+    function convertirPrimeraLetra(input) {
+        input.value = input.value.toLowerCase().replace(/(?:^|\s)\S/g, function(a) {
+            return a.toUpperCase();
+        });
+    }
+    document.getElementById('enviarAmbosFormularios').addEventListener('click', function() {
+        // Capturar los formularios por sus IDs
+        var clienteForm = document.getElementById('clienteForm');
+        var ventaForm = document.getElementById('ventaForm');
+
+        // Enviar ambos formularios al hacer clic en el botón
+        clienteForm.submit();
+        ventaForm.submit();
+    });
+</script>
+
+@endsection

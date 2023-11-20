@@ -16,4 +16,5 @@ class detalleventa extends Model
     {
         return $this->belongsTo(venta::class, 'venta_id');
     }
+    
 }

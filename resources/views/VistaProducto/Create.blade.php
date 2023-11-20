@@ -80,8 +80,7 @@
                     <div class="flex items-center justify-center md:flex-row flex-col md:gap-4 pt-1 pb-1">
                         <a href="{{ route('producto.index') }}"
                             class="w-full md:w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-1 mb-2 md:mb-0 md:mt-0">Cancelar</a>
-                        <a type="submit"
-                            class="w-full md:w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-1 mb-2 md:mb-0 md:mt-0">Guardar</a>
+                       <button type="submit" class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-1'>Guardar</button>
                     </div>
                 </form>
             </div>
