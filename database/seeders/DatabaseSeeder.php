@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             EmpleadoSeeder::class, // Llama al seeder de empleados
             DetalleSeeder::class,
             DetalleSeeder::class,
-            ClienteSeeder::class,
+            // ClienteSeeder::class,
             CompraSeeder::class,
             VentaSeeder::class,
         ]);
