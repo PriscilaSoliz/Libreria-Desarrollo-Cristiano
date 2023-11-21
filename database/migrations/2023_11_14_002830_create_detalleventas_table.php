@@ -17,7 +17,8 @@ return new class extends Migration
             $table->decimal('precio');
             $table->integer('cantidad');
             $table->integer('descuento')->nullable();
-            $table->integer('subtotal');
+            $table->decimal('subtotal');
+            $table->decimal('total');
             $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('producto_id');
 

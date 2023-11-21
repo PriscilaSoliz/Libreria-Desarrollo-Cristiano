@@ -12,4 +12,5 @@ class Venta extends Model
     {
         return $this->belongsTo(cliente::class, 'cliente_id');
     }
+  
 }

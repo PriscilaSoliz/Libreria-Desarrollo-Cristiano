@@ -14,8 +14,9 @@
             @endif
         </div>
 
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg h-[90%] ">
-            <div class=" py-2 px-3 text-gray-900 h-full overflow-auto  ">
+        <div class="py-1">
+            <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4 h-[100vh] max-w-8xl mx-auto sm:px-6 lg:px-8">
+                <div class="text-gray-900 overflow-auto">
                 <div class="space-x-4  font-semibold mt-2">
                     {{-- <a href="#">Exportar</a>
                     <a href="#">Importar</a> --}}
@@ -226,5 +227,6 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
 @endsection

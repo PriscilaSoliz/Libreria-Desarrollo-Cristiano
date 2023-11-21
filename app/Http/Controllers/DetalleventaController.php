@@ -16,17 +16,16 @@ class DetalleventaController extends Controller
      */
     public function index(Request $request)
     {
-        $producto=producto::all();
-        $venta=Venta::all();
-        $cliente=cliente::all();
+        $producto = producto::all();
+        $venta = Venta::all();
+        $cliente = cliente::all();
         $detalleventa = detalleventa::get();
 
         $venta_id = $request->input('venta_id');
         $venta = Venta::find($venta_id);
 
         // Luego, pasas los detalles de la venta a la vista
-        return view('VistaDetalleventa.index',['venta' => $venta], compact('detalleventa','producto','venta','cliente'));
-
+        return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'));
     }
 
     /**
@@ -43,18 +42,32 @@ class DetalleventaController extends Controller
      */
     public function store(Request $r)
     {
+
+
+        $venta_id = $r->input('venta_id');
+        // dd($venta_id); // Verifica si $venta_id tiene el valor esperado
+
+        // $venta = Venta::find($venta_id);
+        // dd($venta);
+
         $detalleVenta = new detalleventa();
         $detalleVenta->venta_id = $r->venta_id; // Ajusta esto según tu lógica
         $detalleVenta->precio = $r->precio;
         $detalleVenta->cantidad = $r->cantidad;
-        $detalleVenta->descuento = $r->descuento;
         $detalleVenta->subtotal = $r->subtotal; // Ajusta esto según tu lógica
+        $detalleVenta->total += $r->subtotal;
 
-        $detalleVenta->producto_id = $r->producto_id; // Asociamos el producto recién creado
+        // Se asume que 'producto_id' se obtiene del campo 'producto_id' del formulario
+        $detalleVenta->producto_id = $r->producto_id;
+
         $detalleVenta->save();
 
-        // Disparar el evento para activar el observador
+        $producto = producto::all();
+        $venta = Venta::all();
+        $cliente = cliente::all();
+        $detalleventa = detalleventa::get();
 
+<<<<<<< Updated upstream
 
 
          activity()
@@ -62,8 +75,12 @@ class DetalleventaController extends Controller
          ->log('Registro venta con id: '.$detalleVenta->venta_id);
 
      return redirect()->route('detalleventa.index');
+=======
+        $venta_id = $r->input('venta_id');
+        $venta = Venta::find($venta_id);
+        return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'));
+>>>>>>> Stashed changes
     }
-
     /**
      * Display the specified resource.
      */
