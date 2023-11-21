@@ -11,7 +11,9 @@ use App\Observers\DetallecompraObserve;
 use App\Observers\DetalleVentaObserver;
 use App\Models\detallecompra;
 use App\Models\detalleventa;
-
+use App\Observers\AuthObserver;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -49,4 +51,12 @@ class EventServiceProvider extends ServiceProvider
         return false;
     }
 
+    protected $listen = [
+        Login::class => [
+            'App\Observers\AuthObserver@authenticated',
+        ],
+        Logout::class => [
+            'App\Observers\AuthObserver@logout',
+        ],
+    ];
 }
