@@ -34,7 +34,7 @@ class CategoriaController extends Controller
         $categoria->save();
 
         activity()
-             ->causedBy(auth()->user())
+            ->causedBy(auth()->user())
             ->log('Registro una nueva categoria: '.$categoria->descripcion);
         return redirect()->route('categoria.index');
     }

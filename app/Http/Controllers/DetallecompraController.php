@@ -48,13 +48,11 @@ class DetallecompraController extends Controller
         $detalleCompra->save();
 
         // Disparar el evento para activar el observador
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Se registro un detalle compra con id: '.$detalleCompra->compra_id);
 
-
-
-    //     activity()
-    //     ->causedBy(auth()->user())
-    //     ->log('Registro un proveedor: '.$detalleCompra->nombre);
-     return redirect()->route('detallecompra.index');
+         return redirect()->route('detallecompra.index');
     }
 
     /**

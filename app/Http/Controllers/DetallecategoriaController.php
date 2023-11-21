@@ -36,6 +36,7 @@ class DetallecategoriaController extends Controller
         activity()
              ->causedBy(auth()->user())
             ->log('Registro una nuevo Detalle categoria: '.$detallecategoria->descripcion);
+            
         return redirect()->route('detallecategoria.index');
     }
 

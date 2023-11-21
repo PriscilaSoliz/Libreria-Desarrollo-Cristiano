@@ -57,9 +57,10 @@ class DetalleventaController extends Controller
 
 
 
-    //     activity()
-    //     ->causedBy(auth()->user())
-    //     ->log('Registro un proveedor: '.$detalleCompra->nombre);
+         activity()
+         ->causedBy(auth()->user())
+         ->log('Registro venta con id: '.$detalleVenta->venta_id);
+
      return redirect()->route('detalleventa.index');
     }
 

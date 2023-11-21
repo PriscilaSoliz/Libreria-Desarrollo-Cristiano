@@ -65,13 +65,12 @@ class ProductoController extends Controller
 
         $producto->save();
 
-        return redirect()->route('productos.index');
+        activity()
+             ->causedBy(auth()->user()) //Usuario responsable
+            ->log('Registro el producto: ' . $producto->nombre);
+            session()->flash('success', 'El producto se ha registrado exitosamente');
 
-        //   activity()
-        //     ->causedBy(auth()->user()) //Usuario responsable
-        //     ->log('Registro el producto: ' . $producto->nombre);
-        //     session()->flash('success', 'El producto se ha registrado exitosamente');
-        // return redirect()->route('producto.index');
+        return redirect()->route('producto.index');
     }
 
 
@@ -138,14 +137,13 @@ class ProductoController extends Controller
                 // Mueve la imagen a la ruta especificada
                 $imagen->move($rutaGuardarImg, $imagenProducto);
                 $producto->imagen = $imagenProducto; // Establece el nombre de la imagen en el modelo
-
-                $producto->save();
+            }
+            $producto->save();
                 activity()
                     ->causedBy(auth()->user())
                     ->log('Modifico el producto: ' . $producto->nombre);
                 session()->flash('success', 'El producto se ha Editado exitosamente');
-            }
-
+                
             return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente');
         }
     }
