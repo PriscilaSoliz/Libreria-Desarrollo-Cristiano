@@ -16,6 +16,10 @@ class DetallecompraObserve
 
         // Actualiza el stock antes de la creación
         $producto->cantidad += ($detallecompra->cantidad);
+        activity()
+            ->causedBy(auth()->user()) // Esto asume que estás utilizando el paquete spatie/laravel-activitylog
+            ->log('Creó una nueva compra');
+
         $producto->save();
     }
     /**
@@ -43,6 +47,10 @@ class DetallecompraObserve
 
         // Actualiza el stock antes de la creación
         $producto->cantidad += ($detallecompra->cantidad);
+        activity()
+            ->causedBy(auth()->user()) // Esto asume que estás utilizando el paquete spatie/laravel-activitylog
+            ->log('Aumento Stock al producto'.$producto->nombre);
+
         $producto->save();
     }
 

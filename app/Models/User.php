@@ -22,14 +22,14 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
-    use LogsActivity;
+    //use LogsActivity;
 
     protected static $logAttributes = ['name', 'email', 'other_attribute'];
 
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults();
-    }
+    // public function getActivitylogOptions(): LogOptions
+    // {
+    //     return LogOptions::defaults();
+    // }
     protected $guard_name = 'web';
     /**
      * The attributes that are mass assignable.

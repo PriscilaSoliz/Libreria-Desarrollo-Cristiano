@@ -51,8 +51,8 @@ class ClienteController extends Controller
             $cliente->save();
             
             activity()
-             ->causedBy(auth()->user())
-            ->log('Se registro el cliente exitosamente: ' . $cliente->nombre);
+                ->causedBy(auth()->user())
+                ->log('Registro el cliente exitosamente: ' . $cliente->nombre);
 
 
             return redirect()->route('venta.index')->withInput();

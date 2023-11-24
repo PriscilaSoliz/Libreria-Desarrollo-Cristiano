@@ -37,7 +37,7 @@ class ProvedorController extends Controller
          $provedor->direccion = $r->direccion;
          $provedor->save();
 
-         activity()
+        activity()
             ->causedBy(auth()->user())
             ->log('Registro un proveedor: '.$provedor->nombre);
          return redirect()->route('provedor.index');

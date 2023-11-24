@@ -48,7 +48,7 @@
 
             <!-- Contenedor centrado para el Reporte de Bitácora -->
             <div id="report-container">
-                <h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1>
+                <h1 class="text-2xl font-semibold mb-4">Reporte</h1>
             </div>
 
             <div class="flex items-center space-x-4 mb-6">
@@ -84,6 +84,8 @@
         ventanaImpresion.document.close();
         ventanaImpresion.print();
     }
+
+    
 </script>
 
 @endsection

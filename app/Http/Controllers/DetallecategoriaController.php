@@ -34,7 +34,7 @@ class DetallecategoriaController extends Controller
         $detallecategoria->save();
 
         activity()
-             ->causedBy(auth()->user())
+            ->causedBy(auth()->user())
             ->log('Registro una nuevo Detalle categoria: '.$detallecategoria->descripcion);
             
         return redirect()->route('detallecategoria.index');

@@ -66,7 +66,7 @@ class ProductoController extends Controller
         $producto->save();
 
         activity()
-             ->causedBy(auth()->user()) //Usuario responsable
+            ->causedBy(auth()->user()) //Usuario responsable
             ->log('Registro el producto: ' . $producto->nombre);
             session()->flash('success', 'El producto se ha registrado exitosamente');
 

@@ -41,6 +41,9 @@ class EventServiceProvider extends ServiceProvider
     {
         detallecompra::observe(DetallecompraObserve::class);
         detalleventa::observe(DetalleVentaObserver::class);
+
+        Event::listen(Login::class, [AuthObserver::class, 'authenticated']);
+        Event::listen(Logout::class, [AuthObserver::class, 'logout']);
     }
 
     /**
@@ -51,12 +54,12 @@ class EventServiceProvider extends ServiceProvider
         return false;
     }
 
-    protected $listen = [
-        Login::class => [
-            'App\Observers\AuthObserver@authenticated',
-        ],
-        Logout::class => [
-            'App\Observers\AuthObserver@logout',
-        ],
-    ];
+    // protected $listen = [
+    //     Login::class => [
+    //         'App\Observers\AuthObserver@authenticated',
+    //     ],
+    //     Logout::class => [
+    //         'App\Observers\AuthObserver@logout',
+    //     ],
+    // ];
 }
