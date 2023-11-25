@@ -44,9 +44,7 @@ class VentaController extends Controller
         // Obtener el ID de la venta recién creada
         $venta_id = $venta->id;
 
-        activity()
-            ->causedBy(auth()->user())
-            ->log('Realizo venta al cliente: ' . $venta->cliente_id->nombre);
+      
         session()->flash('success', 'La Venta se ha realizado exitosamente');
 
     // Redirigir a la ruta 'detalleventa.index' con el ID de la venta como parámetro

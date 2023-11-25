@@ -49,7 +49,7 @@ class ClienteController extends Controller
             $cliente->celular = $r->input('celular');
             $cliente->direccion = $r->input('direccion');
             $cliente->save();
-            
+
             activity()
                 ->causedBy(auth()->user())
                 ->log('Registro el cliente exitosamente: ' . $cliente->nombre);
@@ -57,7 +57,7 @@ class ClienteController extends Controller
 
             return redirect()->route('venta.index')->withInput();
 
-         
+
     }
 
 

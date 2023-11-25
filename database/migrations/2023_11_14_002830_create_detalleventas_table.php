@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('detalleventas', function (Blueprint $table) {
             $table->id();
-
             $table->decimal('precio');
             $table->integer('cantidad');
             $table->integer('descuento')->nullable();
@@ -21,12 +20,10 @@ return new class extends Migration
             $table->decimal('total');
             $table->unsignedBigInteger('venta_id');
             $table->unsignedBigInteger('producto_id');
-
+            $table->timestamps();
             $table->foreign('venta_id')->references('id')->on('ventas');
-
             $table->foreign('producto_id')->references('id')->on('productos');
 
-            $table->timestamps();
         });
     }
 

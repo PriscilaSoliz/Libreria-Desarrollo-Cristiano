@@ -45,21 +45,18 @@ class DetalleventaController extends Controller
 
 
         $venta_id = $r->input('venta_id');
+        $detalleVenta = new detalleventa();
         // dd($venta_id); // Verifica si $venta_id tiene el valor esperado
 
         // $venta = Venta::find($venta_id);
         // dd($venta);
-
-        $detalleVenta = new detalleventa();
-        $detalleVenta->venta_id = $r->venta_id; // Ajusta esto según tu lógica
         $detalleVenta->precio = $r->precio;
         $detalleVenta->cantidad = $r->cantidad;
         $detalleVenta->subtotal = $r->subtotal; // Ajusta esto según tu lógica
-        $detalleVenta->total += $r->subtotal;
-
+        $detalleVenta->total += $r->input('subtotal');
         // Se asume que 'producto_id' se obtiene del campo 'producto_id' del formulario
+        $detalleVenta->venta_id = $r->venta_id; // Ajusta esto según tu lógica
         $detalleVenta->producto_id = $r->producto_id;
-
         $detalleVenta->save();
 
         $producto = producto::all();
@@ -67,13 +64,11 @@ class DetalleventaController extends Controller
         $cliente = cliente::all();
         $detalleventa = detalleventa::get();
 
-
-
         activity()
             ->causedBy(auth()->user())
             ->log('Registro venta con id: '.$detalleVenta->venta_id);
 
-     return redirect()->route('detalleventa.index');
+   //  return redirect()->route('detalleventa.index');
         $venta_id = $r->input('venta_id');
         $venta = Venta::find($venta_id);
         return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'));
@@ -105,8 +100,12 @@ class DetalleventaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(detalleventa $detalleventa)
+    public function destroy($id)
     {
-        //
+        $detalleventa = DetalleVenta::findOrFail($id);
+        $detalleventa->delete();
+
+        return redirect()->route('detalleventa.index')->with('success', 'Detalle venta eliminado correctamente');
     }
+
 }

@@ -48,6 +48,7 @@
                         </div>
                     </div>
                 </form>
+                @if(isset($Venta))
                 <table class="table-auto w-full ">
                     <div class="text-center mt-0">
                         <a class="text-1xl font-mono font-semibold text-gray-500">LISTA DE PRODUCTOS</a>
@@ -130,9 +131,7 @@
                                             <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <input type="text" name="id" class="hidden" value="">
-                                                {{-- <input type="submit" value="ELIMINAR" class=""
-                                                onclick="return confirm('Desea Eliminar?')"> --}}
+                                                   onclick="return confirm('Desea Eliminar?')"> --}}
                                                 <button type="submit" title="ELIMINAR"
                                                     class="w-fit py-2   rounded-lg text-white
                                                   hover:scale-125 transition-transform delay-75"
@@ -225,6 +224,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
     </div>
