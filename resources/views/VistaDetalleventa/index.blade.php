@@ -108,7 +108,7 @@
                                 <td style="display: none;">
                                     <p class="text-normal text-center">{{ $v->id }}</p>
                                 </td>
-                                    {{-- @if ($v->venta_id == $venta->id) --}}
+                                   @if ($v->venta_id && $venta && $v->venta_id == $venta->id)
                                     <tr
                                         class=" bg-white text-gray-700  hover:border-white
                                  hover:bg-gray-100 transition">
@@ -163,7 +163,7 @@
                                     @php
                                         $i++;
                                     @endphp
-                                    {{-- @endif --}}
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

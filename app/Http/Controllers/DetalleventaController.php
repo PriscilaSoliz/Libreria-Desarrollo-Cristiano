@@ -102,10 +102,19 @@ class DetalleventaController extends Controller
      */
     public function destroy($id)
     {
-        $detalleventa = DetalleVenta::findOrFail($id);
+        $detalleventa = detalleventa::findOrFail($id);
+        $venta_id = $detalleventa->venta_id; // Obtener el ID de venta antes de eliminar el detalle
+
         $detalleventa->delete();
 
-        return redirect()->route('detalleventa.index')->with('success', 'Detalle venta eliminado correctamente');
+        // Recuperar los datos necesarios después de la eliminación
+        $producto = producto::all();
+        $venta = Venta::find($venta_id);
+        $cliente = cliente::all();
+        $detalleventa = detalleventa::get();
+
+        // Retornar a la vista con los datos actualizados
+        return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'))->with('success', 'Detalle venta eliminado correctamente');
     }
 
 }
