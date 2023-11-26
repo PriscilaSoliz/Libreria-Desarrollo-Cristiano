@@ -22,7 +22,7 @@
                     {{-- <a href="#">Exportar</a>
                     <a href="#">Importar</a> --}}
                     <a href="{{ route('producto.create') }}"
-                        class="bg-gray-500  hover:bg-gray-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                        class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
                         Agregar producto
                     </a>
                 </div>

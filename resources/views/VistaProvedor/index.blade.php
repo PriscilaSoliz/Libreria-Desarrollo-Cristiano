@@ -19,10 +19,10 @@
             <div class="space-x-4  font-semibold mt-2">
                 {{-- <a href="#">Exportar</a>
                 <a href="#">Importar</a> --}}
-                <a href="{{route('provedor.create')}}"
-                    class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
-                    Agregar Proveedor
-                </a>
+                <a href="{{ route('provedor.create') }}"
+                class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                Agregar producto
+            </a>
             </div>
 
             <table class="table-auto w-full ">
