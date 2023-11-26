@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 @section('content')
 
@@ -6,10 +7,11 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="shadow-lg sm:rounded-lg">
             <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
-                <h2 class="text-2xl font-semibold mb-4">Crear Empleado</h2>
-                <form action="{{route('empleado.store')}}" method="POST" >
+                <p class="text-1xl font-semibold mb-4">Crear Empleado</p>
+                <form action="{{route('empleado.store')}}" method="POST">
                     @csrf
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
                         <div>
                             <label for="ci" class="block text-gray-700 text-sm font-bold mb-2">C.I.</label>
                             <input type="number" name="ci" id="ci" class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
@@ -44,11 +46,12 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
+                        <button type="submit" class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-1 px-3 rounded">Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
 

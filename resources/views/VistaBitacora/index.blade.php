@@ -60,7 +60,7 @@
                     <label for="end_date" class="text-gray-600 font-semibold text-sm">Fecha de fin:</label>
                     <input type="date" id="end_date" name="end_date" class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
                 </div>
-                <button onclick="imprimirBitacora()" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg">
+                <button onclick="imprimirBitacora()" class="bg-cyan-500 hover:bg-cyan-700 text-white font-semibold px-4 py-2 rounded-lg">
                     Imprimir
                 </button>
             </div>
@@ -85,7 +85,7 @@
         ventanaImpresion.print();
     }
 
-    
+
 </script>
 
 @endsection

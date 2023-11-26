@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Libreria</b>Desarrollo',
+    'logo' => '<b>Libreria Desarrollo</b>',
     'logo_img' => 'img/loguito.png',
     'logo_img_class' => 'brand-image ',
     'logo_img_xl' => null,
@@ -131,7 +131,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-gray',
+    'usermenu_header_class' => 'bg-danger',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -187,12 +187,12 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'bg-gray',
+    'classes_brand' => 'bg-teal',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-gray elevation-4',
+    'classes_sidebar' => 'sidebar-light-cyan elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -398,7 +398,29 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        [
+            'text'    => 'Gestionar Compra',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                // [
+                //     'text' => 'Realizar Venta',
+                //     'url'  => 'admin/detalleventa',
+                // ],
+                [
+                    'text' => 'Proveedores',
+                    'url'  => 'admin/provedor',
+                ],
+
+            ],
+        ],
+
+       // ['header' => 'Administracion'],
+        [
+            'text'       => 'Empleados',
+            'icon_color' => 'red',
+            'url'        => 'admin/empleado',
+        ],
+
         [
             'text'       => 'Bitacora',
             'icon_color' => 'red',

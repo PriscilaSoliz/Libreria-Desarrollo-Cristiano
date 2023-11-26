@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 @section('content')
     <div class="py-12">
@@ -6,7 +7,8 @@
             <div class="shadow-lg sm:rounded-lg">
                 <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
                     <button id="volverButton"
-                        class="bg-indigo-300 text-white rounded-md px-2 py-1 text-xs hover:bg-indigo-600 inline-flex items-center mb-4">
+                        class="bg-cyan-500 text-white rounded-md px-2 py-1 text-xs hover:bg-cyan-700 inline-flex items-center mb-4">
+
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -19,10 +21,11 @@
                             window.location.href = "{{ route('provedor.index') }}";
                         });
                     </script>
-                    <h2 class="text-2xl font-semibold mb-4">Registrar un Nuevo Proveedor</h2>
+                    <p class="text-1xl font-semibold mb-4">Registrar un Nuevo Proveedor</p>
                     <form action="{{ route('provedor.store') }}" method="POST">
                         @csrf
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+{{-- JORGE ↑ --}}
                             <div>
                                 <label for="ci" class="block text-gray-700 text-sm font-bold mb-2">CI/NIT</label>
                                 <input type="number" name="ci" id="ci"
@@ -54,7 +57,7 @@
                         </div>
                         <div class="mt-4 text-center">
                             <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button>
+                            class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">Guardar</button>
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,7 @@
 {{-- @extends('layouts.app') --}}
 @extends('adminlte::page')
 @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 @section('content')
     <div class="py-2 px-18 h-full ">
         <div class=" flex justify-between items-center ">
@@ -48,7 +49,7 @@
                         </div>
                     </div>
                 </form>
-                @if(isset($Venta))
+                {{-- @if(isset($Venta)) --}}
                 <table class="table-auto w-full ">
                     <div class="text-center mt-0">
                         <a class="text-1xl font-mono font-semibold text-gray-500">LISTA DE PRODUCTOS</a>
@@ -131,7 +132,9 @@
                                             <form action="{{ route('producto.destroy', $p->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                   onclick="return confirm('Desea Eliminar?')"> --}}
+                                                <input type="text" name="id" class="hidden" value="">
+                                                {{-- <input type="submit" value="ELIMINAR" class=""
+                                                onclick="return confirm('Desea Eliminar?')"> --}}
                                                 <button type="submit" title="ELIMINAR"
                                                     class="w-fit py-2   rounded-lg text-white
                                                   hover:scale-125 transition-transform delay-75"
@@ -224,7 +227,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                @endif
+                {{-- @endif --}}
             </div>
         </div>
     </div>
