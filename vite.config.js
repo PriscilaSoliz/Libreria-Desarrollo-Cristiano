@@ -7,12 +7,13 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/abrir_menu_navbar.js',
+                //'resources/js/abrir_menu_navbar.js',
             ],
             refresh: [
                 ...refreshPaths,
                 'app/Livewire/**',
             ],
         }),
+
     ],
 });
