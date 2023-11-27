@@ -40,7 +40,7 @@ class ClienteController extends Controller
         if ($existingClient) {
             // El CI ya existe en la base de datos, podrías manejar esta situación aquí
             // Puedes devolver un mensaje de error o redirigir a donde desees
-            return redirect()->route('venta.index')->withInput();
+            return redirect()->route('venta.index')->with('success', 'El Ci del Cliente ya existe');;
         }
             // dd($r);
             $cliente = new cliente();
@@ -55,9 +55,7 @@ class ClienteController extends Controller
                 ->log('Registro el cliente exitosamente: ' . $cliente->nombre);
 
 
-            return redirect()->route('venta.index')->withInput();
-
-
+            return redirect()->route('venta.index')->with('success', 'Cliente registrado correctamente');;
     }
 
 
@@ -74,15 +72,27 @@ class ClienteController extends Controller
      */
     public function edit(cliente $cliente)
     {
-        //
+        return view('VistaCliente.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cliente $cliente)
+    public function update(Request $r, cliente $cliente)
     {
-        //
+         // Validación de los datos del formulario (puedes usar la función `validate`)
+         $cliente->ci = $r->input('ci'); // Campo 'ci'
+         $cliente->nombre = $r->input('nombre'); // Campo 'nombre'
+         $cliente->celular = $r->input('celular'); // Campo 'celular'
+         $cliente->direccion = $r->input('direccion'); // Campo 'direccion'
+         // Actualiza otros campos según sea necesario
+
+         $cliente->save();
+         activity()
+             ->causedBy(auth()->user())
+             ->log('Modifico datos del Cliente: '.$cliente->nombre);
+
+         return redirect()->route('cliente.index');
     }
 
     /**
@@ -90,6 +100,14 @@ class ClienteController extends Controller
      */
     public function destroy(cliente $cliente)
     {
-        //
+        activity()
+            ->causedBy(auth()->user())
+            ->log('Elimino al Cliente: '.$cliente->nombre);
+
+          // Encuentra el producto por su ID y elimínalo
+          $cliente->delete();
+
+          // Redirige de vuelta a la lista de productos con un mensaje de éxito
+          return redirect()->route('cliente.index');
     }
 }

@@ -3,96 +3,117 @@
 
 
 @section('content')
-<style>
-    /* Estilos generales */
-    body {
-        font-family: 'Arial', sans-serif;
-    }
-
-    /* Estilos para el contenedor principal */
-    .container {
-        margin: 20px auto;
-
-    }
-
-    /* Estilos para el contenedor de la bitácora */
-    #report-container {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    /* Estilos para la tabla en la versión impresa */
-    @media print {
-        .activities-table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 20px 0;
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
         }
 
-        .activities-table th, .activities-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        /* Estilos para el contenedor principal */
+        .container {
+            margin: 20px auto;
+
         }
 
-        .activities-table th {
-            background-color: #f2f2f2;
+        /* Estilos para el contenedor de la bitácora */
+        #report-container {
+            text-align: center;
+            margin-bottom: 20px;
         }
-    }
-</style>
 
-<div class="my-8 mx-8">
-    <div class="container mx-auto">
-        <div class="overflow-x-auto mx-auto bg-white shadow-md rounded px-8 py-6 mt-8">
-            <h2 class="text-3xl text-black font-semibold mb-6">Bitácora</h2>
+        /* Estilos para la tabla en la versión impresa */
+        @media print {
+            .activities-table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 20px 0;
+            }
 
-            <!-- Contenedor centrado para el Reporte de Bitácora -->
-            <div id="report-container">
-                <h1 class="text-2xl font-semibold mb-4">Reporte</h1>
-            </div>
+            .activities-table th,
+            .activities-table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
 
-            <div class="flex items-center space-x-4 mb-6">
-                <div class="w-1/2">
-                    <label for="start_date" class="text-gray-600 font-semibold text-sm">Fecha de inicio:</label>
-                    <input type="date" id="start_date" name="start_date" class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+            .activities-table th {
+                background-color: #f2f2f2;
+            }
+        }
+    </style>
+
+    <div class="my-8 mx-8">
+        <div class="container mx-auto">
+            <div class="overflow-x-auto mx-auto bg-white shadow-md rounded px-8 py-6 mt-8">
+                <h2 class="text-3xl text-black font-semibold mb-6">Bitácora</h2>
+
+                <!-- Contenedor centrado para el Reporte de Bitácora -->
+                <div id="report-container">
+                    <h1 class="text-2xl font-semibold mb-4">Reporte</h1>
                 </div>
-                <div class="w-1/2">
-                    <label for="end_date" class="text-gray-600 font-semibold text-sm">Fecha de fin:</label>
-                    <input type="date" id="end_date" name="end_date" class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
-                </div>
-                <button onclick="imprimirBitacora()" class="bg-cyan-500 hover:bg-cyan-700 text-white font-semibold px-4 py-2 rounded-lg">
-                    Imprimir
-                </button>
-            </div>
 
-            <!-- Tabla con estilos mejorados -->
-            <div id="activities_table" class="activities-table">
-                @include('VistaBitacora.activities_table')
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-1/2">
+                        <label for="start_date" class="text-gray-600 font-semibold text-sm">Fecha de inicio:</label>
+                        <input type="date" id="start_date" name="start_date"
+                            class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                    </div>
+                    <div class="w-1/2">
+                        <label for="end_date" class="text-gray-600 font-semibold text-sm">Fecha de fin:</label>
+                        <input type="date" id="end_date" name="end_date"
+                            class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                    </div>
+                    <button onclick="imprimirBitacora()"
+                        class="bg-cyan-500 hover:bg-cyan-700 text-white font-semibold px-4 py-2 rounded-lg">
+                        Imprimir
+                    </button>
+                </div>
+
+                <!-- Tabla con estilos mejorados -->
+                <div id="activities_table" class="activities-table">
+                    @include('VistaBitacora.activities_table')
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    function imprimirBitacora() {
-        var ventanaImpresion = window.open('', '_blank');
-        var contenido = '<html><head><title>Reporte de Bitácora</title></head><body>';
-        contenido += '<div id="report-container"><h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1></div>';
-        contenido += document.getElementById('activities_table').innerHTML;
-        contenido += '</body></html>';
-        ventanaImpresion.document.write(contenido);
-        ventanaImpresion.document.close();
-        ventanaImpresion.print();
-    }
+    <script>
+        function imprimirBitacora() {
+            var ventanaImpresion = window.open('', '_blank');
+            var contenido = '<html><head><title>Reporte de Bitácora</title>';
+            contenido += '<style>';
+            contenido += 'body { font-family: Arial, sans-serif; }';
+            contenido += '.logo { max-width: 200px; max-height: 100px; }';
+            contenido += '.table-print { width: 100%; border-collapse: collapse; }';
+            contenido += '.table-print th, .table-print td { border: 1px solid #000; padding: 8px; text-align: center; }';
+            contenido += '</style>';
+            contenido += '</head><body>';
+            contenido += '<img src="file:///C:/xampp/htdocs/Libreria-Desarrollo-Cristiano/public/img/Loguito.png" alt="Logotipo de la empresa" class="logo" />';
+            contenido += '<div id="report-container"><h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1></div>';
+            contenido += '<table class="table-print">';
+            contenido += '<thead><tr>';
+            contenido += '<th>Id</th>';
+            contenido += '<th>Nombre</th>';
+            contenido += '<th>Actividad</th>';
+            contenido += '<th>Fecha</th>';
+            contenido += '</tr></thead>';
+            contenido += '<tbody>';
+            var activities = document.querySelectorAll('.activity-row');
+            activities.forEach(function(activity) {
+                contenido += '<tr>';
+                var cells = activity.querySelectorAll('td');
+                cells.forEach(function(cell) {
+                    contenido += '<td>' + cell.innerText + '</td>';
+                });
+                contenido += '</tr>';
+            });
+            contenido += '</tbody></table>';
+            contenido += '</body></html>';
+            ventanaImpresion.document.write(contenido);
+            ventanaImpresion.document.close();
+            ventanaImpresion.print();
+        }
+    </script>
 
-
-</script>
 
 @endsection
-
-
-
-
-
-
-

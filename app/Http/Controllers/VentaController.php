@@ -23,8 +23,8 @@ class VentaController extends Controller
      */
     public function create()
     {
-        $venta = Venta::all();
-        return view('VistaVenta.Create', compact('venta'));
+        // $venta = Venta::all();
+        // return view('VistaVenta.Create', compact('venta'));
 
     }
 
@@ -35,8 +35,10 @@ class VentaController extends Controller
     {
 
         $venta = new Venta();
-        $venta->formapago = $r->input('formapago');
+
         $venta->cliente_id = $r->input('ci');
+        $venta->formapago = $r->input('formapago');
+        // dd($venta->cliente_id);
         // Obtener el ID del usuario autenticado y asignarlo al campo usuario_id de la venta
         $usuario_id = Auth::id();
         $venta->usuario_id = $usuario_id;
@@ -44,11 +46,12 @@ class VentaController extends Controller
         // Obtener el ID de la venta recién creada
         $venta_id = $venta->id;
 
-      
+
         session()->flash('success', 'La Venta se ha realizado exitosamente');
 
     // Redirigir a la ruta 'detalleventa.index' con el ID de la venta como parámetro
-    return redirect()->route('detalleventa.index', ['venta_id' => $venta_id]);
+    return redirect()->route('detalleventa.index', ['venta_id' => $venta_id])->with('success', 'Nota de Venta Registrada correctamente');
+
     }
 
     /**

@@ -55,4 +55,5 @@ Route::resource('provedor', ProvedorController::class)->names('provedor');
 Route::resource('cliente', ClienteController::class)->names('cliente');
 Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.index');
 
+
 Route::get('/ruta/del/backend/para/obtener/producto/{codigo}', [ProductoController::class, 'obtenerDetallesProducto']);

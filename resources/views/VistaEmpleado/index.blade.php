@@ -26,7 +26,7 @@
                 </div>
 
                 <table class="table-auto w-full ">
-                    <div class="text-center mt-0">
+                    <div class="text-center mt-4">
                         <a class="text-1xl font-mono font-semibold text-gray-500">LISTA DE EMPLEADO</a>
                     </div>
                     <thead>

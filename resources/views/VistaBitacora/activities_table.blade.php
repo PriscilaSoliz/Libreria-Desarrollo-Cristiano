@@ -1,5 +1,3 @@
-
-
 <table class="min-w-full bg-white">
     <thead>
         <tr>
@@ -10,8 +8,9 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Se agrega la clase 'activity-row' a cada fila -->
         @foreach($activities as $activity)
-            <tr>
+            <tr class="activity-row">
                 <td class="py-2 px-4 border-b text-center">{{ $activity->id }}</td>
                 <td class="py-2 px-4 border-b text-center">
                     @if($activity->causer)
@@ -26,3 +25,4 @@
         @endforeach
     </tbody>
 </table>
+
