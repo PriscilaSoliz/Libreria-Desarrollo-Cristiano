@@ -40,7 +40,7 @@ class ClienteController extends Controller
         if ($existingClient) {
             // El CI ya existe en la base de datos, podrías manejar esta situación aquí
             // Puedes devolver un mensaje de error o redirigir a donde desees
-            return redirect()->route('venta.index')->with('success', 'El Ci del Cliente ya existe');;
+            return redirect()->route('venta.index')->with('success', 'Ci del Cliente ya existe')->withInput();
         }
             // dd($r);
             $cliente = new cliente();
@@ -55,7 +55,7 @@ class ClienteController extends Controller
                 ->log('Registro el cliente exitosamente: ' . $cliente->nombre);
 
 
-            return redirect()->route('venta.index')->with('success', 'Cliente registrado correctamente');;
+        return redirect()->route('venta.index')->with('success', 'Cliente registrado Correctamente')->withInput();
     }
 
 
