@@ -64,7 +64,8 @@ return [
     */
 
     'logo' => '<b>Libreria Desarrollo</b>',
-    'logo_img' => 'img/loguito.png',
+    'logo_img' => 'vendor/adminlte/dist/img/Loguito.png',
+
     'logo_img_class' => 'brand-image ',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -290,27 +291,31 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'profile',
-            'url'  => 'user/profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+
+            [
+                'text' => 'Profile',
+                'url'  => 'user/profile',
+                'icon' => 'far fa-user', // Ejemplo de ícono
+              //  'image' => '\img\user1-128x128.jpg'
+            ],
+
+
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
+        // // Sidebar items:
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -406,6 +411,11 @@ return [
                 //     'text' => 'Realizar Venta',
                 //     'url'  => 'admin/detalleventa',
                 // ],
+                [
+                    'text' => 'Realizar Compra',
+                    'url'  => 'admin/compra',
+                ],
+
                 [
                     'text' => 'Proveedores',
                     'url'  => 'admin/provedor',

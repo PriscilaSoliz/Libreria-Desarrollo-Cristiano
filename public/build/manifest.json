@@ -24,14 +24,9 @@
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-c87fc5ec.css",
+    "file": "assets/app-76ad37a2.css",
     "isEntry": true,
     "src": "resources/css/app.css"
-  },
-  "resources/js/abrir_menu_navbar.js": {
-    "file": "assets/abrir_menu_navbar-05da67c3.js",
-    "isEntry": true,
-    "src": "resources/js/abrir_menu_navbar.js"
   },
   "resources/js/app.css": {
     "file": "assets/app-eafa6e0d.css",

@@ -1,156 +1,175 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 @section('content')
-    <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
+    <div class="py-1">
+        <div class="max-w-8x2 mx-auto sm:px-6 lg:px-8">
+            <div class="shadow-lg sm:rounded-lg">
+                <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
+                    <form id="ventaForm" action="#" method="POST">
+                        @csrf
+                        {{-- @if (isset($venta))
+                            <p name="venta_id" id="venta_id" class="text-1xl font-semibold mb-2">
+                                {{ $venta->id }}</p>
+                            <!-- Aquí puedes mostrar otros detalles de la venta -->
+                        @endif --}}
+                        {{-- @if (isset($venta))
+                            <label>Nota de Venta: </label>
+                            <input type="texto" name="venta_id" id="venta_id" value="{{ $venta->id }}">
+                        @endif --}}
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label for="idLabel" class="text-sm font-bold mb-0" id="idLabel"></label>
+                                <label for="formapago" class="text-sm font-bold mb-0">Codigo: </label>
+                                <input type="text" id="searchInput"
+                                    class="border rounded-lg py-1 px-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-400 mb-2"
+                                    placeholder="Buscar...">
+                                <select name="codigo_id" id="codigo_id"
+                                    class="border rounded-lg py-1 px-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    required onchange="actualProducto()">
+                                    @foreach ($producto as $p)
+                                        <option value="{{ $p->id }}" data-precio="{{ $p->precio }}"
+                                            data-id="{{ $p->id }}" data-nombre="{{ $p->nombre }}">
+                                            {{ $p->codigo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                <form action="{{ route('detallecompra.store') }}" method="POST" class="p-4 space-y-4">
-                    @csrf
-                    <div class="grid grid-cols-3 gap-4">
-                        <div>
-                            <label for="compra" class="block text-gray-700 text-sm font-bold mb-2">Compra ID</label>
-                            <select name="compra_id" id="compra_id"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
-                                @foreach ($compra as $p)
-                                    <option value="{{ $p->id }}">{{ $p->id }}</option>
-                                @endforeach
-                            </select>
+
+
+                            <div>
+                                <label for="" class="text-sm font-bold mb-0">Producto</label>
+                                <select name="producto_id" id="producto_id"
+                                    class="border rounded-lg py-1 px-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    required onchange="actualizarPrecioYCantidad()">
+                                    @foreach ($producto as $p)
+                                        <option value="{{ $p->id }}" data-precio="{{ $p->precio }}"
+                                            data-id="{{ $p->id }}">{{ $p->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 mt-4">
+                            <div>
+                                <label for="" class="text-sm font-bold mb-0">Precio</label>
+                                <input type="text" name="precio" id="precio"
+                                    class="border rounded-lg py-1 px-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            </div>
+                            <div>
+                                <label for="" class="text-sm font-bold mb-0">Cantidad</label>
+                                <input type="text" name="cantidad" id="cantidad"
+                                    class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            </div>
+                            <div>
+                                <label for="" class="text-sm font-bold mb-0">Subtotal</label>
+                                <input type="text" name="subtotal" id="subtotal"
+                                    class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    readonly>
+                            </div>
                         </div>
                         <div>
-                            <label for="producto_id" class="block text-gray-700 text-sm font-bold mb-2">Producto</label>
-                            <select name="producto_id" id="producto_id"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                onchange="actualizarPrecioYID()">
-                                @foreach ($producto as $p)
-                                    <option value="{{ $p->id }}" data-precio="{{ $p->precio }}"
-                                        data-id="{{ $p->id }}">{{ $p->nombre }}</option>
-                                @endforeach
-                            </select>
+                            <button type="submit" name="update_button" value=""
+                                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded ml-1 mt-4 sm:py-1 sm:px-2 sm:text-sm">Aceptar</button>
                         </div>
-                        <div>
-                            <label for="precio" class="block text-gray-700 text-sm font-bold mb-2">Precio</label>
-                            <input type="text" name="precio" id="precio"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                required oninput="actualizarSubtotal()">
-                        </div>
-
-                        <div>
-                            <label for="cantidad" class="block text-gray-700 text-sm font-bold mb-2">Cantidad</label>
-                            <input type="number" name="cantidad" id="cantidad"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                required oninput="actualizarSubtotal()">
-                        </div>
-
-                        <div>
-                            <label for="subtotal" class="block text-gray-700 text-sm font-bold mb-2">Subtotal</label>
-                            <input type="text" name="subtotal" id="subtotal"
-                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                required>
-                        </div>
-
-                    </div>
-                    <div class="mt-4">
-                        <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>
-                    </div>
-
-
-                    <script>
-                        function actualizarSubtotal() {
-                            var precioInput = document.getElementById('precio');
-                            var cantidadInput = document.getElementById('cantidad');
-                            var subtotalInput = document.getElementById('subtotal');
-
-                            // Obtener los valores de precio y cantidad
-                            var precio = parseFloat(precioInput.value) || 0;
-                            var cantidad = parseInt(cantidadInput.value) || 0;
-
-                            // Calcular el subtotal
-                            var subtotal = precio * cantidad;
-
-                            // Actualizar el campo de subtotal
-                            subtotalInput.value = subtotal.toFixed(2); // Asegura dos decimales en el resultado
-                        }
-
-                        function actualizarPrecioYID() {
-                            var productoSelect = document.getElementById('producto_id');
-                            var precioInput = document.getElementById('precio');
-                            var idInput = document.getElementById('producto_id'); // Supongo que también tienes un campo de ID
-
-                            // Obtener el precio y el ID del producto seleccionado
-                            var precio = productoSelect.options[productoSelect.selectedIndex].getAttribute('data-precio');
-                            var id = productoSelect.options[productoSelect.selectedIndex].getAttribute('data-id');
-
-                            // Actualizar los campos de precio y ID
-                            precioInput.value = precio;
-                            idInput.value = id;
-                        }
-                    </script>
+                </div>
                 </form>
+
+
+
+
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
     <div class="py-1">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
-                style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 1px; font-family: 'Verdana', sans-serif;">
-
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex flex-row items-center">
-                        <h2 class="text-2xl font-semibold ml-4">Detalle Compra</h2>
-
-                    </div>
-                    <div class="overflow-x-auto mt-4">
-                        <table class="min-w-full divide-y divide-gray-300 mt-4">
+        <div class="max-w-8x2 mx-auto sm:px-6 lg:px-8">
+            <div class="shadow-lg sm:rounded-lg">
+                <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
+                    <div style="overflow-x: auto;">
+                        <table class="table-auto w-full ">
                             <thead>
-                                <tr>
-                                    <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Compra Id</th>
-                                    <th
-                                    <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Id</th>
-                                    <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Precio</th>
-                                    <th
-                                        class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
-                                        Cantidad</th>
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Fecha</th>
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Subtotal</th>
-                                    <th
-                                        class="px-1 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider ">
-                                        Producto</th>
-
+                                <tr class="text-xs text-left font-semibold text-gray-500  ">
+                                    <th class="py-3    "> Nro Venta</th>
+                                    <th class="px-8 py-3 ">Nro</th>
+                                    <th class="px-4 py-3 ">foto</th>
+                                    <th class="px-4 py-3 text-left "> Producto </th>
+                                    <th class="pl-4 py-3 text-left ">Codigo</th>
+                                    <th class="pl-4 py-3 text-right ">Precio</th>
+                                    <th class="pl-8 py-3 text-right ">Cantidad </th>
+                                    <th class="pl-8 py-3 text-left ">Subtotal</th>
+                                    {{-- <th class="px-8 py-3 ">Precio de compra </th> --}}
+                                    {{-- <th class="pl-8 py-3 text-right ">Acciones </th> --}}
                                 </tr>
                             </thead>
-                            @foreach ($detallecompra as $e)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->compra->id }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->id }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->precio }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->cantidad }}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->created_at}}</td>
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->subtotal }}</td>
 
-                                    <td class="px-6 py-4 whitespace-no-wrap">{{ $e->producto->nombre }}</td>
-                            @endforeach
-                        </table </div>
+                            <tbody class=" ">
+                                @php
+                                    $i = 1;
+                                @endphp
+                                {{-- @foreach ($detalleventa as $v) --}}
+                                <td style="display: none;">
+                                    <p class="text-normal text-center">#</p>
+                                </td>
+                                   {{-- @if ($v->venta_id && $venta && $v->venta_id == $venta->id) --}}
+                                    <tr
+                                        class=" bg-white text-gray-700  hover:border-white
+                                 hover:bg-gray-100 transition">
+                                        <td>
+                                            <p class=" text-normal text-center"># </p>
+                                        </td>
+                                        <td>
+                                            <p class=" text-normal text-center"># </p>
+                                        </td>
+                                        <td class="px-4 py-3 text-sm capitalize ">
+
+                                            <img src="/imagen/#" class="w-12 h-12 rounded mx-auto"
+                                                alt="">
+
+                                        </td>
+                                        <td class="px-4 py-3 text-sm capitalize "> # </td>
+
+                                        <td class="py-3 text-sm capitalize">
+                                           #
+                                        </td>
+
+                                        {{-- <td class="px-4 py-3 text-sm capitalize  ">
+                                                <p class="w-fit rounded-2xl p-1 px-3 border bg-green-200 text-green-700">
+
+                                                </p>
+                                            </td> --}}
+                                        <td class="pl-4 py-3 text-sm text-right ">#Bs</td>
+                                        <td class="px-4 py-3 text-sm text-right ">#</td>
+                                        {{-- <td class="px-4 py-3 text-sm text-right ">{{ $v->descuento }}</td> --}}
+                                        <td class="px-4 py-3 text-sm text-right ">#</td>
+                                        <td class=" ">
+                                            <div>
+                                                <form action="#" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" title="ELIMINAR"
+                                                        class="w-fit py-2   rounded-lg text-white
+                                                      hover:scale-125 transition-transform delay-75"
+                                                        {{-- onclick="return confirm('Desea Eliminar?{{ $v->id }}?')"> --}}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                            class="w-6 h-6 text-red-600">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @php
+                                        $i++;
+                                    @endphp
+                                    {{-- @endif --}}
+                                {{-- @endforeach --}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection

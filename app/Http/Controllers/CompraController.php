@@ -42,9 +42,9 @@ class CompraController extends Controller
             $compra->proveedor_id = $r->proveedor_id;
         $compra->save();
 
-        activity()
-            ->causedBy(auth()->user())
-            ->log('Registro la compra con el proveedor: ' . $compra->proveedor_id->nombre);
+        // activity()
+        //     ->causedBy(auth()->user())
+        //     ->log('Registro la compra con el proveedor: ' . $compra->proveedor_id->nombre);
 
         return redirect()->route('detallecompra.index');
     }
