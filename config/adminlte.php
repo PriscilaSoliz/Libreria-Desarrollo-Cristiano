@@ -132,7 +132,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-danger',
+    'usermenu_header_class' => 'bg-blue',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -188,12 +188,12 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'bg-teal',
+    'classes_brand' => 'bg-purple',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-cyan elevation-4',
+    'classes_sidebar' => 'sidebar-light-purple elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',

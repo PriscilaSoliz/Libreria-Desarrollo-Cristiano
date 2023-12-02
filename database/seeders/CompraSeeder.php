@@ -12,10 +12,6 @@ class CompraSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = Compra::create([
-            'formapago'=>'efectivo',
-            'proveedor_id' => '1',
-        ]);
 
     }
 }

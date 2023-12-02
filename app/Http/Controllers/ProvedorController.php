@@ -29,18 +29,29 @@ class ProvedorController extends Controller
      */
     public function store(Request $r)
     {
-         // dd($r);
-         $provedor= new Provedor();
-         $provedor->ci = $r->ci;
-         $provedor->nombre = $r->nombre;
-         $provedor->celular = $r->celular;
-         $provedor->direccion = $r->direccion;
-         $provedor->save();
+         // Validar que el CI sea único antes de almacenar el cliente
+         $existingProv = Provedor::where('ci', $r->ci)->first();
 
-        activity()
-            ->causedBy(auth()->user())
-            ->log('Registro un proveedor: '.$provedor->nombre);
-         return redirect()->route('provedor.index');
+
+         if ($existingProv) {
+             // El CI ya existe en la base de datos, podrías manejar esta situación aquí
+             // Puedes devolver un mensaje de error o redirigir a donde desees
+             return redirect()->route('compra.index')->with('success', 'Ci del Proveedor ya existe')->withInput();
+         }
+             // dd($r);
+             $provedor = new Provedor();
+             $provedor->ci = $r->input('ci');
+             $provedor->nombre = $r->input('nombre');
+             $provedor->celular = $r->input('celular');
+             $provedor->direccion = $r->input('direccion');
+             $provedor->save();
+
+             activity()
+                 ->causedBy(auth()->user())
+                 ->log('Registro el cliente exitosamente: ' . $provedor->nombre);
+
+
+         return redirect()->route('compra.index')->with('success', 'Proveedor registrado Correctamente')->withInput();
     }
 
     /**
@@ -87,7 +98,7 @@ class ProvedorController extends Controller
         activity()
             ->causedBy(auth()->user())
             ->log('Elimino al proveedor: '.$provedor->nombre);
-            
+
           // Encuentra el producto por su ID y elimínalo
           $provedor->delete();
 

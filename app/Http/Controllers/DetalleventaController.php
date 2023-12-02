@@ -42,8 +42,6 @@ class DetalleventaController extends Controller
      */
     public function store(Request $r)
     {
-
-
         $venta_id = $r->input('venta_id');
         $detalleVenta = new detalleventa();
         // dd($venta_id); // Verifica si $venta_id tiene el valor esperado
@@ -53,7 +51,6 @@ class DetalleventaController extends Controller
         $detalleVenta->precio = $r->precio;
         $detalleVenta->cantidad = $r->cantidad;
         $detalleVenta->subtotal = $r->subtotal; // Ajusta esto según tu lógica
-        $detalleVenta->total += $r->input('subtotal');
         // Se asume que 'producto_id' se obtiene del campo 'producto_id' del formulario
         $detalleVenta->venta_id = $r->venta_id; // Ajusta esto según tu lógica
         $detalleVenta->producto_id = $r->producto_id;

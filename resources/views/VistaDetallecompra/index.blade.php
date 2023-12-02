@@ -5,17 +5,13 @@
         <div class="max-w-8x2 mx-auto sm:px-6 lg:px-8">
             <div class="shadow-lg sm:rounded-lg">
                 <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
-                    <form id="ventaForm" action="#" method="POST">
+                    <form id="ventaForm" action="{{ route('detallecompra.store') }}" method="POST">
                         @csrf
-                        {{-- @if (isset($venta))
-                            <p name="venta_id" id="venta_id" class="text-1xl font-semibold mb-2">
-                                {{ $venta->id }}</p>
-                            <!-- Aquí puedes mostrar otros detalles de la venta -->
-                        @endif --}}
-                        {{-- @if (isset($venta))
-                            <label>Nota de Venta: </label>
-                            <input type="texto" name="venta_id" id="venta_id" value="{{ $venta->id }}">
-                        @endif --}}
+
+                        @if (isset($compra))
+                            <label>Nota de Compra: </label>
+                            <input type="texto" name="compra_id" id="compra_id" value="{{ $compra->id }}">
+                        @endif
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <label for="idLabel" class="text-sm font-bold mb-0" id="idLabel"></label>
@@ -173,3 +169,62 @@
         </div>
     </div>
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+        $('#searchInput').on('input', function() {
+            var searchText = $(this).val().trim();
+            $('#codigo_id option').each(function() {
+                var optionText = $(this).text().trim();
+                var showOption = optionText.startsWith(searchText);
+                $(this).toggle(showOption);
+            });
+        });
+
+        $('#codigo_id').change(function() {
+            actualizarProducto();
+        });
+
+        $('#producto_id').change(function() {
+            actualizarPrecioYCantidad();
+        });
+
+        $('#cantidad, #precio').on('input', function() {
+            calcularSubtotal();
+        });
+    });
+
+    function actualProducto() {
+        var selectedOption = $('#codigo_id option:selected');
+        $('#producto_id').val(selectedOption.data('id'));
+        $('#producto_id').trigger('change'); // Forzar el cambio para actualizar precio y cantidad
+        $('#precio').val(selectedOption.data('precio')); // Actualizar precio automáticamente
+        calcularSubtotal(); // Calcular el subtotal automáticamente
+    }
+
+    function actualizarProducto() {
+        var codigoSeleccionado = document.getElementById("codigo_id");
+        var idLabel = document.getElementById("idLabel");
+
+        // Obtener el valor del ID del código seleccionado en el select
+        var selectedId = codigoSeleccionado.options[codigoSeleccionado.selectedIndex].getAttribute('data-id');
+
+        // Actualizar el contenido del label con el ID seleccionado
+        idLabel.textContent = selectedId;
+    }
+
+    function actualizarPrecioYCantidad() {
+        var selectedOption = $('#producto_id option:selected');
+        $('#precio').val(selectedOption.data('precio'));
+        calcularSubtotal(); // Calcular el subtotal automáticamente
+    }
+
+    function calcularSubtotal() {
+        var precio = parseFloat($('#precio').val()) || 0;
+        var cantidad = parseFloat($('#cantidad').val()) || 0;
+        var subtotal = precio * cantidad;
+
+        $('#subtotal').val(subtotal.toFixed(2));
+    }
+</script>

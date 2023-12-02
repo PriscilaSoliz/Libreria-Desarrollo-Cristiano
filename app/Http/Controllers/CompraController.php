@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Provedor;
 use App\Models\Compra;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Venta;
+use App\Models\cliente;
+
 
 class CompraController extends Controller
 {
@@ -13,11 +17,9 @@ class CompraController extends Controller
      */
     public function index()
     {
-
-        $provedor=Provedor::all();
-
         $compra = Compra::get();
-        return view('VistaCompra.index', compact('compra','provedor'));
+        $provedor = Provedor::all();
+        return view('VistaCompra.index', compact('compra', 'provedor'));
     }
 
     /**
@@ -37,18 +39,20 @@ class CompraController extends Controller
     {
 
         $compra = new Compra();
-            $compra->formapago = $r->formapago;
-            $compra->total = $r->total;
-            $compra->proveedor_id = $r->proveedor_id;
+        $compra->provedor_id = $r->input('ci');
+       // dd($compra);
+        $compra->formapago = $r->input('formapago');
+        // dd($venta->cliente_id);
+        // Obtener el ID del usuario autenticado y asignarlo al campo usuario_id de la venta
+     //   dd($compra->proveedor_id);
+        $usuario_id = Auth::id();
+        $compra->usuario_id = $usuario_id;
         $compra->save();
+        // Obtener el ID de la venta recién creada
+        $compra_id = $compra->id;
 
-        // activity()
-        //     ->causedBy(auth()->user())
-        //     ->log('Registro la compra con el proveedor: ' . $compra->proveedor_id->nombre);
-
-        return redirect()->route('detallecompra.index');
+        return redirect()->route('detallecompra.index', ['compra_id' => $compra_id])->with('success', 'Nota de Compra Registrada correctamente');
     }
-
     /**
      * Display the specified resource.
      */

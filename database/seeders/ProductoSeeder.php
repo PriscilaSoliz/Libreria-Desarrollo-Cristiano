@@ -5,12 +5,14 @@ namespace Database\Seeders;
 use App\Models\producto;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Provedor;
 
 class ProductoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
+
     public function run()
     {
         $user = producto::create([
@@ -22,9 +24,10 @@ class ProductoSeeder extends Seeder
             'precio' => '270',
             'cantidad' => '20',
             'ubicacion' => 'A',
-            'proveedor_id'=> '1',
+          //  'proveedor_id'=> $provedor->ci,
             'categoria_id'=> '2',
         ]);
+
 
         $user = producto::create([
             'codigo' => '9780789925855',
@@ -35,7 +38,7 @@ class ProductoSeeder extends Seeder
             'precio' => '280',
             'cantidad' => '15',
             'ubicacion' => 'A',
-            'proveedor_id'=> '2',
+        //    'proveedor_id'=> '1597323',
             'categoria_id'=> '2',
         ]);
 
@@ -48,7 +51,7 @@ class ProductoSeeder extends Seeder
             'precio' => '200',
             'cantidad' => '5',
             'ubicacion' => 'A',
-            'proveedor_id'=> '1',
+         //   'proveedor_id'=> '1',
             'categoria_id'=> '2',
         ]);
 
@@ -62,7 +65,7 @@ class ProductoSeeder extends Seeder
             'precio' => '15',
             'cantidad' => '25',
             'ubicacion' => 'A2',
-            'proveedor_id'=> '1',
+           // 'proveedor_id'=> '1597323',
             'categoria_id'=> '1',
         ]);
 
@@ -76,7 +79,7 @@ class ProductoSeeder extends Seeder
             'precio' => '95',
             'cantidad' => '30',
             'ubicacion' => 'A2',
-            'proveedor_id'=> '1',
+           // 'proveedor_id'=> '1597323',
             'categoria_id'=> '1',
         ]);
 
@@ -90,7 +93,7 @@ class ProductoSeeder extends Seeder
             'precio' => '90',
             'cantidad' => '35',
             'ubicacion' => 'A2',
-            'proveedor_id'=> '2',
+            //'proveedor_id'=> '1597323',
             'categoria_id'=> '1',
         ]);
 
@@ -104,7 +107,7 @@ class ProductoSeeder extends Seeder
             'precio' => '10',
             'cantidad' => '40',
             'ubicacion' => 'B2',
-            'proveedor_id'=> '3',
+        //    'proveedor_id'=> '1398565',
             'categoria_id'=> '3',
         ]);
 
@@ -117,7 +120,7 @@ class ProductoSeeder extends Seeder
             'precio' => '90',
             'cantidad' => '45',
             'ubicacion' => 'B',
-            'proveedor_id'=> '1',
+         //   'proveedor_id'=> '1398565',
             'categoria_id'=> '4',
         ]);
 
@@ -130,7 +133,7 @@ class ProductoSeeder extends Seeder
             'precio' => '40',
             'cantidad' => '50',
             'ubicacion' => 'A2',
-            'proveedor_id'=> '1',
+         //   'proveedor_id'=> '1398565',
             'categoria_id'=> '4',
         ]);
     }

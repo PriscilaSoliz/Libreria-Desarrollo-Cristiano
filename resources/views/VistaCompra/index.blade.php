@@ -80,7 +80,7 @@
                             </select>
                         </div>
                         <div class=" text-left">
-                            <button type="submin" name="update_button" value="entradacliente"
+                            <button type="submin" name="" value=""
                                 class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded ml-1  sm:py-1 sm:px-2 sm:text-sm">Aceptar</button>
                         </div>
                     </div>
