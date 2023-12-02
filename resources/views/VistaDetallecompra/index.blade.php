@@ -100,30 +100,30 @@
                                 @php
                                     $i = 1;
                                 @endphp
-                                {{-- @foreach ($detalleventa as $v) --}}
+                                @foreach ($detallecompra as $v)
                                 <td style="display: none;">
-                                    <p class="text-normal text-center">#</p>
+                                    <p class="text-normal text-center">{{ $v->id }}</p>
                                 </td>
-                                   {{-- @if ($v->venta_id && $venta && $v->venta_id == $venta->id) --}}
+                                   @if ($v->compra_id && $compra && $v->compra_id == $compra->id)
                                     <tr
                                         class=" bg-white text-gray-700  hover:border-white
                                  hover:bg-gray-100 transition">
                                         <td>
-                                            <p class=" text-normal text-center"># </p>
+                                            <p class=" text-normal text-center">{{ $v->compra_id }} </p>
                                         </td>
                                         <td>
-                                            <p class=" text-normal text-center"># </p>
+                                            <p class=" text-normal text-center">{{ $v->id }} </p>
                                         </td>
                                         <td class="px-4 py-3 text-sm capitalize ">
 
-                                            <img src="/imagen/#" class="w-12 h-12 rounded mx-auto"
-                                                alt="">
+                                            <img src="/imagen/{{ $v->producto->imagen }}" class="w-12 h-12 rounded mx-auto"
+                                            alt="">
 
                                         </td>
-                                        <td class="px-4 py-3 text-sm capitalize "> # </td>
+                                        <td class="px-4 py-3 text-sm capitalize "> {{ $v->producto->nombre }} </td>
 
                                         <td class="py-3 text-sm capitalize">
-                                           #
+                                            {{ $v->producto->codigo }}
                                         </td>
 
                                         {{-- <td class="px-4 py-3 text-sm capitalize  ">
@@ -131,20 +131,20 @@
 
                                                 </p>
                                             </td> --}}
-                                        <td class="pl-4 py-3 text-sm text-right ">#Bs</td>
-                                        <td class="px-4 py-3 text-sm text-right ">#</td>
+                                        <td class="pl-4 py-3 text-sm text-right ">{{ $v->precio }}Bs</td>
+                                        <td class="px-4 py-3 text-sm text-right ">{{ $v->cantidad }}</td>
                                         {{-- <td class="px-4 py-3 text-sm text-right ">{{ $v->descuento }}</td> --}}
-                                        <td class="px-4 py-3 text-sm text-right ">#</td>
+                                        <td class="px-4 py-3 text-sm text-right ">{{ $v->subtotal }}</td>
                                         <td class=" ">
                                             <div>
-                                                <form action="#" method="POST">
+                                                <form action="{{ route('detallecompra.destroy', $v->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     <button type="submit" title="ELIMINAR"
                                                         class="w-fit py-2   rounded-lg text-white
                                                       hover:scale-125 transition-transform delay-75"
-                                                        {{-- onclick="return confirm('Desea Eliminar?{{ $v->id }}?')"> --}}
+                                                        onclick="return confirm('Desea Eliminar?{{ $v->id }}?')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                             class="w-6 h-6 text-red-600">
@@ -159,8 +159,8 @@
                                     @php
                                         $i++;
                                     @endphp
-                                    {{-- @endif --}}
-                                {{-- @endforeach --}}
+                                    @endif
+                                 @endforeach
                             </tbody>
                         </table>
                     </div>

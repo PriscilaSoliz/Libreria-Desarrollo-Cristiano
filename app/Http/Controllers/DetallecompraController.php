@@ -46,7 +46,7 @@ class DetallecompraController extends Controller
     {
         $compra_id = $r->input('compra_id');
         $detallecompra = new detallecompra();
-     dd($compra_id); // Verifica si $venta_id tiene el valor esperado
+   //  dd($compra_id); // Verifica si $venta_id tiene el valor esperado
 
         // $venta = Venta::find($venta_id);
         // dd($venta);
@@ -100,8 +100,20 @@ class DetallecompraController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(detallecompra $detallecompra)
+    public function destroy($id)
     {
-        //
+        $detallecompra = detallecompra::findOrFail($id);
+        $compra_id = $detallecompra->compra_id; // Obtener el ID de venta antes de eliminar el detalle
+
+        $detallecompra->delete();
+
+        // Recuperar los datos necesarios después de la eliminación
+        $producto = producto::all();
+        $compra = Compra::find($compra_id);
+        $provedor = Provedor::all();
+        $detallecompra = detallecompra::get();
+
+        // Retornar a la vista con los datos actualizados
+        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'))->with('success', 'Detalle Compra eliminado correctamente');
     }
 }

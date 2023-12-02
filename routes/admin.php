@@ -34,7 +34,7 @@ Route::middleware([
 Route::get("", [HomeController::class,"index"])->name("admin.home");
 
 // Route::put('admin/users/{user}', 'UserController@update')->name('admin.users.update');
-
+Route::get('categoria/pdf', [CategoriaController::class, 'pdf'])->name('categoria.pdf');
 
 Route::resource('users', UserController::class)->names('admin.users');
 Route::resource('roles', RoleController::class)->names('admin.roles');

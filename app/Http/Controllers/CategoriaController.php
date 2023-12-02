@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -14,6 +14,12 @@ class CategoriaController extends Controller
     {
         $categoria = categoria::get();
         return view('VistaCategoria.index', compact('categoria'));
+    }
+
+    public function pdf(){
+        $categoria=Categoria::all();
+        $pdf = Pdf::loadView('VistaCategoria.pdf', compact('categoria'));
+        return $pdf->stream();
     }
 
     /**

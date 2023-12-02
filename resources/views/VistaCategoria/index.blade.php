@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 @section('content')
-<div class="py-5">
+<div class="py-1">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
         <div class="bg-white overflow-hidden sm:rounded-lg"
             style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">

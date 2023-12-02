@@ -3,8 +3,10 @@
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
-        <div class="w-64 h-64 bg-white flex items-center">
-            <img src="{{ asset('img/Logito.png') }}" alt="Descripción de la imagen" class="max-w-full max-h-full ml-20 rounded-md">
+        <div class="w-full flex justify-center items-center">
+            <div class="w-64 h-64 bg-white flex justify-center items-center">
+                <img src="{{ asset('img/newlogo.png') }}" alt="Descripción de la imagen" class="max-w-full max-h-full rounded-md">
+            </div>
         </div>
         <x-validation-errors class="mb-4" />
 
@@ -18,12 +20,12 @@
             @csrf
 
             <div>
-                <x-label for="email" value="{{ __('Email') }}" />
+                <x-label for="email" value="{{ __('Correo') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="mt-4">
-                <x-label for="password" value="{{ __('Contraseñas') }}" />
+                <x-label for="password" value="{{ __('Contraseña') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
@@ -36,7 +38,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Registrar</a>
                 @endif
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
