@@ -398,6 +398,10 @@ return [
                     'url'  => 'admin/venta',
                 ],
                 [
+                    'text' => 'Ventas',
+                    'url'  => 'admin/venta/reporte',
+                ],
+                [
                     'text'    => 'Clientes',
                     'url'     => 'admin/cliente',
                 ],

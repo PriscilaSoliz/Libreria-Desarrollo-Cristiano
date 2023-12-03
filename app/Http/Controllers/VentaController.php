@@ -17,6 +17,12 @@ class VentaController extends Controller
         $cliente=cliente::all();
         return view('VistaVenta.index', compact('venta','cliente'));
     }
+    public function reporte()
+    {
+        $venta = Venta::get();
+        $cliente=cliente::all();
+        return view('VistaVenta.reporte', compact('venta','cliente'));
+    }
 
     /**
      * Show the form for creating a new resource.
