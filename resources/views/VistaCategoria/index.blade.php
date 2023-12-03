@@ -28,6 +28,9 @@
                     <button type="submit"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>
                 </div>
+                <div class="mt-4">
+                    <a href="{{route('categoria.pdf')}}" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">PDF</a>
+                </div>
             </form>
         </div>
     </div>

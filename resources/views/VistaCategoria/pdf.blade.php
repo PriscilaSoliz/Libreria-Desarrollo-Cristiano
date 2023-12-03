@@ -7,15 +7,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <!-- Agregar estilos personalizados -->
       <style>
+            .cabecera{
+                background-color: black;
+                color: white;
+            }
 
     </style>
 </head>
 </head>
+{{-- C:\xampp\htdocs\Libreria-Desarrollo-Cristiano\public\img\newlogoo.png --}}
 <body>
+    <img src="img/newlogo.png" alt="" width="70px" height="70px">
     <div class="container">
-        <h1 class="">JORGE QUE TE SIRVO MI LOKO</h1>
-        <table class="table table-bordered table-striped table-hover">
-            <thead>
+        <h1 class="text-center">Categoria</h1>
+        <table class="table" style="text-align: center; font-size:15px">
+            <thead class="cabecera">
                 <tr>
                     <th>Id</th>
                     <th>Categoria</th>

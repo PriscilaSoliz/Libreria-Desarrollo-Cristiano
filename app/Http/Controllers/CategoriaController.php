@@ -20,6 +20,7 @@ class CategoriaController extends Controller
         $categoria=Categoria::all();
         $pdf = Pdf::loadView('VistaCategoria.pdf', compact('categoria'));
         return $pdf->stream();
+     //   return $pdf->download('reporte.pdf');
     }
 
     /**
