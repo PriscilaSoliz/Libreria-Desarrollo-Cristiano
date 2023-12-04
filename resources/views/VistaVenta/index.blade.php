@@ -5,14 +5,14 @@
         <div class=" flex justify-between items-center ">
             <H1></H1>
             @if (session('success'))
-                {{-- <div class="text-center">
-                    <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-lime-500 text-xs sm:text-sm rounded-xl">
+
+                @if (session('success'))
+                <div class="text-center">
+                    <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-blue-500 text-xs sm:text-sm rounded-xl">
                         {{ session('success') }}
                     </p>
-                </div> --}}
-                <div class="slider-red">
-                    <input type="text" value="" class="slider form-control" data-slider-horizontal>
-                  </div>
+                </div>
+            @endif
             @endif
         </div>
         <div class="max-w-8xl mx-auto bg-white rounded-lg shadow-md">

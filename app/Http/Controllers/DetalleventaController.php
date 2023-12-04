@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\producto;
 use App\Models\Venta;
 use App\Models\cliente;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DetalleventaController extends Controller
 {
@@ -27,7 +28,16 @@ class DetalleventaController extends Controller
         // Luego, pasas los detalles de la venta a la vista
         return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'));
     }
+    public function pdf(Request $request){
+        $venta_id = $request->input('venta_id');
+        $venta = Venta::find($venta_id);
 
+        $detalleventa = DetalleVenta::where('venta_id', $venta_id)->get();
+        // Supongo que necesitas filtrar los detalles de venta relacionados con la venta específica
+        $pdf = PDF::loadView('VistaDetalleventa.pdf', compact('detalleventa', 'venta'));
+        return $pdf->stream();
+        // También puedes descargar el PDF usando return $pdf->download('reporte.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      */
