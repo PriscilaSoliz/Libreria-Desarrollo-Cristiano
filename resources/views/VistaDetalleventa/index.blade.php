@@ -46,7 +46,13 @@
                                             data-id="{{ $p->id }}">{{ $p->nombre }}</option>
                                     @endforeach
                                 </select>
+                                <div class="mt-2">
+                                    <input type="number" name="descuento" id="descuento"
+                                        class="border rounded-lg py-1 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        placeholder="Descuento">
+                                </div>
                             </div>
+
                         </div>
                         <div class="grid grid-cols-3 gap-2 mt-4">
                             <div>
@@ -81,11 +87,9 @@
                 <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
                     <div style="overflow-x: auto;">
                         <div>
-                            <a href="{{ route('detalleventa.pdf', ['venta_id' => $venta->id]) }}"
-                            target="_blank"
-                            class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">PDF</a>
-                            <a href="{{ route('detalleventa.pdfqr') }}"
-                                target="_blank"
+                            <a href="{{ route('detalleventa.pdf', ['venta_id' => $venta->id]) }}" target="_blank"
+                                class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">PDF</a>
+                            <a href="{{ route('detalleventa.pdfqr') }}" target="_blank"
                                 class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">Qr</a>
                         </div>
                         <table class="table-auto w-full ">
@@ -107,6 +111,7 @@
                             <tbody class=" ">
                                 @php
                                     $i = 1;
+                                    $total = 0.0;
                                 @endphp
                                 @foreach ($detalleventa as $v)
                                     <td style="display: none;">
@@ -167,11 +172,19 @@
                                         </tr>
                                         @php
                                             $i++;
+                                            $total += number_format($v->subtotal,2);
+
                                         @endphp
                                     @endif
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="flex justify-between items-center">
+                            <div class="ml-auto">
+                                <label for="" class="text-sm font-bold mb-0 sm:text-base lg:text-lg">Total :
+                                    {{ $total}} Bs ㅤㅤ</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -181,7 +194,6 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
     $(document).ready(function() {
         $('#searchInput').on('input', function() {
             var searchText = $(this).val().trim();
@@ -233,8 +245,12 @@
     function calcularSubtotal() {
         var precio = parseFloat($('#precio').val()) || 0;
         var cantidad = parseFloat($('#cantidad').val()) || 0;
-        var subtotal = precio * cantidad;
+        var descuento = parseFloat($('#descuento').val()) || 0;
 
+        // Restar el descuento al precio
+        precio -= descuento;
+
+        var subtotal = precio * cantidad;
         $('#subtotal').val(subtotal.toFixed(2));
     }
 </script>
