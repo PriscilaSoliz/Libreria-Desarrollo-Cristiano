@@ -16,7 +16,7 @@ class VentaSeeder extends Seeder
 
 
         $user = Venta::create([
-            'formapago'=>'qr',
+            'formapago'=>'Qr',
             'cliente_id' => '1398565',
             'usuario_id' => '1',
 

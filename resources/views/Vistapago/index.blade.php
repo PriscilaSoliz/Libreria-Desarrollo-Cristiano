@@ -25,9 +25,9 @@
                             <label for="formapago" class="text-sm font-bold mb-0">Método de Pago</label>
                             <select name="formapago" id="formapago" class="border rounded-lg py-1 px-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required>
                                 <option value="" disabled selected>Seleccionar</option>
-                                <option value="efectivo">Efectivo</option>
-                                <option value="qr">qr</option>
-                                <option value="tarjeta">Tarjeta</option>
+                                <option value="Efectivo">Efectivo</option>
+                                <option value="Qr">Qr</option>
+                                <option value="Tarjeta">Tarjeta</option>
                             </select>
                         </div>
                     </div>
