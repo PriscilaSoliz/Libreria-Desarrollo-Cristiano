@@ -31,7 +31,10 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit">Filtrar</button>
+                    <button type="submit"
+                                    class="bg-blue-500  hover:bg-blue-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">
+                                    Filtrar
+                                </button>
                 </form>
             </div>
         </div>
