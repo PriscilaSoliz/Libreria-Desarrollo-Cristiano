@@ -86,7 +86,11 @@
                             class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">PDF</a>
                             <a href="{{ route('detalleventa.pdfqr') }}"
                                 target="_blank"
+<<<<<<< Updated upstream
                                 class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">Qr</a>
+=======
+                                class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">Qr</a>
+>>>>>>> Stashed changes
                         </div>
                         <table class="table-auto w-full ">
                             <thead>
