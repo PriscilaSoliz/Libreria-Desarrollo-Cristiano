@@ -383,6 +383,11 @@ return [
                     'text'    => 'Categoria',
                     'url'     => 'admin/categoria',
                 ],
+                [
+                    'text'    => 'Inventario',
+                    'url'     => 'admin/inventario',
+                ],
+
             ],
         ],
         [

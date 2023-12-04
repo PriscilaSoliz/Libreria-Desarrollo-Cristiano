@@ -38,7 +38,7 @@ class ProductoSeeder extends Seeder
             'precio' => '280',
             'cantidad' => '15',
             'ubicacion' => 'A',
-        //    'proveedor_id'=> '1597323',
+         'proveedor_id'=> '1597323',
             'categoria_id'=> '2',
         ]);
 

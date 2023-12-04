@@ -20,6 +20,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetallecompraController;
 
 use App\Http\Controllers\DetalleventaController;
+use App\Http\Controllers\InventarioController;
 
 
 Route::middleware([
@@ -65,3 +66,4 @@ Route::get('/ruta/del/backend/para/obtener/producto/{codigo}', [ProductoControll
 
 //Route::get('pago', PagoController::class)->names('pago');
 Route::get('pago', [PagoController::class, 'index'])->name('pago.index');
+Route::get('inventario', [InventarioController::class, 'index'])->name('inventario.index');

@@ -2,37 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pago;
-use App\Models\Venta;
+use App\Models\inventario;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\producto;
+use App\Models\Categoria;
+use App\Models\Provedor;
 
-use App\Models\cliente;
-
-
-
-class PagoController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $formapagoSeleccionado = $request->input('formapago');
+        $productos = producto::with('provedor', 'categoria')->get();
 
-
-        if ($formapagoSeleccionado) {
-
-            $ventas = Venta::where('formapago', $formapagoSeleccionado)->get();
-        } else {
-
-            $ventas = Venta::all();
-        }
-
-        return view('Vistapago.index', compact('ventas', 'formapagoSeleccionado'));
+        return view('Vistainventario.index', compact('productos'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -45,7 +32,7 @@ class PagoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $r)
+    public function store(Request $request)
     {
         //
     }
@@ -53,7 +40,7 @@ class PagoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(pago $pago)
+    public function show(inventario $inventario)
     {
         //
     }
@@ -61,7 +48,7 @@ class PagoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pago $pago)
+    public function edit(inventario $inventario)
     {
         //
     }
@@ -69,7 +56,7 @@ class PagoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pago $pago)
+    public function update(Request $request, inventario $inventario)
     {
         //
     }
@@ -77,7 +64,7 @@ class PagoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pago $pago)
+    public function destroy(inventario $inventario)
     {
         //
     }
