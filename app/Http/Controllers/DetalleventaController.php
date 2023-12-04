@@ -76,6 +76,7 @@ class DetalleventaController extends Controller
         // dd($venta);
         $detalleVenta->precio = $r->precio;
         $detalleVenta->cantidad = $r->cantidad;
+        $detalleVenta->descuento = $r->descuento;
         $detalleVenta->subtotal = $r->subtotal; // Ajusta esto según tu lógica
         // Se asume que 'producto_id' se obtiene del campo 'producto_id' del formulario
         $detalleVenta->venta_id = $r->venta_id; // Ajusta esto según tu lógica
