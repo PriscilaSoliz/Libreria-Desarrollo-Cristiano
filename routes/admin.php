@@ -40,6 +40,11 @@ Route::get('categoria/pdf', [CategoriaController::class, 'pdf'])->name('categori
 Route::get('venta/pdf', [VentaController::class, 'pdf'])->name('venta.pdf');
 Route::get('detalleventa/pdf', [DetalleventaController::class, 'pdf'])->name('detalleventa.pdf');
 Route::get('detalleventa/pdfqr', [DetalleventaController::class, 'pdfqr'])->name('detalleventa.pdfqr');
+Route::get('detalleventa/verdetalle/{venta}', [DetalleventaController::class, 'verdetalle'])->name('detalleventa.verdetalle');
+Route::delete('detalleventa/eliminar/{id}', [DetalleventaController::class, 'eliminar'])->name('detalleventa.eliminar');
+
+
+
 Route::get('venta/reporte', [VentaController::class, 'reporte'])->name('venta.reporte');
 Route::get('detallecompra/vistaañadir', [DetallecompraController::class, 'vistaañadir'])->name('detallecompra.vistaañadir');
 Route::post('detallecompra/añadir', [DetallecompraController::class, 'añadir'])->name('detallecompra.añadir');

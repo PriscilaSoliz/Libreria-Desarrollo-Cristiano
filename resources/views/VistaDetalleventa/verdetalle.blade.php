@@ -18,45 +18,23 @@
             <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="text-gray-900 overflow-auto">
                     <div class="mt-2">
-                        <a href="{{ route('venta.pdf', ['start_date' => $start_date, 'end_date' => $end_date]) }}" target="_blank"
+                        {{-- <a href="{{ route('venta.pdf', ['start_date' => $start_date, 'end_date' => $end_date]) }}" target="_blank"
                             class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">
                             PDF
-                        </a>
-                        <a onclick="imprimirVenta()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded ml-1 mt-1">
+                        </a> --}}
+                        {{-- <a onclick="imprimirVenta()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded ml-1 mt-1">
                             Imprimir
-                        </a>
+                        </a> --}}
                     </div>
 
                     <div class="space-x-4  font-semibold mt-2">
-
                         <div class="text-center mt-4">
-                            <a class="text-1xl font-mono font-semibold text-gray-500">REPORTE DE VENTAS</a>
+                            @if (isset($venta))
+                            <label>Nota de Venta: </label>
+                            <input type="texto" name="venta_id" id="venta_id" value="{{ $venta->id }}">
+                        @endif
                         </div>
                     </div>
-                    <form action="{{ route('venta.reporte') }}" method="GET">
-                        <div class="flex items-center space-x-4 mb-6">
-
-                            <div class="w-1/2">
-                                <label for="start_date" class="text-gray-600 font-semibold text-sm">Fecha de inicio:</label>
-                                <input type="date" id="start_date" name="start_date"
-                                    class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-                                    value="{{ $start_date ?? '' }}">
-                            </div>
-                            <div class="w-1/2">
-                                <label for="end_date" class="text-gray-600 font-semibold text-sm">Fecha de fin:</label>
-                                <input type="date" id="end_date" name="end_date"
-                                    class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
-                                    value="{{ $end_date ?? '' }}">
-                            </div>
-                            <div class="mt-3">
-                                <button type="submit"
-                                    class="bg-blue-500  hover:bg-blue-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">
-                                    Filtrar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
                     <table class="table-auto w-full">
                         <thead>
                             <tr class="text-xs text-left font-semibold text-gray-500">
@@ -73,17 +51,17 @@
                             @php
                                 $i = 1;
                             @endphp
-                            @foreach ($venta as $v)
+                            @foreach ($detalleventa as $v)
+                            @if ($v->venta_id && $venta && $v->venta_id == $venta->id)
                                 <tr class="bg-white text-gray-700 hover:border-white hover:bg-gray-100 transition">
-                                    <td class="py-3 text-sm text-center">{{ $v->id }}</td>
-                                    <td class="py-3 text-sm text-center">{{ $v->formapago }}</td>
-                                    <td class="py-3 text-sm text-center">{{ $v->cliente_id }}</td>
-                                    <td class="py-3 text-sm text-center">{{ $v->cliente->nombre }}</td>
-                                    <td class="py-3 text-sm text-center">{{ $v->created_at->format('Y-m-d') }}</td>
-
-
+                                    <td class="py-3 text-sm text-center">{{$v->id }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $v->producto->nombre }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $v->precio }} Bs</td>
+                                    <td class="py-3 text-sm text-center">{{ $v->cantidad }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $v->subtotal}}</td>
                                     <td class=" ">
                                         <div class="flex ml-4  justify-end text-right  ">
+                                            
                                             {{-- @can('cotizacion.edit') --}}
                                             <div class="flex justify-center">
                                                 <a title="EDITAR" type="button" href="#"
@@ -101,10 +79,9 @@
                                             {{-- @endcan --}}
                                             {{-- @can('cotizacion.destroy') --}}
                                             <div>
-                                                <form action="#" method="POST">
+                                                <form action="{{ route('detalleventa.eliminar', $v->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <input type="text" name="id" class="hidden" value="">
                                                     {{-- <input type="submit" value="ELIMINAR" class=""
                                                     onclick="return confirm('Desea Eliminar?')"> --}}
                                                     <button type="submit" title="ELIMINAR"
@@ -129,6 +106,7 @@
                                 @php
                                     $i++;
                                 @endphp
+                                @endif
                             @endforeach
                     </table>
                 </div>

@@ -28,6 +28,15 @@ class DetalleventaController extends Controller
         // Luego, pasas los detalles de la venta a la vista
         return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'));
     }
+    public function verdetalle(venta $venta){
+        // Aquí obtienes los detalles de la venta actual
+        $detalleventa = Detalleventa::where('venta_id', $venta->id)->get();
+
+        // Pasas los datos de la venta y los detalles a la vista
+        return view('VistaDetalleventa.verdetalle', compact('venta', 'detalleventa'));
+    }
+
+
     public function pdf(Request $request){
         $venta_id = $request->input('venta_id');
         $venta = Venta::find($venta_id);
@@ -129,6 +138,23 @@ class DetalleventaController extends Controller
 
         // Retornar a la vista con los datos actualizados
         return view('VistaDetalleventa.index', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'))->with('success', 'Detalle venta eliminado correctamente');
+    }
+
+    public function eliminar($id)
+    {
+        $detalleventa = detalleventa::findOrFail($id);
+        $venta_id = $detalleventa->venta_id; // Obtener el ID de venta antes de eliminar el detalle
+
+        $detalleventa->delete();
+
+        // Recuperar los datos necesarios después de la eliminación
+        $producto = producto::all();
+        $venta = Venta::find($venta_id);
+        $cliente = cliente::all();
+        $detalleventa = detalleventa::get();
+
+        // Retornar a la vista con los datos actualizados
+        return view('VistaDetalleventa.verdetalle', ['venta' => $venta], compact('detalleventa', 'producto', 'venta', 'cliente'))->with('success', 'Detalle venta eliminado correctamente');
     }
 
 }
