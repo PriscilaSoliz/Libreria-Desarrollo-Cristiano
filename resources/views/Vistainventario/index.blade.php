@@ -16,6 +16,65 @@
         <div class="py-1">
             <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="text-gray-900 overflow-auto">
+                    <form method="GET" action="{{ route('inventario.index') }}">
+                        @csrf
+                        <div class="mb-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div>
+                                <label for="provedor" class="mr-2 ml-4">Proveedor:</label>
+                                <select name="provedor" id="provedor">
+                                    <option value="">Todos</option>
+                                    @foreach($proveedores as $proveedor)
+                                        <option value="{{ $proveedor }}" @if(request('provedor') == $proveedor) selected @endif>{{ $proveedor }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="categoria" class="mr-2 ml-4">Categoría:</label>
+                                <select name="categoria" id="categoria">
+                                    <option value="">Todas</option>
+                                    @foreach($categorias as $categoria)
+                                        <option value="{{ $categoria }}" @if(request('categoria') == $categoria) selected @endif>{{ $categoria }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="autor" class="mr-2 ml-4">Autor:</label>
+                                <select name="autor" id="autor">
+                                    <option value="">Todas</option>
+                                    @foreach($autores as $autor)
+                                        <option value="{{ $autor }}" @if(request('autor') == $autor) selected @endif>{{ $autor }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="editorial" class="mr-2 ml-4">Editoriales:</label>
+                                <select name="editorial" id="editorial">
+                                    <option value="">Todas</option>
+                                    @foreach($editoriales as $editorial)
+                                        <option value="{{ $editorial }}" @if(request('editorial') == $editorial) selected @endif>{{ $editorial }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="ubicacion" class="mr-2 ml-4">Ubicaciones:</label>
+                                <select name="ubicacion" id="ubicacion">
+                                    <option value="">Todas</option>
+                                    @foreach($ubicaciones as $ubicacion)
+                                        <option value="{{ $ubicacion }}" @if(request('ubicacion') == $ubicacion) selected @endif>{{ $ubicacion }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- Agrega más bloques para otros filtros según sea necesario -->
+
+                            <button type="submit" class="ml-2 bg-blue-500 text-white px-4 py-2 rounded">Filtrar</button>
+                        </div>
+
+                    </form>
 
 
                     <table class="table-auto w-full">
@@ -70,3 +129,4 @@
         </div>
     </div>
 @endsection
+
