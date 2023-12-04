@@ -38,6 +38,13 @@ class DetalleventaController extends Controller
         return $pdf->stream();
         // También puedes descargar el PDF usando return $pdf->download('reporte.pdf');
     }
+
+    public function pdfqr(){
+        $detalleventa=detalleventa::all();
+        $pdf = Pdf::loadView('VistaDetalleventa.pdfqr', compact('detalleventa'));
+        return $pdf->stream();
+     //   return $pdf->download('reporte.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      */
