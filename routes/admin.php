@@ -18,7 +18,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetallecategoriaController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetallecompraController;
-
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\DetalleventaController;
 
 
@@ -69,3 +69,4 @@ Route::get('/ruta/del/backend/para/obtener/producto/{codigo}', [ProductoControll
 
 //Route::get('pago', PagoController::class)->names('pago');
 Route::get('pago', [PagoController::class, 'index'])->name('pago.index');
+Route::get('inventario', [InventarioController::class, 'index'])->name('inventario.index');
