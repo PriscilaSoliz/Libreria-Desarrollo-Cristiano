@@ -14,7 +14,7 @@
         </div>
 
         <div class="py-1">
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4  max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-y-auto">
                 <div class="text-gray-900 overflow-auto">
                     <form method="GET" action="{{ route('inventario.index') }}">
                         @csrf
@@ -93,6 +93,8 @@
                                 <th class="px-4 py-3 text-center">Ubicacion</th>
                                 <th class="px-4 py-3 text-center">Categoria</th>
                                 <th class="px-4 py-3 text-center">Proveedor</th>
+                                <th class="px-4 py-3 text-center">Fecha</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -111,11 +113,9 @@
                                     <td class="py-3 text-sm text-center">{{ $producto->ubicacion }}</td>
                                     <td class="py-3 text-sm text-center">{{ $producto->categoria->descripcion }}</td>
                                     <td class="py-3 text-sm text-center">{{ $producto->provedor->nombre ?? 'Sin proveedor' }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $producto->updated_at }}</td>
 
 
-                                    <td class=" ">
-                                        <!-- Aquí puedes agregar enlaces o botones para editar o eliminar si es necesario -->
-                                    </td>
                                 </tr>
                                 @php
                                     $i++;
