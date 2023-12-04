@@ -42,7 +42,7 @@
                             class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
                             <option value="" selected>Selecciona Proveedor</option>
                             @foreach ($provedor as $p)
-                                <option value="{{ $p->id }}">{{ $p->nombre }}</option>
+                                <option value="{{ $p->ci }}">{{ $p->nombre }}</option>
                             @endforeach
                         </select>
                     </div>

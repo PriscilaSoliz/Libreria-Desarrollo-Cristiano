@@ -20,7 +20,7 @@
                 {{-- <a href="#">Exportar</a>
                 <a href="#">Importar</a> --}}
                 <a href="{{ route('provedor.create') }}"
-                class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                class="bg-blue-500  hover:bg-blue-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
                 Agregar producto
             </a>
             </div>
@@ -65,7 +65,7 @@
                                     <div class="flex ml-4  justify-end text-right  ">
                                         {{-- @can('cotizacion.edit') --}}
                                         <div class="flex justify-center">
-                                            <a title="EDITAR" type="button" href="{{ route('provedor.edit', $p->id) }}"
+                                            <a title="EDITAR" type="button" href="{{ route('provedor.edit', $p->ci) }}"
                                                 class="   rounded-lg w-fit p-2 mx-2 text-white
                                         hover:scale-125 transition-transform delay-75">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -79,7 +79,7 @@
                                         {{-- @endcan --}}
                                         {{-- @can('cotizacion.destroy') --}}
                                         <div>
-                                            <form action="{{ route('provedor.destroy', $p->id) }}" method="POST">
+                                            <form action="{{ route('provedor.destroy', $p->ci) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <input type="text" name="id" class="hidden" value="">

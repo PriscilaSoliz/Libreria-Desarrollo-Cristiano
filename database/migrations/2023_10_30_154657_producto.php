@@ -23,8 +23,8 @@ return new class extends Migration
              $table->integer('cantidad');
              $table->string('ubicacion');
              $table->string('imagen')->nullable();
-             $table->unsignedBigInteger('proveedor_id'); // Columna para la clave foránea
-             $table->foreign('proveedor_id')->references('id')->on('provedors');
+             $table->unsignedBigInteger('proveedor_id')->nullable(); // Columna para la clave foránea
+             $table->foreign('proveedor_id')->references('ci')->on('provedors');
              $table->unsignedBigInteger('categoria_id');
              $table->foreign('categoria_id')->references('id')->on('categorias');
              $table->timestamps();

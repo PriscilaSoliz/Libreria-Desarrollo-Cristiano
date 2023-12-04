@@ -8,7 +8,7 @@
             <H1></H1>
             @if (session('success'))
                 <div class="text-center">
-                    <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-lime-500 text-xs sm:text-sm rounded-xl">
+                    <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-blue-500 text-xs sm:text-sm rounded-xl">
                         {{ session('success') }}
                     </p>
                 </div>
@@ -22,7 +22,7 @@
                         {{-- <a href="#">Exportar</a>
                     <a href="#">Importar</a> --}}
                         <a href="{{ route('producto.create') }}"
-                            class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                            class="bg-purple-500  hover:bg-blue-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
                             Agregar producto
                         </a>
                     </div>
@@ -36,7 +36,7 @@
 
                                 <!--Search button-->
                                 <button
-                                    class="type=submit relative z-[2] flex items-center rounded-r bg-gray-500 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-700 active:shadow-lg"
+                                    class="type=submit relative z-[2] flex items-center rounded-r bg-purple-500 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-purple-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-700 active:shadow-lg"
                                     type="submit" id="button-addon1" data-te-ripple-init data-te-ripple-color="light">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                         class="h-5 w-5">
@@ -50,12 +50,13 @@
                         </div>
                     </form>
                     {{-- @if (isset($Venta)) --}}
-
-                    <table class="table-auto w-full ">
+                    {{-- class="min-w-full divide-y divide-gray-300 mt-4" --}}
+                    <table class="min-w-full divide-y divide-gray-300 ">
                         <div class="text-center mt-0">
                             <a class="text-1xl font-mono font-semibold text-gray-500">LISTA DE PRODUCTOS</a>
                         </div>
                         <thead>
+
                             <tr class="text-xs text-left font-semibold text-gray-500  ">
                                 <th class="py-3    "> Nro</th>
                                 <th class="px-8 py-3 ">foto</th>
@@ -72,7 +73,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class=" ">
+                        <tbody class="bg-white divide-y divide-gray-200">
                             @php
                                 $productosCoincidentes = [];
                                 $productosNoCoincidentes = [];

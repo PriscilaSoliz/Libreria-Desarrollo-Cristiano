@@ -20,7 +20,7 @@
                         {{-- <a href="#">Exportar</a>
                 <a href="#">Importar</a> --}}
                         <a href="{{ route('venta.index') }}"
-                            class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                            class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
                             Añadir Cliente
                         </a>
                     </div>
@@ -52,7 +52,7 @@
                                     <td class="py-3 text-sm text-center">{{ $c->nombre }}</td>
                                     <td class="py-3 text-sm text-center">{{ $c->celular }}</td>
                                     <td class="py-3 text-sm text-center">{{ $c->direccion }}</td>
-                                    
+
                                     <td class=" ">
                                         <div class="flex ml-4  justify-end text-right  ">
                                             {{-- @can('cotizacion.edit') --}}

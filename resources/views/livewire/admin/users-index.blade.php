@@ -1,18 +1,19 @@
+
 <div class="py-5">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-1">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
             style="box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); margin-top: 20px; font-family: 'Verdana', sans-serif;">
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="flex flex-row items-center">
-                    <h2 class="text-2xl font-semibold ml-4">Lista de Usuarios</h2>
+                    <p class="text-1xl font-semibold ml-4">Lista de Usuarios</p>
 
                 </div>
-                <div class="overflow-x-auto mt-4">
+                <div class="overflow-x-auto mt-1">
                     <table class="min-w-full divide-y divide-gray-300 mt-4">
                         <thead>
                             <tr>
                                 <th
-                                    class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
+                                    class="px-6 py-3 bg-gray-50 text-left  whitespace-no-wrap text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                     Id</th>
                                 <th
                                     class="px-10 py-3 bg-gray-50 text-left text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
@@ -27,22 +28,21 @@
                                 </th>
                                 <th class="px-1 py-3 bg-gray-50 text-center text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">
                                 </th>
-
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
 
                             @foreach ($users as $user)
                                 <tr>
-                                    <td class="px-6 py-3 whitespace-no-wrap">{{ $user->id }}</td>
-                                    <td class="px-10 py-3 whitespace-no-wrap">{{ $user->name }}</td>
-                                    <td class="px-10 py-3 whitespace-no-wrap">{{ $user->email }}</td>
-                                    <td class="px-8 py-3 whitespace-no-wrap">
+                                    <td class="px-6 py-1 whitespace-no-wrap text-xs">{{ $user->id }}</td>
+                                    <td class="px-10 py-1 whitespace-no-wrap text-xs">{{ $user->name }}</td>
+                                    <td class="px-10 py-1 whitespace-no-wrap text-xs">{{ $user->email }}</td>
+                                    <td class="px-10 py-1 whitespace-no-wrap text-xs">
                                         @foreach ($user->roles as $role)
                                             {{ $role->name }} {{-- Suponiendo que el modelo Role tiene un atributo 'name' --}}
                                         @endforeach
                                     </td>
-                                    <td class="px-1 py-3 whitespace-no-wrap text-center">
+                                    <td class="px-1 py-1 whitespace-no-wrap text-center">
 
                                         <a href="{{ route('admin.users.edit', $user) }}" class="py-2 text-white hover:scale-125 transition-transform delay-75 flex items-center">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
@@ -51,7 +51,7 @@
                                         </a>
                                     </td>
 
-                                    <td class="px-1 py-3 whitespace-no-wrap text-center">
+                                    <td class="px-1 py-1 whitespace-no-wrap text-center">
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

@@ -20,7 +20,7 @@
                     {{-- <a href="#">Exportar</a>
                     <a href="#">Importar</a> --}}
                     <a href="{{route('empleado.create')}}"
-                        class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
+                        class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-3 rounded ml-1 mt-1">
                         Agregar Empleado
                     </a>
                 </div>

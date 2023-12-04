@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provedor extends Model
 {
+    protected $primaryKey = 'ci';
     use HasFactory;
 }

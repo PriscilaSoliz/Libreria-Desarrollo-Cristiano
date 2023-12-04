@@ -8,20 +8,26 @@ use Illuminate\Http\Request;
 use App\Events\DetalleCompraCreated;
 use App\Models\producto;
 use App\Models\Compra;
-
-
+use App\Models\Provedor;
 
 class DetallecompraController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $producto=producto::all();
-        $compra=Compra::all();
+
+        $producto = producto::all();
+        $compra= Compra::all();
+        $provedor = Provedor::all();
         $detallecompra = detallecompra::get();
-        return view('VistaDetallecompra.index', compact('detallecompra','producto','compra'));
+
+        $compra_id = $request->input('compra_id');
+        $compra = compra::find($compra_id);
+
+        // Luego, pasas los detalles de la venta a la vista
+        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'));
     }
 
     /**
@@ -38,21 +44,33 @@ class DetallecompraController extends Controller
      */
     public function store(Request $r)
     {
-        $detalleCompra = new detallecompra();
-        $detalleCompra->compra_id = $r->compra_id; // Ajusta esto según tu lógica
-        $detalleCompra->precio = $r->precio;
-        $detalleCompra->cantidad = $r->cantidad;
-        $detalleCompra->subtotal = $r->subtotal; // Ajusta esto según tu lógica
+        $compra_id = $r->input('compra_id');
+        $detallecompra = new detallecompra();
+   //  dd($compra_id); // Verifica si $venta_id tiene el valor esperado
 
-        $detalleCompra->producto_id = $r->producto_id; // Asociamos el producto recién creado
-        $detalleCompra->save();
+        // $venta = Venta::find($venta_id);
+        // dd($venta);
+        $detallecompra->precio = $r->precio;
+        $detallecompra->cantidad = $r->cantidad;
+        $detallecompra->subtotal = $r->subtotal; // Ajusta esto según tu lógica
+        // Se asume que 'producto_id' se obtiene del campo 'producto_id' del formulario
+        $detallecompra->compra_id = $r->compra_id; // Ajusta esto según tu lógica
+        $detallecompra->producto_id = $r->producto_id;
+        $detallecompra->save();
 
-        // Disparar el evento para activar el observador
-        activity()
-            ->causedBy(auth()->user())
-            ->log('Se registro un detalle compra con id: '.$detalleCompra->compra_id);
+        $producto = producto::all();
+        $compra_id = Compra::all();
+        $provedor = Provedor::all();
+        $detallecompra =detallecompra::get();
 
-         return redirect()->route('detallecompra.index');
+        // activity()
+        //     ->causedBy(auth()->user())
+        //     ->log('Registro venta con id: '.$detallecompra->compra_id);
+
+   //  return redirect()->route('detalleventa.index');
+        $compra_id = $r->input('compra_id');
+        $compra = Compra::find($compra_id);
+        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'));
     }
 
     /**
@@ -82,8 +100,20 @@ class DetallecompraController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(detallecompra $detallecompra)
+    public function destroy($id)
     {
-        //
+        $detallecompra = detallecompra::findOrFail($id);
+        $compra_id = $detallecompra->compra_id; // Obtener el ID de venta antes de eliminar el detalle
+
+        $detallecompra->delete();
+
+        // Recuperar los datos necesarios después de la eliminación
+        $producto = producto::all();
+        $compra = Compra::find($compra_id);
+        $provedor = Provedor::all();
+        $detallecompra = detallecompra::get();
+
+        // Retornar a la vista con los datos actualizados
+        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'))->with('success', 'Detalle Compra eliminado correctamente');
     }
 }

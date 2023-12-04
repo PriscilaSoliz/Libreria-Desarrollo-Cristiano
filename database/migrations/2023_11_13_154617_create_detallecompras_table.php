@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::create('detallecompras', function (Blueprint $table) {
             $table->id();
-
             $table->decimal('precio');
             $table->integer('cantidad');
-            $table->integer('subtotal');
+            $table->integer('descuento')->nullable();
+            $table->decimal('subtotal');
             $table->unsignedBigInteger('compra_id');
             $table->unsignedBigInteger('producto_id');
-
-            $table->foreign('compra_id')->references('id')->on('compras');
-
-            $table->foreign('producto_id')->references('id')->on('productos');
-
             $table->timestamps();
+            $table->foreign('compra_id')->references('id')->on('compras');
+            $table->foreign('producto_id')->references('id')->on('productos');
         });
 
     }

@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('adminlte::page')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
 
 @section('content')
 <div class="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8">
