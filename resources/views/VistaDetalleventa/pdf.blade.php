@@ -26,7 +26,7 @@
         <table class="table" style="text-align: center; font-size:15px">
             <thead class="cabecera">
                 <tr>
-                    <th class="px-2 py-3 text-center">Nro</th>
+                    {{-- <th class="px-2 py-3 text-center">Nro</th> --}}
                     <th class="px-4 py-3 text-center">Producto</th>
                     <th class="px-4 py-3 text-center">Precio</th>
                     <th class="px-6 py-3 text-center">Cantidad</th>
@@ -39,20 +39,14 @@
                         <p class="text-normal text-center">{{ $v->id }}</p>
                     </td>
                     @if ($v->venta_id && $venta && $v->venta_id == $venta->id)
-                    @php
-                        $i = 1;
-                    @endphp
                     <tr>
-                        <td class="py-3 text-sm text-center">{{ $i }}</td>
+                        {{-- <td class="py-3 text-sm text-center">{{$v->venta_id}}</td> --}}
                         <td class="py-3 text-sm text-center">{{ $v->producto->nombre }}</td>
                         <td class="py-3 text-sm text-center">{{ $v->precio }}</td>
                         <td class="py-3 text-sm text-center">{{ $v->cantidad }}</td>
                         <td class="py-3 text-sm text-center">{{ $v->subtotal }}</td>
 
                     </tr>
-                    @php
-                        $i++;
-                    @endphp
                     @endif
                 @endforeach
             </tbody>

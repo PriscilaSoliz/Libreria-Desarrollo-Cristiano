@@ -20,12 +20,12 @@ return new class extends Migration
              $table->string('version')->nullable();
              $table->string('editorial');
              $table->decimal('precio');
-             $table->integer('cantidad');
-             $table->string('ubicacion');
+             $table->integer('cantidad')->nullable();
+             $table->string('ubicacion')->nullable();
              $table->string('imagen')->nullable();
              $table->unsignedBigInteger('proveedor_id')->nullable(); // Columna para la clave foránea
              $table->foreign('proveedor_id')->references('ci')->on('provedors');
-             $table->unsignedBigInteger('categoria_id');
+             $table->unsignedBigInteger('categoria_id')->nullable();
              $table->foreign('categoria_id')->references('id')->on('categorias');
              $table->timestamps();
          });

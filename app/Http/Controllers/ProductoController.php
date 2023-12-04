@@ -18,7 +18,7 @@ class ProductoController extends Controller
     public function index(Request $request)
     {
         $buscar = $request->input('buscar');
-     
+
         $producto = producto::orderByRaw("nombre LIKE '$buscar%' DESC, ubicacion LIKE '$buscar%' DESC , codigo LIKE '$buscar%' DESC,editorial LIKE '$buscar%' DESC, version LIKE '$buscar%' DESc , autor LIKE '$buscar%' DESC")
             ->get();
 
@@ -143,7 +143,7 @@ class ProductoController extends Controller
                     ->causedBy(auth()->user())
                     ->log('Modifico el producto: ' . $producto->nombre);
                 session()->flash('success', 'El producto se ha Editado exitosamente');
-                
+
             return redirect()->route('producto.index')->with('success', 'Producto actualizado exitosamente');
         }
     }
