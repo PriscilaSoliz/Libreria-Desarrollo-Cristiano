@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Venta;
 
 class VentaSeeder extends Seeder
 {
@@ -12,6 +13,16 @@ class VentaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+
+
+        $user = Venta::create([
+            'formapago'=>'qr',
+            'cliente_id' => '1398565',
+            'usuario_id' => '1',
+
+
+        ]);
+
     }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\EmpleadoController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DetallecategoriaController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetallecompraController;
+
 use App\Http\Controllers\DetalleventaController;
 
 
@@ -57,3 +59,6 @@ Route::get('/bitacora', [BitacoraController::class, 'index'])->name('bitacora.in
 
 
 Route::get('/ruta/del/backend/para/obtener/producto/{codigo}', [ProductoController::class, 'obtenerDetallesProducto']);
+
+//Route::get('pago', PagoController::class)->names('pago');
+Route::get('pago', [PagoController::class, 'index'])->name('pago.index');

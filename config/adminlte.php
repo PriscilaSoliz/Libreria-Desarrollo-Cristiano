@@ -396,6 +396,10 @@ return [
                     'text'    => 'Clientes',
                     'url'     => 'admin/cliente',
                 ],
+                [
+                    'text'    => 'Tipo de Pago',
+                    'url'     => 'admin/pago',
+                ],
             ],
         ],
         [

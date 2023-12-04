@@ -1,9 +1,9 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
+<x-guest-layout >
+    <x-authentication-card >
+        <x-slot name="logo" >
             <x-authentication-card-logo />
         </x-slot>
-        <div class="w-64 h-64 bg-white flex items-center">
+        <div class="w-64 h-64 bg-white flex items-center" >
             <img src="{{ asset('img/Logito.png') }}" alt="Descripción de la imagen" class="max-w-full max-h-full ml-20 rounded-md">
         </div>
         <x-validation-errors class="mb-4" />
@@ -14,10 +14,10 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" >
             @csrf
 
-            <div>
+            <div >
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
