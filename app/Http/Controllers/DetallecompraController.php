@@ -6,8 +6,10 @@ use App\Models\detallecompra;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Events\DetalleCompraCreated;
+use App\Models\Categoria;
 use App\Models\producto;
 use App\Models\Compra;
+use App\Models\Venta;
 use App\Models\Provedor;
 
 class DetallecompraController extends Controller
@@ -42,12 +44,45 @@ class DetallecompraController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function vistaañadir(Request $r)
+    {
+        $provedor = Provedor::all(); // Obtén todos los proveedores de la base de datos
+        $categoria = Categoria::all();
+        $detallecompra = detallecompra::get();
+
+        $compra_id = $r->input('compra_id');
+        $compra = Compra::find($compra_id);
+        return view('VistaDetallecompra.vistaañadir', ['compra' => $compra], compact('detallecompra', 'compra', 'provedor','categoria'));
+    }
+    public function añadir(Request $r)
+    {
+
+        $producto=new producto();
+        $producto->codigo=$r->codigo;
+        $producto->nombre=$r->nombre;
+        $producto->autor=$r->autor;
+        $producto->version=$r->version;
+        $producto->editorial=$r->editorial;
+        $producto->precio=$r->precio;
+        $producto->proveedor_id=$r->proveedor_id;
+        $producto->categoria_id=$r->categoria_id;
+        $producto->save();
+
+        $producto = producto::all();
+        $compra_id = Compra::all();
+        $provedor = Provedor::all();
+        $detallecompra =detallecompra::get();
+
+        $compra_id = $r->input('compra_id');
+        $compra = Compra::find($compra_id);
+        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'));
+    }
     public function store(Request $r)
     {
+
         $compra_id = $r->input('compra_id');
         $detallecompra = new detallecompra();
    //  dd($compra_id); // Verifica si $venta_id tiene el valor esperado
-
         // $venta = Venta::find($venta_id);
         // dd($venta);
         $detallecompra->precio = $r->precio;

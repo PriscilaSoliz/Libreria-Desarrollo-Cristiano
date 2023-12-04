@@ -20,7 +20,6 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetallecompraController;
 
 use App\Http\Controllers\DetalleventaController;
-use App\Http\Controllers\InventarioController;
 
 
 Route::middleware([
@@ -40,7 +39,11 @@ Route::get("", [HomeController::class,"index"])->name("admin.home");
 Route::get('categoria/pdf', [CategoriaController::class, 'pdf'])->name('categoria.pdf');
 Route::get('venta/pdf', [VentaController::class, 'pdf'])->name('venta.pdf');
 Route::get('detalleventa/pdf', [DetalleventaController::class, 'pdf'])->name('detalleventa.pdf');
+Route::get('detalleventa/pdfqr', [DetalleventaController::class, 'pdfqr'])->name('detalleventa.pdfqr');
 Route::get('venta/reporte', [VentaController::class, 'reporte'])->name('venta.reporte');
+Route::get('detallecompra/vistaañadir', [DetallecompraController::class, 'vistaañadir'])->name('detallecompra.vistaañadir');
+Route::post('detallecompra/añadir', [DetallecompraController::class, 'añadir'])->name('detallecompra.añadir');
+
 
 Route::resource('users', UserController::class)->names('admin.users');
 Route::resource('roles', RoleController::class)->names('admin.roles');
@@ -66,4 +69,3 @@ Route::get('/ruta/del/backend/para/obtener/producto/{codigo}', [ProductoControll
 
 //Route::get('pago', PagoController::class)->names('pago');
 Route::get('pago', [PagoController::class, 'index'])->name('pago.index');
-Route::get('inventario', [InventarioController::class, 'index'])->name('inventario.index');

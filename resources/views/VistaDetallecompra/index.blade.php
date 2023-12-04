@@ -5,13 +5,17 @@
         <div class="max-w-8x2 mx-auto sm:px-6 lg:px-8">
             <div class="shadow-lg sm:rounded-lg">
                 <div class="bg-white overflow-hidden p-6 border rounded-lg" style="font-family: 'Verdana', sans-serif;">
-                    <form id="ventaForm" action="{{ route('detallecompra.store') }}" method="POST">
+                    @if (isset($compra))
+                        <label>Nota de Compra: </label>
+                        <input type="texto" name="compra_id" id="compra_id" value="{{ $compra->id }}">
+                    @endif
+                    <div>
+                        <a href="{{ route('detallecompra.vistaañadir', ['compra_id' => $compra->id]) }}"
+                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-3 rounded ml-1 mt-4 sm:py-1 sm:px-2 sm:text-sm">Añadir
+                            Producto</a>
+                    </div>
+                    <form id="ventaForm" action="{{ route('detallecompra.store',['compra_id' => $compra->id]) }}" method="POST">
                         @csrf
-
-                        @if (isset($compra))
-                            <label>Nota de Compra: </label>
-                            <input type="texto" name="compra_id" id="compra_id" value="{{ $compra->id }}">
-                        @endif
                         <div class="grid grid-cols-2 gap-2">
                             <div>
                                 <label for="idLabel" class="text-sm font-bold mb-0" id="idLabel"></label>
@@ -101,66 +105,67 @@
                                     $i = 1;
                                 @endphp
                                 @foreach ($detallecompra as $v)
-                                <td style="display: none;">
-                                    <p class="text-normal text-center">{{ $v->id }}</p>
-                                </td>
-                                   @if ($v->compra_id && $compra && $v->compra_id == $compra->id)
-                                    <tr
-                                        class=" bg-white text-gray-700  hover:border-white
+                                    <td style="display: none;">
+                                        <p class="text-normal text-center">{{ $v->id }}</p>
+                                    </td>
+                                    @if ($v->compra_id && $compra && $v->compra_id == $compra->id)
+                                        <tr
+                                            class=" bg-white text-gray-700  hover:border-white
                                  hover:bg-gray-100 transition">
-                                        <td>
-                                            <p class=" text-normal text-center">{{ $v->compra_id }} </p>
-                                        </td>
-                                        <td>
-                                            <p class=" text-normal text-center">{{ $v->id }} </p>
-                                        </td>
-                                        <td class="px-4 py-3 text-sm capitalize ">
+                                            <td>
+                                                <p class=" text-normal text-center">{{ $v->compra_id }} </p>
+                                            </td>
+                                            <td>
+                                                <p class=" text-normal text-center">{{ $v->id }} </p>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm capitalize ">
 
-                                            <img src="/imagen/{{ $v->producto->imagen }}" class="w-12 h-12 rounded mx-auto"
-                                            alt="">
+                                                <img src="/imagen/{{ $v->producto->imagen }}"
+                                                    class="w-12 h-12 rounded mx-auto" alt="">
 
-                                        </td>
-                                        <td class="px-4 py-3 text-sm capitalize "> {{ $v->producto->nombre }} </td>
+                                            </td>
+                                            <td class="px-4 py-3 text-sm capitalize "> {{ $v->producto->nombre }} </td>
 
-                                        <td class="py-3 text-sm capitalize">
-                                            {{ $v->producto->codigo }}
-                                        </td>
+                                            <td class="py-3 text-sm capitalize">
+                                                {{ $v->producto->codigo }}
+                                            </td>
 
-                                        {{-- <td class="px-4 py-3 text-sm capitalize  ">
+                                            {{-- <td class="px-4 py-3 text-sm capitalize  ">
                                                 <p class="w-fit rounded-2xl p-1 px-3 border bg-green-200 text-green-700">
 
                                                 </p>
                                             </td> --}}
-                                        <td class="pl-4 py-3 text-sm text-right ">{{ $v->precio }}Bs</td>
-                                        <td class="px-4 py-3 text-sm text-right ">{{ $v->cantidad }}</td>
-                                        {{-- <td class="px-4 py-3 text-sm text-right ">{{ $v->descuento }}</td> --}}
-                                        <td class="px-4 py-3 text-sm text-right ">{{ $v->subtotal }}</td>
-                                        <td class=" ">
-                                            <div>
-                                                <form action="{{ route('detallecompra.destroy', $v->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
+                                            <td class="pl-4 py-3 text-sm text-right ">{{ $v->precio }}Bs</td>
+                                            <td class="px-4 py-3 text-sm text-right ">{{ $v->cantidad }}</td>
+                                            {{-- <td class="px-4 py-3 text-sm text-right ">{{ $v->descuento }}</td> --}}
+                                            <td class="px-4 py-3 text-sm text-right ">{{ $v->subtotal }}</td>
+                                            <td class=" ">
+                                                <div>
+                                                    <form action="{{ route('detallecompra.destroy', $v->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
 
-                                                    <button type="submit" title="ELIMINAR"
-                                                        class="w-fit py-2   rounded-lg text-white
+                                                        <button type="submit" title="ELIMINAR"
+                                                            class="w-fit py-2   rounded-lg text-white
                                                       hover:scale-125 transition-transform delay-75"
-                                                        onclick="return confirm('Desea Eliminar?{{ $v->id }}?')">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                            class="w-6 h-6 text-red-600">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @php
-                                        $i++;
-                                    @endphp
+                                                            onclick="return confirm('Desea Eliminar?{{ $v->id }}?')">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke-width="2"
+                                                                stroke="currentColor" class="w-6 h-6 text-red-600">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                                            </svg>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $i++;
+                                        @endphp
                                     @endif
-                                 @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -171,7 +176,6 @@
 @endsection
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
     $(document).ready(function() {
         $('#searchInput').on('input', function() {
             var searchText = $(this).val().trim();
