@@ -6,7 +6,7 @@
             <H1></H1>
             @if (session('success'))
                 <div class="text-center">
-                    <p class="text-white py-1 px-2 sm:py-2 sm:px-4 bg-lime-500 text-xs sm:text-sm rounded-xl">
+                    <p class="text-white py-1 px-2 sm:py-3 sm:px-4 bg-lime-500 text-xs sm:text-sm rounded-xl">
                         {{ session('success') }}
                     </p>
                 </div>
@@ -14,13 +14,13 @@
         </div>
 
         <div class="py-1">
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4  max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-y-auto">
+            <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4  max-w-7-auto sm:px-6 lg:px-8 overflow-y-auto ">
                 <div class="text-gray-900 overflow-auto">
                     <form method="GET" action="{{ route('inventario.index') }}">
                         @csrf
-                        <div class="mb-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div class="mb-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
                             <div>
-                                <label for="provedor" class="mr-2 ml-4">Proveedor:</label>
+                                <label for="provedor" class="mr-1 ml-1">Proveedor:</label>
                                 <select name="provedor" id="provedor">
                                     <option value="">Todos</option>
                                     @foreach($proveedores as $proveedor)
@@ -30,7 +30,7 @@
                             </div>
 
                             <div>
-                                <label for="categoria" class="mr-2 ml-4">Categoría:</label>
+                                <label for="categoria" class="mr-1 ml-4">Categoría:</label>
                                 <select name="categoria" id="categoria">
                                     <option value="">Todas</option>
                                     @foreach($categorias as $categoria)
@@ -40,7 +40,7 @@
                             </div>
 
                             <div>
-                                <label for="autor" class="mr-2 ml-4">Autor:</label>
+                                <label for="autor" class="mr-1 ml-1">Autor:</label>
                                 <select name="autor" id="autor">
                                     <option value="">Todas</option>
                                     @foreach($autores as $autor)
@@ -50,7 +50,7 @@
                             </div>
 
                             <div>
-                                <label for="editorial" class="mr-2 ml-4">Editoriales:</label>
+                                <label for="editorial" class="mr-1 ml-1">Editoriales:</label>
                                 <select name="editorial" id="editorial">
                                     <option value="">Todas</option>
                                     @foreach($editoriales as $editorial)
@@ -75,6 +75,8 @@
                         </div>
 
                     </form>
+
+
 
 
                     <table class="table-auto w-full">
