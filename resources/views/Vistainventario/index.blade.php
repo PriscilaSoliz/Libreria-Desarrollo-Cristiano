@@ -30,7 +30,7 @@
                             </div>
 
                             <div>
-                                <label for="categoria" class="mr-1 ml-4">Categoría:</label>
+                                <label for="categoria" class="mr-1 ml-1">Categoría:</label>
                                 <select name="categoria" id="categoria">
                                     <option value="">Todas</option>
                                     @foreach($categorias as $categoria)
@@ -60,7 +60,7 @@
                             </div>
 
                             <div>
-                                <label for="ubicacion" class="mr-2 ml-4">Ubicaciones:</label>
+                                <label for="ubicacion" class="mr-1 ml-1">Ubicaciones:</label>
                                 <select name="ubicacion" id="ubicacion">
                                     <option value="">Todas</option>
                                     @foreach($ubicaciones as $ubicacion)
