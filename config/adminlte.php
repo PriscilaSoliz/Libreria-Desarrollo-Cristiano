@@ -338,6 +338,7 @@ return [
         [
             'text'    => 'Gestionar Usuario',
             'icon'    => 'fas fa-fw fa-share',
+            'can'=> 'admin.users.index',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
@@ -374,6 +375,8 @@ return [
         [
             'text'    => 'Gestionar Producto',
             'icon'    => 'fas fa-fw fa-share',
+            'can'  => 'VistaProducto.index',
+
             'submenu' => [
                 [
                     'text' => 'Producto',
@@ -393,6 +396,7 @@ return [
         [
             'text'    => 'Gestionar Venta',
             'icon'    => 'fas fa-fw fa-share',
+            'can'  => 'Gestionarventa',
             'submenu' => [
                 // [
                 //     'text' => 'Realizar Venta',
@@ -419,6 +423,7 @@ return [
         [
             'text'    => 'Gestionar Compra',
             'icon'    => 'fas fa-fw fa-share',
+            'can'  => 'Gestionarcompra',
             'submenu' => [
                 // [
                 //     'text' => 'Realizar Venta',
@@ -442,23 +447,17 @@ return [
             'text'       => 'Empleados',
             'icon_color' => 'red',
             'url'        => 'admin/empleado',
+            'can'  => 'Vistaempleado',
         ],
 
         [
             'text'       => 'Bitacora',
             'icon_color' => 'red',
             'url'        => 'admin/bitacora',
+            'can'  => 'Vistaempleado',
         ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+
+
     ],
 
     /*

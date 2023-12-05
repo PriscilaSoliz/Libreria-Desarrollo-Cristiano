@@ -35,7 +35,15 @@ class DetallecompraObserve
      */
     public function deleted(detallecompra $detallecompra): void
     {
-        //
+        $producto = $detallecompra->producto;
+
+        // Actualiza el stock antes de la creación
+        $producto->cantidad -= ($detallecompra->cantidad);
+        activity()
+            ->causedBy(auth()->user()) // Esto asume que estás utilizando el paquete spatie/laravel-activitylog
+            ->log('Creó una nueva compra');
+
+        $producto->save();
     }
 
     /**

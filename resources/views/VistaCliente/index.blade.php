@@ -52,10 +52,11 @@
                                     <td class="py-3 text-sm text-center">{{ $c->nombre }}</td>
                                     <td class="py-3 text-sm text-center">{{ $c->celular }}</td>
                                     <td class="py-3 text-sm text-center">{{ $c->direccion }}</td>
-
+                                    @can('Gestionarventa.detroy')
                                     <td class=" ">
                                         <div class="flex ml-4  justify-end text-right  ">
                                             {{-- @can('cotizacion.edit') --}}
+
                                             <div class="flex justify-center">
                                                 <a title="EDITAR" type="button" href="{{ route('cliente.edit', $c->ci) }}"
                                                     class="   rounded-lg w-fit p-2 mx-2 text-white
@@ -68,9 +69,11 @@
                                                 </a>
 
                                             </div>
-                                            {{-- @endcan --}}
+
+
                                             {{-- @can('cotizacion.destroy') --}}
                                             <div>
+
                                                 <form action="{{ route('cliente.destroy', $c->ci) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -90,11 +93,14 @@
                                                             </svg>
                                                         </button>
                                                     </form>
+
                                                 </div>
                                                 {{-- @endcan --}}
 
                                             </div>
+
                                         </td>
+                                        @endcan
                                     </tr>
                                     @php
                                         $i++;
