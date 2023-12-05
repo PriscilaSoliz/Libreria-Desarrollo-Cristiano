@@ -172,8 +172,7 @@
                                         </tr>
                                         @php
                                             $i++;
-                                            $total += number_format($v->subtotal,2);
-
+                                            $total += $v->subtotal; // No uses number_format() aquí
                                         @endphp
                                     @endif
                                 @endforeach
@@ -181,8 +180,9 @@
                         </table>
                         <div class="flex justify-between items-center">
                             <div class="ml-auto">
-                                <label for="" class="text-sm font-bold mb-0 sm:text-base lg:text-lg">Total :
-                                    {{ $total}} Bs ㅤㅤ</label>
+                                <label for="" class="text-sm font-bold mb-0 sm:text-base lg:text-lg">
+                                    Total: {{ number_format($total, 2) }} Bsㅤㅤ<!-- Esto formateará $total para mostrarlo con 2 decimales -->
+
                             </div>
                         </div>
                     </div>

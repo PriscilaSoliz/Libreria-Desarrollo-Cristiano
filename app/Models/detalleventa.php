@@ -12,10 +12,9 @@ class detalleventa extends Model
     {
         return $this->belongsTo(producto::class, 'producto_id');
     }
-    
+
     public function Venta()
     {
         return $this->belongsTo(venta::class, 'venta_id');
     }
-
 }

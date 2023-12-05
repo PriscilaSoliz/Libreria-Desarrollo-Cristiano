@@ -68,7 +68,7 @@ class VentaController extends Controller
         // Para descargar el PDF directamente, puedes usar: return $pdf->download('reporte.pdf');
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -131,8 +131,15 @@ class VentaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Venta $venta)
+    public function destroy(Request $request)
     {
-        //
+        $venta = Venta::findOrFail($request->id);
+
+        // Eliminar la venta y sus detalles relacionados
+        $venta->detalleventas()->delete();
+        $venta->delete();
+
+        // Redirige de vuelta a la lista de ventas con un mensaje de éxito
+        return redirect()->route('venta.reporte')->with('success', 'Venta eliminada correctamente');
     }
 }
