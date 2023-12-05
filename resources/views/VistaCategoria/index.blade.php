@@ -12,10 +12,12 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Categoria</label>
+
                         <input type="text" name="descripcion" id="descipcion"
                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required
                                oninput="ConvertirPrimeraLetra(this)">
                     </div>
+                    
                     <script>
                         function ConvertirPrimeraLetra(input) {
                           input.value = input.value.toLowerCase().replace(/(?:^|\s)\S/g, function(a) {
@@ -24,6 +26,7 @@
                         }
                         </script>
                 </div>
+
                 <div class="mt-4">
                     <button type="submit"
                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>

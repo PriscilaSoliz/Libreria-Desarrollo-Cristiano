@@ -49,14 +49,31 @@ class RoleSeeder extends Seeder
 
         //PRODUCTO
         Permission::create(['name'=>'VistaProducto.index', 'description'=>'Ver Lista de Producto'])->syncRoles($role1,$role2,$role3);
-        Permission::create(['name'=>'VistaProducto.Create', 'description'=>'Crear Nuevo Producto'])->syncRoles($role1);
-        Permission::create(['name'=>'VistaProducto.edit', 'description'=>'Editar Producto'])->syncRoles($role1);
-        Permission::create(['name'=>'VistaProducto.detroy', 'description'=>'Eliminar Producto'])->syncRoles($role1);
+        Permission::create(['name'=>'VistaProducto.create', 'description'=>'Crear Nuevo Producto'])->syncRoles($role1,$role4);
+        Permission::create(['name'=>'VistaProducto.edit', 'description'=>'Editar Producto'])->syncRoles($role1,$role4);
+        Permission::create(['name'=>'VistaProducto.detroy', 'description'=>'Eliminar Producto'])->syncRoles($role1,$role4);
 
         //PROVEEDORES
         Permission::create(['name'=>'VistaProvedor.index', 'description'=>'Ver Lista de Proveedores'])->syncRoles($role1,$role3);
         Permission::create(['name'=>'VistaProvedor.create', 'description'=>'Registrar Proveedor'])->syncRoles($role1);
         Permission::create(['name'=>'VistaProvedor.edit', 'description'=>'Editar Proveedores'])->syncRoles($role1);
         Permission::create(['name'=>'VistaProvedor.detroy', 'description'=>'Eliminar Proveedores'])->syncRoles($role1);
+
+        //VSITAVENTA
+        Permission::create(['name'=>'Gestionarventa', 'description'=>'Ver ventas'])->syncRoles($role1,$role2,$role4);
+
+        Permission::create(['name'=>'Gestionarventa.create', 'description'=>'Registrar Proveedor'])->syncRoles($role1);
+
+        Permission::create(['name'=>'Gestionarventa.edit', 'description'=>'Editar Proveedores'])->syncRoles($role1);
+        Permission::create(['name'=>'Gestionarventa.detroy', 'description'=>'Eliminar ventas'])->syncRoles($role1,$role4);
+        Permission::create(['name'=>'Gestionarventa.index', 'description'=>'Eliminar Proveedores'])->syncRoles($role1);
+
+         //VISTACOMPRA
+         Permission::create(['name'=>'Gestionarcompra', 'description'=>'Ver compras'])->syncRoles($role1,$role4);
+
+
+         //empleados
+         Permission::create(['name'=>'Vistaempleado', 'description'=>'Ver empleados'])->syncRoles($role1,$role4);
+
     }
 }

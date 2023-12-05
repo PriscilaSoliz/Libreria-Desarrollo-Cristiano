@@ -31,7 +31,11 @@ class DetalleVentaObserver
      */
     public function deleted(Detalleventa $detalleventa): void
     {
-        //
+        $producto = $detalleventa->producto;
+
+        // Actualiza el stock antes de la creación
+        $producto->cantidad += ($detalleventa->cantidad);
+        $producto->save();
     }
 
     /**

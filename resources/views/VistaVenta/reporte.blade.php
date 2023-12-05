@@ -108,6 +108,7 @@
                                             {{-- @endcan --}}
                                             {{-- @can('cotizacion.destroy') --}}
                                             <div>
+                                                @can('Gestionarventa.detroy')
                                                 <form action="#" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -127,6 +128,7 @@
                                                         </svg>
                                                     </button>
                                                 </form>
+                                                @endcan
                                             </div>
                                             {{-- @endcan --}}
 
