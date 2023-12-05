@@ -13,6 +13,10 @@
             background-color: black;
             color: white;
         }
+        .logo {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
     </style>
 
 </head>
@@ -20,10 +24,12 @@
 {{-- C:\xampp\htdocs\Libreria-Desarrollo-Cristiano\public\img\newlogoo.png --}}
 
 <body>
-    <img src="img/newlogo.png" alt="" width="70px" height="70px">
-    <div class="container">
-        <h1 class="text-center">Escanea el Qr</h1>
-        <img src="img/newlogo.png" alt="" width="100px" height="100px">
+    <div class="logo text-center">
+        <img src="img/newlogo.png" alt="Logo" width="80px" height="80px">
+    </div>
+    <div class="container text-center">
+        <h1>Escanea el QR</h1>
+        <img src="img/Qr.jpeg" alt="Código QR" style="width: 400px; height: 500px; display: block; margin: 0 auto;">
     </div>
 </body>
 

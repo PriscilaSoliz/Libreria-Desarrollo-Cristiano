@@ -45,28 +45,40 @@
     <div class="my-8 mx-8">
         <div class="container mx-auto">
             <div class="overflow-x-auto mx-auto bg-white shadow-md rounded px-8 py-6 mt-8">
-                <h2 class="text-3xl text-black font-semibold mb-6">Bitácora</h2>
+                <div class="mt-3">
+                    <button onclick="imprimirBitacora()"
+                    class="bg-cyan-500 hover:bg-cyan-700 text-white font-semibold px-4 py-2 rounded-lg">
+                    Imprimir
+                </button>
+                </div>
 
                 <!-- Contenedor centrado para el Reporte de Bitácora -->
                 <div id="report-container">
-                    <h1 class="text-2xl font-semibold mb-4">Reporte</h1>
+                    <h1 class="text-2xl font-semibold mb-4">Reporte Bitacora</h1>
                 </div>
 
+                <form action="{{ route('bitacora.reporte') }}" method="GET">
                 <div class="flex items-center space-x-4 mb-6">
                     <div class="w-1/2">
                         <label for="start_date" class="text-gray-600 font-semibold text-sm">Fecha de inicio:</label>
                         <input type="date" id="start_date" name="start_date"
-                            class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                            class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                            value="{{ $start_date ?? '' }}">
                     </div>
                     <div class="w-1/2">
                         <label for="end_date" class="text-gray-600 font-semibold text-sm">Fecha de fin:</label>
                         <input type="date" id="end_date" name="end_date"
-                            class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300">
+                            class="px-4 py-2 w-full border rounded-lg focus:outline-none focus:ring focus:border-blue-300"
+                            value="{{ $end_date ?? '' }}">
                     </div>
-                    <button onclick="imprimirBitacora()"
-                        class="bg-cyan-500 hover:bg-cyan-700 text-white font-semibold px-4 py-2 rounded-lg">
-                        Imprimir
-                    </button>
+
+                        <div class="mt-3">
+                            <button type="submit"
+                                class="bg-blue-500  hover:bg-blue-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">
+                                Filtrar
+                            </button>
+                        </div>
+
                 </div>
 
                 <!-- Tabla con estilos mejorados -->
@@ -80,24 +92,51 @@
     <script>
         function imprimirBitacora() {
             var ventanaImpresion = window.open('', '_blank');
-            var contenido = '<html><head><title>Reporte de Bitácora</title>';
-            contenido += '<style>';
-            contenido += 'body { font-family: Arial, sans-serif; }';
-            contenido += '.logo { max-width: 200px; max-height: 100px; }';
-            contenido += '.table-print { width: 100%; border-collapse: collapse; }';
-            contenido += '.table-print th, .table-print td { border: 1px solid #000; padding: 8px; text-align: center; }';
-            contenido += '</style>';
-            contenido += '</head><body>';
-            contenido += '<img src="file:///C:/xampp/htdocs/Libreria-Desarrollo-Cristiano/public/img/Loguito.png" alt="Logotipo de la empresa" class="logo" />';
-            contenido += '<div id="report-container"><h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1></div>';
-            contenido += '<table class="table-print">';
-            contenido += '<thead><tr>';
-            contenido += '<th>Id</th>';
-            contenido += '<th>Nombre</th>';
-            contenido += '<th>Actividad</th>';
-            contenido += '<th>Fecha</th>';
-            contenido += '</tr></thead>';
-            contenido += '<tbody>';
+            var contenido = `
+                <html>
+                <head>
+                    <title>Reporte de Bitácora</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            font-size: 12px; /* Cambia el tamaño de la fuente a 12px */
+                        }
+                        .logo {
+                            max-width: 200px;
+                            max-height: 100px;
+                        }
+                        .table-print {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        .table-print th, .table-print td {
+                            border: 1px solid #000;
+                            padding: 8px;
+                            text-align: center;
+                        }
+                        .report-header {
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="report-header">
+                        <img src="file:///C:/xampp/htdocs/Libreria-Desarrollo-Cristiano/public/img/Loguito.png" alt="Logotipo de la empresa" class="logo" />
+                        <h1 class="text-2xl font-semibold mb-4">Reporte de Bitácora</h1>
+                    </div>
+                    <table class="table-print">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Actividad</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
             var activities = document.querySelectorAll('.activity-row');
             activities.forEach(function(activity) {
                 contenido += '<tr>';
@@ -107,13 +146,20 @@
                 });
                 contenido += '</tr>';
             });
-            contenido += '</tbody></table>';
-            contenido += '</body></html>';
+
+            contenido += `
+                        </tbody>
+                    </table>
+                </body>
+                </html>`;
+
             ventanaImpresion.document.write(contenido);
             ventanaImpresion.document.close();
             ventanaImpresion.print();
         }
     </script>
+
+
 
 
 @endsection

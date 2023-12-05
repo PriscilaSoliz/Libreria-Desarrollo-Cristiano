@@ -5,6 +5,7 @@
             <th class="py-2 px-4 border-b">Nombre</th>
             <th class="py-2 px-4 border-b">Actividad</th>
             <th class="py-2 px-4 border-b">Fecha</th>
+            <th class="py-2 px-4 border-b">Hora</th>
         </tr>
     </thead>
     <tbody>
@@ -20,7 +21,9 @@
                     @endif
                 </td>
                 <td class="py-2 px-4 border-b text-center">{{ $activity->description }}</td>
-                <td class="py-2 px-4 border-b text-center">{{ $activity->created_at }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ $activity->created_at->format('Y-m-d') }}</td>
+                <td class="py-2 px-4 border-b text-center">{{ $activity->created_at->format('H:i:s') }}</td>
+
             </tr>
         @endforeach
     </tbody>

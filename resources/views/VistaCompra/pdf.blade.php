@@ -59,7 +59,7 @@
             <img src="img/newlogo.png" alt="Logo" width="80px" height="80px">
         </div>
         <div class="titulo text-center">
-            <h1>Reporte de Ventas</h1>
+            <h1>Reportes de Compras</h1>
         </div>
         <table class="table tabla-ventas">
             <thead class="cabecera">
@@ -67,17 +67,17 @@
                     <th>Nro</th>
                     <th>Tipo de pago</th>
                     <th>CI</th>
-                    <th>Cliente</th>
+                    <th>Proveedor</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($ventas as $v)
+                @foreach ($compra as $v)
                 <tr>
                     <td>{{ $v->id }}</td>
                     <td>{{ $v->formapago }}</td>
                     <td>{{ $v->cliente_id }}</td>
-                    <td>{{ $v->cliente->nombre }}</td>
+                    <td>{{ $v->provedor->nombre }}</td>
                     <td>{{ $v->created_at->format('Y-m-d') }}</td>
                 </tr>
                 

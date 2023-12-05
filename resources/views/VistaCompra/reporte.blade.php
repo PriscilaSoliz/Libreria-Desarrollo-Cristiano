@@ -17,19 +17,17 @@
             <div class="bg-white overflow-hidden shadow-sm rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="text-gray-900 overflow-auto">
                     <div class="mt-2">
-                        <a href="{{ route('venta.pdf', ['start_date' => $start_date, 'end_date' => $end_date]) }}" target="_blank"
+                        <a href="{{ route('compra.pdf', ['start_date' => $start_date, 'end_date' => $end_date]) }}" target="_blank"
                             class="bg-red-500  hover:bg-red-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">
                             PDF
                         </a>
-                        <a onclick="imprimirVenta()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded ml-1 mt-1">
-                            Imprimir
-                        </a>
+                        
                     </div>
 
                     <div class="space-x-4  font-semibold mt-2">
 
                         <div class="text-center mt-4">
-                            <a class="text-1xl font-mono font-semibold text-gray-500">REPORTE DE VENTAS</a>
+                            <a class="text-1xl font-mono font-semibold text-gray-500">REPORTE DE COMPRAS</a>
                         </div>
                     </div>
                     <form action="{{ route('venta.reporte') }}" method="GET">
@@ -61,8 +59,8 @@
                             <tr class="text-xs text-left font-semibold text-gray-500">
                                 <th class="px-2 py-3 text-center">Nro</th>
                                 <th class="px-4 py-3 text-center">Tipo de pago</th>
-                                <th class="px-4 py-3 text-center">CI</th>
-                                <th class="px-6 py-3 text-center">Cliente</th>
+                                <th class="px-4 py-3 text-center">NIT/CI</th>
+                                <th class="px-6 py-3 text-center">Proveedor</th>
                                 <th class="px-8 py-3 text-center">Fecha</th>
                                 <th class="px-1 py-3 text-center"></th>
                                 <th class="px-1 py-3 text-center"></th>
@@ -72,12 +70,12 @@
                             @php
                                 $i = 1;
                             @endphp
-                            @foreach ($venta as $v)
+                            @foreach ($compra as $v)
                                 <tr class="bg-white text-gray-700 hover:border-white hover:bg-gray-100 transition">
                                     <td class="py-3 text-sm text-center">{{ $v->id }}</td>
                                     <td class="py-3 text-sm text-center">{{ $v->formapago }}</td>
-                                    <td class="py-3 text-sm text-center">{{ $v->cliente_id }}</td>
-                                    <td class="py-3 text-sm text-center">{{ $v->cliente->nombre }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $v->provedor_id }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $v->provedor->nombre }}</td>
                                     <td class="py-3 text-sm text-center">{{ $v->created_at->format('Y-m-d') }}</td>
 
 
@@ -85,7 +83,7 @@
                                         <div class="flex ml-4  justify-end text-right  ">
                                             {{-- @can('cotizacion.edit') --}}
                                             <div class="flex justify-center">
-                                                <a title="EDITAR" type="button" href="{{ route('detalleventa.index',['venta_id' => $v->id])}}"
+                                                <a title="EDITAR" type="button" href="{{ route('detallecompra.index',['compra_id' => $v->id])}}"
                                                     class="   rounded-lg w-fit p-2 mx-2 text-white
                                             hover:scale-105 transition-transform delay-75">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -98,7 +96,7 @@
 
                                             </div>
                                             <div class="flex justify-center">
-                                                <a title="VER" type="button" href="{{ route('detalleventa.verdetalle', $v->id) }}"
+                                                <a title="VER" type="button" href="{{ route('detallecompra.verdetalle', $v->id) }}"
                                                     class="rounded-lg w-fit p-2 mx-2 text-white hover:scale-105 transition-transform delay-75">
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" width="24" viewBox="0 0 576 512" fill="red">
                                                         <path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/>
@@ -109,7 +107,7 @@
                                             {{-- @can('cotizacion.destroy') --}}
                                             <div>
                                                 @can('Gestionarventa.detroy')
-                                                <form action="{{ route('venta.destroy', $v->id) }}" method="POST">
+                                                <form action="{{ route('compra.destroy', $v->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     {{-- Agrega un campo hidden con el id del venta --}}
@@ -196,5 +194,3 @@
         ventanaImpresion.print();
     }
 </script>
-
-

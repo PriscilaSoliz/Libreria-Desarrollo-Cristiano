@@ -17,7 +17,7 @@
                                class="border rounded-lg py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" required
                                oninput="ConvertirPrimeraLetra(this)">
                     </div>
-                    
+
                     <script>
                         function ConvertirPrimeraLetra(input) {
                           input.value = input.value.toLowerCase().replace(/(?:^|\s)\S/g, function(a) {
@@ -27,12 +27,13 @@
                         </script>
                 </div>
 
-                <div class="mt-4">
-                    <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir</button>
-                </div>
-                <div class="mt-4">
-                    <a href="{{route('categoria.pdf')}}" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">PDF</a>
+                <div class="flex justify-between">
+                    <div class="mt-4">
+                        <button type="submit" class="bg-blue-500  hover:bg-blue-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">Añadir</button>
+                    </div>
+                    <div class="mt-4">
+                        <a href="{{ route('categoria.pdf') }}" target="_blank" class="bg-cyan-500  hover:bg-cyan-700  text-white font-bold py-1 px-2 rounded ml-1 mt-1">PDF</a>
+                    </div>
                 </div>
             </form>
         </div>

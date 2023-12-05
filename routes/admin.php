@@ -37,15 +37,23 @@ Route::get("", [HomeController::class,"index"])->name("admin.home");
 
 // Route::put('admin/users/{user}', 'UserController@update')->name('admin.users.update');
 Route::get('categoria/pdf', [CategoriaController::class, 'pdf'])->name('categoria.pdf');
-Route::get('venta/pdf', [VentaController::class, 'pdf'])->name('venta.pdf');
 Route::get('detalleventa/pdf', [DetalleventaController::class, 'pdf'])->name('detalleventa.pdf');
+Route::get('venta/pdf', [VentaController::class, 'pdf'])->name('venta.pdf');
+Route::get('compra/pdf', [CompraController::class, 'pdf'])->name('compra.pdf');
+
 Route::get('detalleventa/pdfqr', [DetalleventaController::class, 'pdfqr'])->name('detalleventa.pdfqr');
 Route::get('detalleventa/verdetalle/{venta}', [DetalleventaController::class, 'verdetalle'])->name('detalleventa.verdetalle');
 Route::delete('detalleventa/eliminar/{id}', [DetalleventaController::class, 'eliminar'])->name('detalleventa.eliminar');
 
+Route::get('detallecompra/verdetalle/{compra}', [DetallecompraController::class, 'verdetalle'])->name('detallecompra.verdetalle');
+Route::delete('detallecompra/eliminar/{id}', [DetallecompraController::class, 'eliminar'])->name('detallecompra.eliminar');
 
 
 Route::get('venta/reporte', [VentaController::class, 'reporte'])->name('venta.reporte');
+
+Route::get('compra/reporte', [CompraController::class, 'reporte'])->name('compra.reporte');
+Route::get('venta/bitacora', [BitacoraController::class, 'reporte'])->name('bitacora.reporte');
+
 Route::get('detallecompra/vistaañadir', [DetallecompraController::class, 'vistaañadir'])->name('detallecompra.vistaañadir');
 Route::post('detallecompra/añadir', [DetallecompraController::class, 'añadir'])->name('detallecompra.añadir');
 

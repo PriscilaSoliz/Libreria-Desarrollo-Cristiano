@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Venta;
 use App\Models\cliente;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class CompraController extends Controller
@@ -22,6 +23,30 @@ class CompraController extends Controller
         return view('VistaCompra.index', compact('compra', 'provedor'));
     }
 
+    public function reporte(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        // Verificar si se proporcionaron ambas fechas
+        if ($start_date && $end_date) {
+            // Incrementar la fecha final por un día
+            $end_date_modified = date('Y-m-d', strtotime($end_date . ' +1 day'));
+
+            // Filtrar las ventas según el rango de fechas proporcionado, incluyendo el día siguiente al end_date
+            $compra = Compra::whereBetween('created_at', [$start_date, $end_date_modified])->get();
+        } else {
+            // Si falta alguna fecha, podrías manejarlo como desees
+            // Por ejemplo, podrías mostrar un mensaje de error o cargar todas las ventas
+            $compras = Compra::all(); // Esto cargaría todas las ventas si falta alguna fecha
+        }
+
+        return view('VistaCompra.reporte', [
+            'compra' => $compras,
+            'start_date' => $start_date,
+            'end_date' => $end_date
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -77,11 +102,41 @@ class CompraController extends Controller
         //
     }
 
+    public function pdf(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        if ($start_date && $end_date) {
+            // Incrementar la fecha final por un día
+            $end_date_modified = date('Y-m-d', strtotime($end_date . ' +1 day'));
+
+            // Filtrar las ventas según el rango de fechas proporcionado, incluyendo el día siguiente al end_date
+            $compras = Compra::whereBetween('created_at', [$start_date, $end_date_modified])->get();
+        } else {
+            // Si no se proporciona un rango de fechas, no asignar ninguna venta para evitar recuperar todas las ventas
+            $compras = collect();
+        }
+
+        // Generar el PDF con las ventas filtradas o sin ventas si no hay rango de fechas
+        $pdf = PDF::loadView('VistaCompra.pdf', compact('compras', 'start_date', 'end_date'));
+
+        // Devolver el PDF como una descarga o visualización en el navegador
+        return $pdf->stream();
+        // Para descargar el PDF directamente, puedes usar: return $pdf->download('reporte.pdf');
+    }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Compra $compra)
+    public function destroy(Request $request)
     {
-        //
+        $compra = Compra::findOrFail($request->id);
+
+        // Eliminar la venta y sus detalles relacionados
+        $compra->detallecompra()->delete();
+        $compra->delete();
+
+        // Redirige de vuelta a la lista de ventas con un mensaje de éxito
+        return redirect()->route('compra.reporte')->with('success', 'compra eliminada correctamente');
     }
 }

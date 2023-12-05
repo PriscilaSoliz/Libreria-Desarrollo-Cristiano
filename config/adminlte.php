@@ -433,6 +433,10 @@ return [
                     'text' => 'Realizar Compra',
                     'url'  => 'admin/compra',
                 ],
+                [
+                    'text' => 'Compras',
+                    'url'  => 'admin/compra/reporte',
+                ],
 
                 [
                     'text' => 'Proveedores',

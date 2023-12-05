@@ -180,11 +180,15 @@
                         </table>
                         <div class="flex justify-between items-center">
                             <div class="ml-auto">
-                                <label for="" class="text-sm font-bold mb-0 sm:text-base lg:text-lg">
-                                    Total: {{ number_format($total, 2) }} Bsㅤㅤ<!-- Esto formateará $total para mostrarlo con 2 decimales -->
-
+                                <label for="total" class="text-xs font-bold mb-0 sm:text-sm lg:text-base">
+                                    Total:
+                                    <input type="text" id="total" name="total" class="w-24 border rounded py-1 px-2 text-xs" value="{{ number_format($total, 2) }}" readonly>
+                                    <!-- Clase 'w-24' define el ancho del input a 6rem -->
+                                </label>
+                                <span class="ml-1 text-xs">Bs</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

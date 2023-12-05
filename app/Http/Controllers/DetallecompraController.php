@@ -77,6 +77,16 @@ class DetallecompraController extends Controller
         $compra = Compra::find($compra_id);
         return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'));
     }
+
+
+    public function verdetalle(compra $compra){
+        // Aquí obtienes los detalles de la venta actual
+        $detallecompra = Detallecompra::where('compra_id', $compra->id)->get();
+
+        // Pasas los datos de la venta y los detalles a la vista
+        return view('VistaDetallecompra.verdetalle', compact('compra', 'detallecompra'));
+    }
+
     public function store(Request $r)
     {
 
@@ -145,10 +155,27 @@ class DetallecompraController extends Controller
         // Recuperar los datos necesarios después de la eliminación
         $producto = producto::all();
         $compra = Compra::find($compra_id);
-        $provedor = Provedor::all();
+        $proveedor = Provedor::all();
         $detallecompra = detallecompra::get();
 
         // Retornar a la vista con los datos actualizados
-        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'provedor'))->with('success', 'Detalle Compra eliminado correctamente');
+        return view('VistaDetallecompra.index', ['compra' => $compra], compact('detallecompra', 'producto', 'compra', 'proveedor'))->with('success', 'Detalle Compra eliminado correctamente');
+    }
+
+    public function eliminar($id)
+    {
+        $detallecompra = detallecompra::findOrFail($id);
+        $compra_id = $detallecompra->compra_id; // Obtener el ID de venta antes de eliminar el detalle
+
+        $detallecompra->delete();
+
+        // Recuperar los datos necesarios después de la eliminación
+        $producto = producto::all();
+        $compra = Compra::find($compra_id);
+     
+        $detalleventa = detallecompra::get();
+
+        // Retornar a la vista con los datos actualizados
+        return view('VistaDetallecompra.verdetalle', ['compra' => $compra], compact('detallecompra', 'producto', 'compra'))->with('success', 'Detalle compra eliminado correctamente');
     }
 }
