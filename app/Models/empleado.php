@@ -12,7 +12,7 @@ class empleado extends Model
     return $this->belongsTo(producto::class,'producto_id');
     }
     public function usuario(){
-    return $this->belongsTo(users::class,'usuario_id');
+    return $this->belongsTo(user::class,'usuario_id');
 
     }
 }
