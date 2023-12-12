@@ -77,11 +77,15 @@
                     </div>
 
                     <!-- Botones -->
-                    <div class="flex items-center justify-center md:flex-row flex-col md:gap-4 pt-1 pb-1">
+                    <div class="flex md:text-center md:items-center justify-center md:flex-row flex-col md:gap-4 pt-1 pb-1">
+                        <button type="submit"
+                            class="w-full md:w-auto bg-blue-500 hover:bg-blue-700 rounded-lg shadow-xl font-medium text-white px-4 py-1 mb-2 md:mb-0 md:mt-0">Guardar</button>
                         <a href="{{ route('producto.index') }}"
-                            class="w-full md:w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-1 mb-2 md:mb-0 md:mt-0">Cancelar</a>
-                       <button type="submit" class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-1'>Guardar</button>
+                            class="w-full md:w-auto bg-red-500 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-1 mb-2 md:mb-0 md:mt-0 flex items-center justify-center">
+                            Cancelar
+                        </a>
                     </div>
+
                 </form>
             </div>
         </div>
