@@ -5,11 +5,8 @@ use App\Http\Controllers\DocenteMateriaController;
 use App\Http\Controllers\PrimerSemestreController;
 
 
-use App\Http\Controllers\CompraController;
-use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\BitacoraController;

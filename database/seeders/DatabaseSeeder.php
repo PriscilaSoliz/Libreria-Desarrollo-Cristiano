@@ -21,19 +21,8 @@ class DatabaseSeeder extends Seeder
         //  ]);
 
         $this->call([
-            Proveedor::class,
-            CategoriaSeeder::class,
             RoleSeeder::class, // Llama al seeder de roles
             UsersSeeder::class, // Llama al seeder de usuarios
-            ProductoSeeder::class, // Llama al seeder de productos
-            EmpleadoSeeder::class, // Llama al seeder de empleados
-            DetalleSeeder::class,
-            DetalleSeeder::class,
-            // ClienteSeeder::class,
-            CompraSeeder::class,
-
-            ClienteSeeder::class,
-            VentaSeeder::class,
         ]);
     }
 }

@@ -6,11 +6,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use App\Events\DetalleCompraCreated;
-use App\Observers\DetallecompraObserve;
-use App\Observers\DetalleVentaObserver;
-use App\Models\detallecompra;
-use App\Models\detalleventa;
 use App\Observers\AuthObserver;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
@@ -39,9 +34,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        detallecompra::observe(DetallecompraObserve::class);
-        detalleventa::observe(DetalleVentaObserver::class);
-
         Event::listen(Login::class, [AuthObserver::class, 'authenticated']);
         Event::listen(Logout::class, [AuthObserver::class, 'logout']);
     }
