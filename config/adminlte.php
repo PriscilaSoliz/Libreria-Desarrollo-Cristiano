@@ -343,42 +343,52 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'Semestres',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Primer Semestre',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Segundo Semestre',
+                    'url'  => '#',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Tercer Semestre',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Cuarto Semestre',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Quinto Semestre',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Sexto Semestre',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Septimo Semestre',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Obtavo Semestre',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Noveno Semestre',
                     'url'  => '#',
                 ],
             ],
+
+        [
+            'text' => 'Electivas',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
         ],
         ['header' => 'labels'],
         [
