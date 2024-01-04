@@ -1,4 +1,7 @@
 <?php
+use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\DocenteMateriaController;
 
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\PagoController;
@@ -20,7 +23,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\DetallecompraController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\DetalleventaController;
-
+use App\Models\DocenteMateria;
 
 Route::middleware([
     'auth:sanctum',
@@ -34,6 +37,9 @@ Route::middleware([
 });
 
 Route::get("", [HomeController::class,"index"])->name("admin.home");
+
+
+
 
 // Route::put('admin/users/{user}', 'UserController@update')->name('admin.users.update');
 Route::get('categoria/pdf', [CategoriaController::class, 'pdf'])->name('categoria.pdf');
@@ -70,6 +76,12 @@ Route::resource('venta', VentaController::class)->names('venta');
 Route::resource('compra', CompraController::class)->names('compra');
 Route::resource('detallecompra', DetallecompraController::class)->names('detallecompra');
 Route::resource('detalleventa', DetalleventaController::class)->names('detalleventa');
+
+Route::delete('/materia/{id}', [MateriaController::class, 'destroy'])->name('materia.destroy');
+Route::delete('/docentemateria/{id}', [DocenteMateriaController::class, 'destroy'])->name('docentemateria.destroy');
+Route::resource('materia', MateriaController::class)->names('materia');
+Route::resource('docente', DocenteController::class)->names('docente');
+Route::resource('docentemateria', DocenteMateriaController::class)->names('docentemateria');
 
 // Route::resource('notaentrada', notaentradaController::class)->names('notaentrada');
 // Route::resource('detalle_producto',DetalleproductoController::class)->names('detalle_producto');

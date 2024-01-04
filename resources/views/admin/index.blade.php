@@ -1,77 +1,66 @@
 @extends('adminlte::page')
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+@section('title', 'Bienvenidad')
+@section('content_header')
+    <h1 class="text-2xl font-semibold mt-2">Docentes</h1>
+@stop
 @section('content')
+<div class="py-2 px-18 h-full ">
+    <div class="py-1">
+        <div class="bg-white overflow-hidden shadow-lg rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="text-gray-900 overflow-auto">
+                <table class="table-auto w-full divide-y divide-gray-300">
+                    <div class="text-center mt-1 mb-2">
+                        <a class="text-2x1 font-mono font-semibold text-black">LISTA DE DOCENTES</a>
+                    </div>
+                    <thead >
+                        <tr>
+                            <th class="px-2 py-1 text-center text-white bg-blue-800">Nro</th>
+                            <th class="px-6 py-1 text-center text-white bg-blue-800">Docente</th>
+                            <th class="px-4 py-1 text-center bg-blue-800"></th>
+                            <th class="px-4 py-1 text-center bg-blue-800"></th>
+                        </tr>
+                    </thead>
 
-<div class="relative bg-indigo-200 dark:bg-purple-500 p-4 sm:p-6 rounded-sm overflow-hidden  mb-1">
+                        <tbody >
+                            <tr class="bg-white text-gray-700 hover:border-white hover:bg-gray-100 transition">
+                                <td class="py-3 text-sm text-center"></td>
+                                <td class="py-3 text-sm text-left"></td>
+                                <td class="py-3 text-sm text-center"></td>
 
-    <!-- Background illustration -->
-    <div class="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
-        <svg width="319" height="198" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <defs>
-                <path id="welcome-a" d="M64 0l64 128-64-20-64 20z" />
-                <path id="welcome-e" d="M40 0l40 80-40-12.5L0 80z" />
-                <path id="welcome-g" d="M40 0l40 80-40-12.5L0 80z" />
-                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="welcome-b">
-                    <stop stop-color="#A5B4FC" offset="0%" />
-                    <stop stop-color="#818CF8" offset="100%" />
-                </linearGradient>
-                <linearGradient x1="50%" y1="24.537%" x2="50%" y2="100%" id="welcome-c">
-                    <stop stop-color="#4338CA" offset="0%" />
-                    <stop stop-color="#6366F1" stop-opacity="0" offset="100%" />
-                </linearGradient>
-            </defs>
-            <g fill="none" fill-rule="evenodd">
-                <g transform="rotate(64 36.592 105.604)">
-                    <mask id="welcome-d" fill="#fff">
-                        <use xlink:href="#welcome-a" />
-                    </mask>
-                    <use fill="url(#welcome-b)" xlink:href="#welcome-a" />
-                    <path fill="url(#welcome-c)" mask="url(#welcome-d)" d="M64-24h80v152H64z" />
-                </g>
-                <g transform="rotate(-51 91.324 -105.372)">
-                    <mask id="welcome-f" fill="#fff">
-                        <use xlink:href="#welcome-e" />
-                    </mask>
-                    <use fill="url(#welcome-b)" xlink:href="#welcome-e" />
-                    <path fill="url(#welcome-c)" mask="url(#welcome-f)" d="M40.333-15.147h50v95h-50z" />
-                </g>
-                <g transform="rotate(44 61.546 392.623)">
-                    <mask id="welcome-h" fill="#fff">
-                        <use xlink:href="#welcome-g" />
-                    </mask>
-                    <use fill="url(#welcome-b)" xlink:href="#welcome-g" />
-                    <path fill="url(#welcome-c)" mask="url(#welcome-h)" d="M40.333-15.147h50v95h-50z" />
-                </g>
-            </g>
-        </svg>
-    </div>
+                                <td class=" ">
+                                    <div class="flex ml-4  justify-end text-right  ">
+                                        {{-- @can('cotizacion.edit') --}}
+                                        <div class="flex justify-center">
+                                            <a title="EDITAR" type="button" href=""
+                                                class="   rounded-lg w-fit p-2 mx-2 text-white
+                                    hover:scale-105 transition-transform delay-75">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    class="w-6 h-6 text-blue-800">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+                                                </svg>
+                                            </a>
+                                        </div>
 
-    <!-- Content -->
-    <div class="relative">
-        <h1 class="text-2xl md:text-3xl text-slate-800 dark:text-slate-100 font-bold mb-1">LIBRERIA DESARROLLO CRISTIANO👋</h1>
-        <p class="dark:text-white">Aquí puedes encontrar la mejor colección de libros.</p>
-    </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
 
-</div>
-<div class="flex flex-wrap justify-around">
-    <div class="w-full sm:w-1/2 lg:w-1/4 bg-gray-200 p-4 m-4 rounded-md">
-        <img src="{{ asset('img/imagen1.jpeg') }}" alt="Descripción de la imagen" class="w-full h-auto sm:h-full object-cover rounded-md">
-    </div>
-    <div class="w-full sm:w-1/2 lg:w-1/4 bg-gray-200 p-4 m-4 rounded-md">
-        <img src="{{ asset('img/imagen2.jpeg') }}" alt="Descripción de la imagen" class="w-full h-auto sm:h-full object-cover rounded-md">
-    </div>
-    <div class="w-full sm:w-1/2 lg:w-1/4 bg-gray-200 p-4 m-4 rounded-md">
-        <img src="{{ asset('img/imagen4.jpeg') }}" alt="Descripción de la imagen" class="w-full h-auto sm:h-full object-cover rounded-md">
-    </div>
-    <div class="w-full sm:w-1/2 lg:w-1/4 bg-gray-200 p-4 m-4 rounded-md">
-        <img src="{{ asset('img/imagen4.jpeg') }}" alt="Descripción de la imagen" class="w-full h-auto sm:h-full object-cover rounded-md">
-    </div>
-    <div class="w-full sm:w-1/2 lg:w-1/4 bg-gray-200 p-4 m-4 rounded-md">
-        <img src="{{ asset('img/imagen5.jpeg') }}" alt="Descripción de la imagen" class="w-full h-auto sm:h-full object-cover rounded-md">
-    </div>
-    <div class="w-full sm:w-1/2 lg:w-1/4 bg-gray-200 p-4 m-4 rounded-md">
-        <img src="{{ asset('img/imagen5.jpeg') }}" alt="Descripción de la imagen" class="w-full h-auto sm:h-full object-cover rounded-md">
+                        </tbody>
+
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+@stop
 
-@endsection
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@stop

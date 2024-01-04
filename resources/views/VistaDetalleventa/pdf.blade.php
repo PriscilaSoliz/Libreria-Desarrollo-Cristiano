@@ -73,6 +73,18 @@
         <div class="titulo text-center">
             <h1>Factura de Ventas</h1>
         </div>
+        <div>
+            @foreach ($detalleventa as $detalleVenta)
+            <p>Detalle de Venta ID: {{ $detalleVenta->id }}</p>
+            <p>Producto: {{ $detalleVenta->producto }}</p>
+
+            {{-- Acceder al cliente desde DetalleVenta --}}
+            <p>Cliente: {{ $detalleVenta->cliente->nombre }}</p>
+
+            <hr>
+        @endforeach
+        </div>
+
         <table class="table tabla-ventas">
             <thead class="cabecera">
                 <tr>

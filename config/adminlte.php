@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => '',
-    'title_prefix' => 'Libreria |',
+    'title' => 'AdminLTE 3',
+    'title_prefix' => '',
     'title_postfix' => '',
 
     /*
@@ -63,13 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Libreria Desarrollo</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/Loguito.png',
-
-    'logo_img_class' => 'brand-image ',
+    'logo' => '<b>SUPERFICCT</b>',
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'admin',
+    'logo_img_alt' => 'Admin Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
             'alt' => 'AdminLTE Preloader Image',
@@ -132,7 +131,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-blue',
+    'usermenu_header_class' => 'bg-red',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -153,7 +152,7 @@ return [
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => true,
-    'layout_fixed_footer' => false,
+    'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
     /*
@@ -188,17 +187,16 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'bg-purple',
+    'classes_brand' => 'bg-red',
     'classes_brand_text' => '',
-    'classes_content_wrapper' => '',
+    'classes_content_wrapper' => 'bg-white',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-purple elevation-4',
+    'classes_sidebar' => 'sidebar-light-red elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-white elevation-1 navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
-
     /*
     |--------------------------------------------------------------------------
     | Sidebar
@@ -291,177 +289,123 @@ return [
     */
 
     'menu' => [
-
-            [
-                'text' => 'Profile',
-                'url'  => 'user/profile',
-                'icon' => 'far fa-user', // Ejemplo de ícono
-              //  'image' => '\img\user1-128x128.jpg'
-            ],
-
-
         // Navbar items:
         // [
         //     'type'         => 'navbar-search',
-        //     'text'         => 'search',
+        //     'text'         => 'Buscador',
         //     'topnav_right' => true,
         // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // // Sidebar items:
-        // [
-        //     'type' => 'sidebar-menu-search',
-        //     'text' => 'search',
-        // ],
+        [
+            'text' => 'Ingresar',
+            'url'  => 'login',
+            'topnav_right' => true,
+        ],
+        [
+            'text' => 'Registrar',
+            'url'  => 'register',
+            'topnav_right' => true,
+        ],
+        // Sidebar items:
+        [
+            'type' => 'sidebar-menu-search',
+            'text' => 'Buscador',
+        ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        // [
-        //     'text'        => 'pages',
-        //     'url'         => 'admin/pages',
-        //     'icon'        => 'far fa-fw fa-file',
-        //     'label'       => 4,
-        //     'label_color' => 'success',
-        // ],
-        // ['header' => 'account_settings'],
-
-        // [
-        //     'text' => 'change_password',
-        //     'url'  => 'admin/settings',
-        //     'icon' => 'fas fa-fw fa-lock',
-        // ],
         [
-            'text'    => 'Gestionar Usuario',
+            'text'        => 'Paginas',
+            'url'         => 'dashboard',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
+        ['header' => 'account_settings'],
+        [
+            'text' => 'Docentes',
+            'url'  => 'admin/docente',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Materias',
+            'url'  => 'admin/materia',
+            'icon' => 'fas fa-fw fa-file',
+        ],
+        [
+            'text' => 'Maestro de Oferta',
+            'url'  => 'admin/docentemateria',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Perfil',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'change_password',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
-            'can'=> 'admin.users.index',
             'submenu' => [
                 [
-                    'text' => 'Usuarios',
-                    'url'  => '/admin/users',
+                    'text' => 'level_one',
+                    'url'  => '#',
                 ],
                 [
-                    'text'    => 'Roles',
-                    'url'     => '/admin/roles',
-                    // 'submenu' => [
-                    //     [
-                    //         'text' => 'level_two',
-                    //         'url'  => '#',
-                    //     ],
-                    //     [
-                    //         'text'    => 'level_two',
-                    //         'url'     => '#',
-                    //         'submenu' => [
-                    //             [
-                    //                 'text' => 'level_three',
-                    //                 'url'  => '#',
-                    //             ],
-                    //             [
-                    //                 'text' => 'level_three',
-                    //                 'url'  => '#',
-                    //             ],
-                    //         ],
-                    //     ],
-                    // ],
+                    'text'    => 'level_one',
+                    'url'     => '#',
+                    'submenu' => [
+                        [
+                            'text' => 'level_two',
+                            'url'  => '#',
+                        ],
+                        [
+                            'text'    => 'level_two',
+                            'url'     => '#',
+                            'submenu' => [
+                                [
+                                    'text' => 'level_three',
+                                    'url'  => '#',
+                                ],
+                                [
+                                    'text' => 'level_three',
+                                    'url'  => '#',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'text' => 'level_one',
+                    'url'  => '#',
                 ],
             ],
         ],
-
-        ///////
+        ['header' => 'labels'],
         [
-            'text'    => 'Gestionar Producto',
-            'icon'    => 'fas fa-fw fa-share',
-            'can'  => 'VistaProducto.index',
-
-            'submenu' => [
-                [
-                    'text' => 'Producto',
-                    'url'  => 'admin/producto',
-                ],
-                [
-                    'text'    => 'Categoria',
-                    'url'     => 'admin/categoria',
-                ],
-                [
-                    'text'    => 'Inventario',
-                    'url'     => 'admin/inventario',
-                ],
-
-            ],
-        ],
-        [
-            'text'    => 'Gestionar Venta',
-            'icon'    => 'fas fa-fw fa-share',
-            'can'  => 'Gestionarventa',
-            'submenu' => [
-                // [
-                //     'text' => 'Realizar Venta',
-                //     'url'  => 'admin/detalleventa',
-                // ],
-                [
-                    'text' => 'Realizar Venta',
-                    'url'  => 'admin/venta',
-                ],
-                [
-                    'text' => 'Ventas',
-                    'url'  => 'admin/venta/reporte',
-                ],
-                [
-                    'text'    => 'Clientes',
-                    'url'     => 'admin/cliente',
-                ],
-                [
-                    'text'    => 'Tipo de Pago',
-                    'url'     => 'admin/pago',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'Gestionar Compra',
-            'icon'    => 'fas fa-fw fa-share',
-            'can'  => 'Gestionarcompra',
-            'submenu' => [
-                // [
-                //     'text' => 'Realizar Venta',
-                //     'url'  => 'admin/detalleventa',
-                // ],
-                [
-                    'text' => 'Realizar Compra',
-                    'url'  => 'admin/compra',
-                ],
-                [
-                    'text' => 'Compras',
-                    'url'  => 'admin/compra/reporte',
-                ],
-
-                [
-                    'text' => 'Proveedores',
-                    'url'  => 'admin/provedor',
-                ],
-
-            ],
-        ],
-
-       // ['header' => 'Administracion'],
-        [
-            'text'       => 'Empleados',
+            'text'       => 'important',
             'icon_color' => 'red',
-            'url'        => 'admin/empleado',
-            'can'  => 'Vistaempleado',
+            'url'        => '#',
         ],
-
         [
-            'text'       => 'Bitacora',
-            'icon_color' => 'red',
-            'url'        => 'admin/bitacora',
-            'can'  => 'Vistaempleado',
+            'text'       => 'warning',
+            'icon_color' => 'yellow',
+            'url'        => '#',
         ],
-
-
+        [
+            'text'       => 'information',
+            'icon_color' => 'cyan',
+            'url'        => '#',
+        ],
     ],
 
     /*

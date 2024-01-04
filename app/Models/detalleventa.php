@@ -17,4 +17,12 @@ class detalleventa extends Model
     {
         return $this->belongsTo(venta::class, 'venta_id');
     }
+    
+
+      // Método para obtener el cliente a través de la relación con Venta
+      public function cliente()
+      {
+          // Se accede a través de la relación venta() definida en este modelo
+          return $this->venta->cliente;
+      }
 }

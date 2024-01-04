@@ -78,7 +78,6 @@
                                 <option value="" disabled selected>Seleccionar</option>
                                 <option value="Efectivo">Efectivo</option>
                                 <option value="Qr">Qr</option>
-                                <option value="Tarjeta">Tarjeta</option>
                             </select>
                         </div>
                         <div class=" text-left">
