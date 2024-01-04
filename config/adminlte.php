@@ -320,90 +320,92 @@ return [
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'OPCIONES'],
         [
             'text' => 'Docentes',
             'url'  => 'admin/docente',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa-solid fa-circle-user',
         ],
         [
             'text' => 'Materias',
             'url'  => 'admin/materia',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fa-solid fa-book-bookmark'
         ],
         [
             'text' => 'Maestro de Oferta',
             'url'  => 'admin/docentemateria',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa-solid fa-book',
         ],
 
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+
         [
             'text'    => 'Semestres',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fa-solid fa-circle-down',
             'submenu' => [
                 [
                     'text' => 'Primer Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Segundo Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Tercer Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Cuarto Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Quinto Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Sexto Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Septimo Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
-                    'text' => 'Obtavo Semestre',
+                    'text' => 'Octavo Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
                 [
                     'text' => 'Noveno Semestre',
                     'url'  => '#',
+                    'icon' => 'fa-solid fa-bolt',
                 ],
             ],
+
+        ],
 
         [
             'text' => 'Electivas',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa-solid fa-bolt',
         ],
-        ],
-        ['header' => 'labels'],
+        ['header' => 'SOBRE NOSOTROS'],
+
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'       => 'Desarrolladores',
+            'icon' => 'fa-solid fa-person-rifle',
             'url'        => '#',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
+            'text'       => 'Bitacora',
+            'icon' => 'fa-solid fa-ghost',
             'url'        => '#',
         ],
     ],
