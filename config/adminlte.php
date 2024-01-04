@@ -299,32 +299,26 @@ return [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-        [
-            'text' => 'Ingresar',
-            'url'  => 'login',
-            'topnav_right' => true,
-        ],
+
         [
             'text' => 'Registrar',
             'url'  => 'register',
             'topnav_right' => true,
         ],
         // Sidebar items:
+
+
+        // [
+        //     'text'        => 'Paginas',
+        //     'url'         => 'dashboard',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscador',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Paginas',
-            'url'         => 'dashboard',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Perfil',
+            'url'  => 'user/profile',
+            'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'account_settings'],
         [
@@ -342,11 +336,7 @@ return [
             'url'  => 'admin/docentemateria',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
