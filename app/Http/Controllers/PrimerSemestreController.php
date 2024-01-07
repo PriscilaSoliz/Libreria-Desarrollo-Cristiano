@@ -37,6 +37,22 @@ class PrimerSemestreController extends Controller
         }
     }
 
+    public function materiaedit(Request $request, $id)
+    {
+        if ($id == 1) {
+            $materia = Materia::find($id);
+            $docente = Docente::get();
+            $docentemateria = DocenteMateria::get();
+            return view('VistaPrimerSemestre.materiaedit1',compact('materia','docente','docentemateria'));
+        }
+        if ($id == 2) {
+            $materia = Materia::find($id);
+            $docente = Docente::get();
+            $docentemateria = DocenteMateria::get();
+            return view('VistaPrimerSemestre.materiaedit2',compact('materia','docente','docentemateria'));
+        }
+    }
+
 
 
 

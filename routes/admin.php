@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\PrimerSemestreController;
 
 
 
@@ -30,4 +31,7 @@ Route::delete('/docentemateria/{id}', [DocenteMateriaController::class, 'destroy
 Route::resource('materia', MateriaController::class)->names('materia');
 Route::resource('docente', DocenteController::class)->names('docente');
 Route::resource('docentemateria', DocenteMateriaController::class)->names('docentemateria');
+
+//primer semestre
+Route::get('primersemestre/{id}', [PrimerSemestreController::class, 'materiaedit'])->name('primersemestre.materiaedit');
 

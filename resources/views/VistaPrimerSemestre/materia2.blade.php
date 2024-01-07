@@ -8,7 +8,15 @@
     @endif
 @stop
 @section('content')
-
+@foreach ($docentemateria as $dm)
+    @if (isset($materia) && $materia->id == $dm->materia->id)
+        <ul class="max-w-md space-y-1 text-black list-disc list-inside dark:text-black">
+            <li>
+                {{$dm->docente->nombre}}
+            </li>
+        </ul>
+    @endif
+@endforeach
 @stop
 
 @section('css')

@@ -23,6 +23,8 @@
                             <a href="{{ route('primersemestre.materia', ['id' => $m->id]) }}"
                                 class="text-black  bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-300 font-bold rounded-lg text-sm px-5 py-2.5 dark:bg-gray-300 dark:hover:bg-gray-400 focus:outline-none dark:focus:ring-gray-400">Ver
                                 Recomendaciones →</a>
+                            <a href="{{ route('primersemestre.materiaedit', ['id' => $m->id]) }}"
+                                class="text-black  bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-300 font-bold rounded-lg text-sm px-5 py-2.5 dark:bg-gray-300 dark:hover:bg-gray-400 focus:outline-none dark:focus:ring-gray-400">Recomendar→</a>
                         </div>
                     </div>
                 </div>
