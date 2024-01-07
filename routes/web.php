@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\ClienteController;
 // use App\Http\Controllers\Admin\UserController;
 // use App\Http\Controllers\Admin\RoleController;
-
+use App\Http\Controllers\PrimerSemestreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +32,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+
+
+
     // route::delete('/producto',ProductoController::class)->name('productos.eliminar');
     // route::resource('producto',ProductoController::class)->names('producto');
     // route::resource('cliente',ClienteController::class)->names('cliente');
@@ -42,3 +45,7 @@ Route::middleware([
    //  Route::get('/producto',[ProductoController::class,'index'])->name('producto.index');
     // Route::delete('{$id}',[ProductoController::class,'index'])->name('producto.eliminar');
 });
+
+    //primer semestre
+    Route::get('primersemestre/{id}', [PrimerSemestreController::class, 'materia'])->name('primersemestre.materia');
+    Route::resource('primersemestre', PrimerSemestreController::class)->names('primersemestre');

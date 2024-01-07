@@ -11,11 +11,24 @@
             <input
                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                 type="text" name="nombre" id="nombre" placeholder="Materia..." aria-label="Full name">
+            <input
+                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                type="text" name="sigla" id="sigla" placeholder="Sigla..." aria-label="Full name">
             <select
                 class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                 name="descripcion" id="descripcion" aria-label="Full name">
+                <option value="" disabled selected>Select...</option>
                 <option value="Semestral">Semestral</option>
                 <option value="Electiva">Electiva</option>
+            </select>
+
+            <select
+                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                name="semestre_id" id="semestre_id" aria-label="Full name">
+                <option value="" disabled selected>Select...</option>
+                @foreach ($semestre as $semestre)
+                    <option value="{{ $semestre->id }}">{{ $semestre->nombre }} Semestre</option>
+                @endforeach
             </select>
 
             <button
@@ -38,7 +51,8 @@
                             <tr>
                                 <th class="px-2 py-1 text-center text-white bg-blue-800">Nro</th>
                                 <th class="px-6 py-1 text-center text-white bg-blue-800">Materia</th>
-                                <th class="px-6 py-1 text-center text-white bg-blue-800">Decripcion</th>
+                                <th class="px-6 py-1 text-center text-white bg-blue-800">Sigla</th>
+                                <th class="px-6 py-1 text-center text-white bg-blue-800">Semestre</th>
                                 <th class="px-4 py-1 text-center bg-blue-800"></th>
 
                             </tr>
@@ -51,7 +65,8 @@
                                 <tr class="bg-white text-gray-700 hover:border-white hover:bg-gray-100 transition">
                                     <td class="py-3 text-sm text-center">{{ $i }}</td>
                                     <td class="py-3 text-sm text-left">{{ $d->nombre }}</td>
-                                    <td class="py-3 text-sm text-left">{{ $d->descripcion }}</td>
+                                    <td class="py-3 text-sm text-left">{{ $d->sigla }}</td>
+                                    <td class="py-3 text-sm text-left">{{ $d->semestre->nombre}} semestre</td>
                                     <td class=" ">
                                         <div class="flex ml-4  justify-end text-right  ">
                                             {{-- @can('cotizacion.edit') --}}
@@ -59,8 +74,9 @@
                                                 <a title="EDITAR" type="button" href="{{ route('materia.edit', $d->id) }}"
                                                     class="   rounded-lg w-fit p-2 mx-2 text-white
                                             hover:scale-90 transition-transform delay-75">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                        class="w-6 h-6 text-blue-800">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                     </svg>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
+use App\Models\Semestre;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
@@ -13,7 +14,8 @@ class MateriaController extends Controller
     public function index()
     {
         $materia = materia::get();
-        return view('VistaMateria.index', compact('materia'));
+        $semestre = semestre::get();
+        return view('VistaMateria.index', compact('materia','semestre'));
     }
 
     /**
@@ -31,7 +33,8 @@ class MateriaController extends Controller
     {
         $materia = new materia();
         $materia->nombre = $r->nombre;
-        $materia->descripcion = $r->descripcion;
+        $materia->sigla = $r->sigla;
+        $materia->semestre_id = $r->semestre_id;
         $materia->save();
         return redirect()->route('materia.index');
     }

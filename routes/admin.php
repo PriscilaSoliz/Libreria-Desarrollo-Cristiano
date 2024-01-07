@@ -2,7 +2,7 @@
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\DocenteMateriaController;
-use App\Http\Controllers\PrimerSemestreController;
+
 
 
 use Illuminate\Support\Facades\Route;
@@ -30,4 +30,4 @@ Route::delete('/docentemateria/{id}', [DocenteMateriaController::class, 'destroy
 Route::resource('materia', MateriaController::class)->names('materia');
 Route::resource('docente', DocenteController::class)->names('docente');
 Route::resource('docentemateria', DocenteMateriaController::class)->names('docentemateria');
-Route::resource('primersemestre', PrimerSemestreController::class)->names('primersemestre');
+

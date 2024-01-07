@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\PrimerSemestre;
 use Illuminate\Http\Request;
+use App\Models\Materia;
+use App\Models\Semestre;
+use App\Models\Docente;
+use App\Models\DocenteMateria;
 
 class PrimerSemestreController extends Controller
 {
@@ -12,8 +16,29 @@ class PrimerSemestreController extends Controller
      */
     public function index()
     {
-        return view('VistaPrimerSemestre.index');
+        $materia = materia::get();
+        $semestre = semestre::get();
+        return view('VistaPrimerSemestre.index', compact('materia', 'semestre'));
     }
+
+    public function materia(Request $request, $id)
+    {
+        if ($id == 1) {
+            $materia = Materia::find($id);
+            $docente = Docente::get();
+            $docentemateria = DocenteMateria::get();
+            return view('VistaPrimerSemestre.materia1',compact('materia','docente','docentemateria'));
+        }
+        if ($id == 2) {
+            $materia = Materia::find($id);
+            $docente = Docente::get();
+            $docentemateria = DocenteMateria::get();
+            return view('VistaPrimerSemestre.materia2',compact('materia','docente','docentemateria'));
+        }
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

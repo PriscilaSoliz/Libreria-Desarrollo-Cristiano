@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class, // Llama al seeder de roles
             UsersSeeder::class, // Llama al seeder de usuarios
+            SemestreSeeder::class, // Llama al seeder de usuarios
         ]);
     }
 }

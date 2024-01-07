@@ -344,7 +344,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Primer Semestre',
-                    'url'  => 'admin/primersemestre',
+                    'url'  => 'primersemestre',
                     'icon' => 'fa-solid fa-bolt',
                 ],
                 [
