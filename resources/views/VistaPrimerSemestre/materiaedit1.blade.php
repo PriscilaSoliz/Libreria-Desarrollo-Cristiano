@@ -59,8 +59,7 @@
                         </div>
                     </div>
 
-                    <button class="toggleComments bg-red-500 text-white p-1 rounded-md"
-                        data-target="commentsContainer{{ $dm->docente->id }}">
+                    <button class=" bg-red-500 text-white p-1 rounded-md">
                         Guardar Eleccion
                     </button>
                     <button class="toggleComments bg-gray-400 text-white p-1 rounded-md"

@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('docente_materias', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion')->nullable();
+            $table->string('easy')->nullable();
+            $table->string('moderado')->nullable();
+            $table->string('hard')->nullable();
+            $table->string('excelente')->nullable();
+            $table->string('optimo')->nullable();
+            $table->string('regular')->nullable();
             $table->unsignedBigInteger('docente_id');
             $table->foreign('docente_id')->references('id')->on('docentes')
                 ->onDelete('cascade')
