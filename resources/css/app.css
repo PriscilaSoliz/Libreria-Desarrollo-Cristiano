@@ -1,16 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Importa Tailwind CSS sin el atributo @tailwind */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
+/* Agrega tus estilos personalizados a continuación */
 [x-cloak] {
     display: none;
-
 }
-.w-nav-grande {
-    @apply w-64;
-}
-
-
-.w-nav-chico {
-    @apply w-14;
-}
+@import 'tailwindcss/animations';
+/* Otras reglas de estilo personalizado */

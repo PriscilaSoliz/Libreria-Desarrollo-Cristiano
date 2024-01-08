@@ -7,53 +7,48 @@
 @section('content')
     <form class="w-full max-w-sm" action="{{ route('materia.store') }}" method="POST">
         @csrf
-        <div class="flex items-center border-b border-teal-500 py-2">
-            <input
-                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="text" name="nombre" id="nombre" placeholder="Materia..." aria-label="Full name">
-            <input
-                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="text" name="sigla" id="sigla" placeholder="Sigla..." aria-label="Full name">
-            <select
-                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                name="descripcion" id="descripcion" aria-label="Full name">
-                <option value="" disabled selected>Select...</option>
-                <option value="Semestral">Semestral</option>
-                <option value="Electiva">Electiva</option>
-            </select>
+  <div class="flex items-center border-b border-teal-500 py-2">
+    <input class="appearance-none bg-transparent border-none w-1/4 text-gray-300 mr-1 py-1 px-2 leading-tight focus:outline-none"
+        type="text" name="nombre" id="nombre" placeholder="Materia..." aria-label="Full name">
 
-            <select
-                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                name="semestre_id" id="semestre_id" aria-label="Full name">
-                <option value="" disabled selected>Select...</option>
-                @foreach ($semestre as $semestre)
-                    <option value="{{ $semestre->id }}">{{ $semestre->nombre }} Semestre</option>
-                @endforeach
-            </select>
+    <input class="appearance-none bg-transparent border-none w-1/4 text-gray-300 mr-3 py-1 px-1 leading-tight focus:outline-none"
+        type="text" name="sigla" id="sigla" placeholder="Sigla..." aria-label="Full name">
 
-            <button
-                class="flex-shrink-0 bg-blue-800 hover:bg-blue-900 border-blue-800 hover:border-blue-900 text-sm font-bold border-4 text-white py-1 px-2 rounded"
-                type="submit">
-                Añadir
-            </button>
+    <select class="appearance-none bg-transparent border-none w-1/4 text-gray-300 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        name="descripcion" id="descripcion" aria-label="Full name">
+        <option value="Semestral">Semestral</option>
+        <option value="Electiva">Electiva</option>
+    </select>
 
-        </div>
+    <select class="appearance-none bg-transparent border-none w-1/4 text-gray-300 mr-3 py-1 px-2 leading-tight focus:outline-none"
+        name="semestre_id" id="semestre_id" aria-label="Full name">
+        @foreach ($semestre as $semestre)
+            <option value="{{ $semestre->id }}">{{ $semestre->nombre }} semestre</option>
+        @endforeach
+    </select>
+
+    <button class="flex-shrink-0 bg-blue-800 hover:bg-blue-900 border-blue-800 hover:border-blue-900 text-sm font-bold border-4 text-white py-1 px-2 rounded"
+        type="submit">
+        Añadir
+    </button>
+</div>
+
     </form>
     <div class="py-2 px-18 h-full ">
         <div class="py-1">
-            <div class="bg-white overflow-hidden shadow-lg rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="text-gray-900 overflow-auto">
+            <div class="bg-dark overflow-hidden shadow-lg rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="text-gray-300 overflow-auto">
                     <table class="table-auto w-full divide-y divide-gray-300">
                         <div class="text-center mt-1 mb-2">
-                            <a class="text-2x1 font-mono font-semibold text-black">LISTA DE MATERIA</a>
+                            <a class="text-2x1 font-mono font-semibold text-white">LISTA DE MATERIA</a>
                         </div>
                         <thead>
                             <tr>
-                                <th class="px-2 py-1 text-center text-white bg-blue-800">Nro</th>
-                                <th class="px-6 py-1 text-center text-white bg-blue-800">Materia</th>
-                                <th class="px-6 py-1 text-center text-white bg-blue-800">Sigla</th>
-                                <th class="px-6 py-1 text-center text-white bg-blue-800">Semestre</th>
-                                <th class="px-4 py-1 text-center bg-blue-800"></th>
+                                <th class="px-2 py-1 text-center text-white bg-red">Nro</th>
+                                <th class="px-6 py-1 text-center text-white bg-red">Materia</th>
+                                <th class="px-6 py-1 text-center text-white bg-red">Sigla</th>
+                                <th class="px-6 py-1 text-center text-white bg-red">Semestre</th>
+                                <th class="px-4 py-1 text-center bg-red"></th>
 
                             </tr>
                         </thead>
@@ -62,11 +57,11 @@
                         @endphp
                         @foreach ($materia as $d)
                             <tbody>
-                                <tr class="bg-white text-gray-700 hover:border-white hover:bg-gray-100 transition">
+                                <tr class="">
                                     <td class="py-3 text-sm text-center">{{ $i }}</td>
                                     <td class="py-3 text-sm text-left">{{ $d->nombre }}</td>
-                                    <td class="py-3 text-sm text-left">{{ $d->sigla }}</td>
-                                    <td class="py-3 text-sm text-left">{{ $d->semestre->nombre}} semestre</td>
+                                    <td class="py-3 text-sm text-center">{{ $d->sigla }}</td>
+                                    <td class="py-3 text-sm text-center">{{ $d->semestre->nombre}} semestre</td>
                                     <td class=" ">
                                         <div class="flex ml-4  justify-end text-right  ">
                                             {{-- @can('cotizacion.edit') --}}

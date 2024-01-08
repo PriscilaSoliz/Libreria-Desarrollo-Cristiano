@@ -10,7 +10,7 @@
         @csrf
         <div class="flex items-center border-b border-teal-500 py-2">
             <input
-                class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                class="appearance-none bg-transparent border-none w-full text-gray-300 mr-3 py-1 px-2 leading-tight focus:outline-none"
                 type="text" name="nombre" id="nombre" placeholder="Escribe.." aria-label="Full name">
                 <button class="flex-shrink-0 bg-blue-800 hover:bg-blue-900 border-blue-800 hover:border-blue-900 text-sm font-bold border-4 text-white py-1 px-2 rounded" type="submit">
                     Añadir
@@ -20,18 +20,18 @@
     </form>
     <div class="py-2 px-18 h-full ">
         <div class="py-1">
-            <div class="bg-white overflow-hidden shadow-lg rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-dark overflow-hidden shadow-lg rounded-lg p-4 h-[100vh] max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="text-gray-900 overflow-auto">
                     <table class="table-auto w-full divide-y divide-gray-300">
                         <div class="text-center mt-1 mb-2">
-                            <a class="text-2x1 font-mono font-semibold text-black">LISTA DE DOCENTES</a>
+                            <a class="text-2x1 font-mono font-semibold text-white">LISTA DE DOCENTES</a>
                         </div>
                         <thead >
                             <tr>
-                                <th class="px-2 py-1 text-center text-white bg-blue-800">Nro</th>
-                                <th class="px-6 py-1 text-center text-white bg-blue-800">Docente</th>
-                                <th class="px-4 py-1 text-center bg-blue-800"></th>
-                                <th class="px-4 py-1 text-center bg-blue-800"></th>
+                                <th class="px-2 py-1 text-center text-white bg-red">Nro</th>
+                                <th class="px-6 py-1 text-center text-white bg-red">Docente</th>
+                                <th class="px-4 py-1 text-center bg-red"></th>
+                                <th class="px-4 py-1 text-center bg-red"></th>
                             </tr>
                         </thead>
                         @php
@@ -39,7 +39,7 @@
                         @endphp
                         @foreach ($docente as $d)
                             <tbody >
-                                <tr class="bg-white text-gray-700 hover:border-white hover:bg-gray-100 transition">
+                                <tr class="text-white">
                                     <td class="py-3 text-sm text-center">{{ $i }}</td>
                                     <td class="py-3 text-sm text-left">{{ $d->nombre }}</td>
                                     <td class="py-3 text-sm text-center"></td>
@@ -51,7 +51,7 @@
                                                     class="   rounded-lg w-fit p-2 mx-2 text-white
                                             hover:scale-90 transition-transform delay-75">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                        stroke-width="2" stroke="currentColor" class="w-6 h-6 text-blue-800">
+                                                        stroke-width="2" stroke="currentColor" class="w-6 h-6 text-yellow">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                     </svg>
