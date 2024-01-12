@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class, // Llama al seeder de roles
             UsersSeeder::class, // Llama al seeder de usuarios
             SemestreSeeder::class, // Llama al seeder de usuarios
+            DocenteSeeder::class,
+            MateriaSeeder::class,
+            DocenteMateriaSeeder::class,
         ]);
     }
 }
