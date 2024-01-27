@@ -24,7 +24,7 @@
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-51a8c1a3.css",
+    "file": "assets/app-9d804966.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
