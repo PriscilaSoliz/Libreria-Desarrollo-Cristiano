@@ -5,7 +5,7 @@
 
         </x-slot>
         <div class="w-64 h-64 bg-white flex justify-center items-center sm:items-start sm:justify-start sm:ml-0 md:mr-20 lg:ml-10">
-            <img src="{{ asset('img/support.png') }}" alt="Descripción de la imagen" class="max-w-full max-h-full rounded-md">
+            <img src="{{ asset('img/newlogo.png') }}" alt="Descripción de la imagen" class="max-w-full max-h-full rounded-md">
         </div>
 
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('hard')->nullable();
             $table->string('excelente')->nullable();
             $table->string('optimo')->nullable();
-            $table->string('malo')->nullable();
+            $table->string('regular')->nullable();
             $table->unsignedBigInteger('docente_id');
             $table->foreign('docente_id')->references('id')->on('docentes')
                 ->onDelete('cascade')

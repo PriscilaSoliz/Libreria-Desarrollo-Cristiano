@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<div class="flex flex-col lg:flex-row items-center justify-center h-screen mt-1">
+<div class="flex flex-col lg:flex-row items-center justify-center h-screen">
     <div class="lg:w-1/2">
         <div class="flex flex-col items-center justify-center">
             <h2 class="text-4xl font-bold mt-1 mb-2 text-white">¡Buscarayos!</h2>
@@ -71,8 +71,10 @@
         }
     </script>
 
+
+
     <!-- Contenido del juego de 3 en línea -->
-    <div class="lg:w-1/2 mt-4 lg:mt-2">
+    <div class="lg:w-1/2 mt-4 lg:mt-0">
         <div class="flex flex-col items-center justify-center">
             <div class="text-4xl font-bold mt-4 mb-2 text-white">¡3 en línea!</div>
 
